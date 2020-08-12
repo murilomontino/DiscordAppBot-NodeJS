@@ -11,8 +11,9 @@ function createWindow(){
 
 async function botOn (){
     const Client = await new Bot()
+    return Client
 }
 
-botOn()
+client = botOn()
 
 app.on("ready", createWindow)

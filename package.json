@@ -9,12 +9,13 @@
     "d20": "^1.4.1",
     "discord.js": "^12.2.0",
     "electron": "^9.2.0",
+    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "electron": "electron .",
+    "electron": "nodemon --watch * --exec electron .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

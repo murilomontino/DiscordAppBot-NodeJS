@@ -17,8 +17,8 @@ class Bot extends Discord.Client{
                 console.log(`${msg.author.username}: ${msg.content}`)
         
                 const args = msg.content.split(" ")
-                if(Client.commands[args[0]]) {
-                    await Client.commands[args[0]](Client,msg)        
+                if(this.commands[args[0]]) {
+                    await this.commands[args[0]](this,msg)        
                 }
                 
             }
