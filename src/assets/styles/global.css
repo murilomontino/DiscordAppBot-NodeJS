@@ -1,0 +1,68 @@
+:root {
+    font-size: 62.5%;
+  
+    --color-background: #36393f;
+    --color-background-dark: #2f3136;
+    --color-background-dark-secundary: #282b30;
+    --color-background-darkest: #202225;
+    --color-input: #484b52;
+    --color-font-primary: #fafbfb;
+    --color-primary: #75DAAD;
+    --color-primary-dark: #35B079;
+    --color-button-light: #3ac285;
+
+  }
+
+  @font-face {
+    font-family: 'Poppins-Regular';
+    src: local('Poppins-Regular'), url('../fonts/Poppins-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Poppins-Bold';
+    src: local('Poppins-Bold'), url('../fonts/Poppins-Bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Archivo-Bold';
+    src: local('Archivo-Bold'), url('../fonts/Archivo-Bold.ttf') format('truetype');
+  }
+  
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  html, body, #root, .App{
+      height: 100vh;
+
+  }
+  
+  .App{
+      display: flex;
+      align-items: center;
+  }
+  body{
+      background-color: var(--color-background);
+  }
+  
+
+  
+  body,
+  button,
+  input,
+  textarea{
+      font: 500 1.6rem Poppins-Regular;
+      color: var(--color-font-primary);
+  }
+  
+  .container{
+      width: 90vw;
+      max-width: 700px;
+  }
+  
+  @media(max-width: 800px){
+      :root{
+        font-size: 47%;
+      }
+  }
+

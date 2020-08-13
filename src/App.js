@@ -1,9 +1,10 @@
 import React from 'react';
-
+import './assets/styles/global.css';
+import Login from './pages/Login/index'
 function App() {
   return (
     <div className="App"> 
-    <h1>Cthulhu Bot</h1>
+          <Login></Login>
     </div>
   );
 }
