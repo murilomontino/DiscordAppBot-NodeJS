@@ -24,6 +24,7 @@ function Login() {
         <div className="icon-right"></div>
         <div className="input-container">
           <p>Entre com seu Token:</p>
+          <form action="http://localhost:3000/main"></form>
           <input type="text" name="name" />
           <button>Entrar</button>
         </div>

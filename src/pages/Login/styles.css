@@ -1,119 +1,115 @@
-.left-container{
-    background: var(--color-primary);
-    height: 96vh;
-    width: 400px;
-    border-radius: 2rem;
-    margin-left: 1rem;
-    padding: 4rem;
-    min-height: 300px;
+.left-container {
+  background: var(--color-primary);
+  height: 96vh;
+  width: 400px;
+  border-radius: 2rem;
+  margin-left: 1rem;
+  padding: 4rem;
+  min-height: 300px;
 }
 
-.left-container h1{
-font-size: 7.8rem;
-line-height: 7rem;
-font-weight: 500;
+.left-container h1 {
+  font-size: 7.8rem;
+  line-height: 7rem;
+  font-weight: 500;
 }
-.left-container strong{
-    font-family: Poppins-Bold;
+.left-container strong {
+  font-family: Poppins-Bold;
 }
-.left-container .sub-title{
-margin-top: 2rem;
-font-size: 2rem;
-}
-
-.left-container a{
-    display:block;
-    text-decoration: none;
-    height: 60px;
-    background-color: var(--color-primary-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-font-primary);
-    border-radius: 1rem;
-    width: 32rem;
-    margin-top: 1rem;
-    font-family: Archivo-Bold;
-    transition: background-color 0.2s;
-    outline: none;
-    font-size: 1.7rem;
-    
+.left-container .sub-title {
+  margin-top: 2rem;
+  font-size: 2rem;
 }
 
-.left-container a:hover{
-    background-color: var(--color-button-light);
+.left-container a {
+  display: block;
+  text-decoration: none;
+  height: 60px;
+  background-color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-font-primary);
+  border-radius: 1rem;
+  width: 32rem;
+  margin-top: 1rem;
+  font-family: Archivo-Bold;
+  transition: background-color 0.2s;
+  outline: none;
+  font-size: 1.7rem;
 }
 
-.button-container{
-    position: absolute;
-    bottom: 5rem;
-    
+.left-container a:hover {
+  background-color: var(--color-button-light);
 }
 
-.button-container p{
-    margin-left: 0.3rem;
+.button-container {
+  position: absolute;
+  bottom: 5rem;
 }
 
-.right-container{
-    width: 70%;
-    margin-left: 3rem;
-    display: flex;
-    flex-direction: column;
-    margin-right: 3rem;
-    min-width: 300px;
-    align-items: center;
-    
+.button-container p {
+  margin-left: 0.3rem;
 }
 
-.right-container p{
-    font-size: 2rem;
+.right-container {
+  width: 70%;
+  margin-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  margin-right: 3rem;
+  min-width: 300px;
+  align-items: center;
 }
 
-.right-container input{
-    height: 60px;
-    width: 100%;
-    background-color: var(--color-input);
-    border-radius: 1rem;
-    outline: none;
-    border: 0;
-    padding-left: 1rem;
-    font-size: 2.2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.right-container p {
+  font-size: 2rem;
 }
 
-.right-container button{
-    width: 35%;
-    height: 60px;
-    background: var(--color-primary);
-    border: 0;
-    outline: none;
-    cursor: pointer;
-    border-radius: 1rem;
-    font-family: Archivo-Bold;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    font-size: 1.7rem;
-    transition: background-color 0.2s;
+.right-container input {
+  height: 60px;
+  width: 100%;
+  background-color: var(--color-input);
+  border-radius: 1rem;
+  outline: none;
+  border: 0;
+  padding-left: 1rem;
+  font-size: 2.2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-.right-container button:hover{
-    background-color: var(--color-button-light);
+.right-container button {
+  width: 35%;
+  height: 60px;
+  background: var(--color-primary);
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1rem;
+  font-family: Archivo-Bold;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 1.7rem;
+  transition: background-color 0.2s;
 }
 
-.input-container{
-    position: relative;
-    height: 175px;
-
-    min-width: 70%;
+.right-container button:hover {
+  background-color: var(--color-button-light);
 }
 
-.icon-right{
-    height: 50px;
-    width: 50px;
-    background: var(--color-primary);
-    position: absolute;
-    right: 3rem;
-    top:1rem
+.input-container {
+  position: relative;
+  height: 175px;
+  min-width: 70%;
+}
+
+.icon-right {
+  height: 50px;
+  width: 50px;
+  background: var(--color-primary);
+  position: absolute;
+  right: 3rem;
+  top: 1rem;
 }
