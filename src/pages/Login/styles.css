@@ -60,6 +60,8 @@
   margin-right: 3rem;
   min-width: 300px;
   align-items: center;
+  height: 100vh;
+  justify-content: center;
 }
 
 .right-container p {
