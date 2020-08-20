@@ -1,5 +1,5 @@
 :root {
-    font-size: 62.5%;
+    font-size: 64%;
   
     --color-background: #36393f;
     --color-background-dark: #2f3136;
@@ -62,7 +62,12 @@
   
   @media(max-width: 800px){
       :root{
-        font-size: 47%;
+        font-size: 50%;
       }
   }
 
+  @media(max-height: 500px){
+    :root{
+      font-size: 50%;
+    }
+}
