@@ -1,4 +1,5 @@
 .left-container{
+    float: left;
     background: var(--color-primary);
     height: 96vh;
     width: 400px;
@@ -55,7 +56,7 @@ font-size: 2rem;
 }
 
 .right-container{
-    width: 70%;
+    float: right;
     margin-left: 3rem;
     display: flex;
     flex-direction: column;
