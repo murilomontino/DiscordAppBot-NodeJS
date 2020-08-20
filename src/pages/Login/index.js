@@ -1,37 +1,17 @@
-import React from "react";
-import "./styles.css";
+/* eslint-disable react/jsx-pascal-case */
+import React from "react"
+import "./styles.css"
+import Left_container from "./components/left_container"
+import Right_container from "./components/right_container"
 
 function Login() {
   return (
-    <>
-      <div className="left-container">
+    <div className="container">
+      
+        <Left_container/>
+        <Right_container/>
 
-        <div className="title-container">
-          <h1>
-            <strong>Cthulhu</strong> bot
-          </h1>
-          <p className="sub-title">Gerencie seu bot de RPG no Discord.</p>
-        </div>
-
-        <div className="button-container">
-          <p>Ainda não tem um bot?</p>
-          <a href="/">Criar bot</a>
-        </div>
-
-      </div>
-
-      <div className="right-container">
-        <div className="icon-right"></div>
-        <div className="input-container">
-          <p>Entre com seu Token:</p>
-          <form action="http://localhost:3000/main">
-          <input type="text" name="name" />
-          <button>Entrar</button>
-          </form>
-        </div>
-      </div>
-    </>
-  );
+    </div>)
 }
 
-export default Login;
+export default Login
