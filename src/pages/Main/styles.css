@@ -1,0 +1,44 @@
+.background{
+    background: var(--color-primary);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.right-main-container{
+    height: 96vh;
+    width: 90%;
+    background: var(--color-background);
+    border-radius: 2rem;
+    position: absolute;
+    right: 1.5rem;
+}
+
+.menu-container{
+    width: 9%;
+    height: 100%;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.item-menu{
+    height: 50px;
+    width: 50px;
+    background-color: lavenderblush;
+    margin-top: 4rem;
+}
+
+@media(max-width: 950px){
+    
+.right-main-container{
+    width: 80%;
+}
+.menu-container{
+    width:19%;;
+}
+}
