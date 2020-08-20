@@ -8,7 +8,7 @@ const Navegador = () => {
         <nav>
             <ul className='Login'>
                 <li><Link to='/Login'> Login </Link></li>
-                <li><Link to ='/'> Home</Link></li>
+                <li><Link to ='/'> Main</Link></li>
 
             </ul>
         </nav>
