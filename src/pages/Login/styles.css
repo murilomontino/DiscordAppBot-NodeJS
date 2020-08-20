@@ -1,3 +1,13 @@
+@media(max-width: 950px){
+    
+  .left-container{
+      width: 80%;
+  }
+  .menu-container{
+      width:20%;;
+  }
+}
+
 .left-container {
   background: var(--color-primary);
   height: 96vh;
@@ -113,3 +123,4 @@
   right: 3rem;
   top: 1rem;
 }
+

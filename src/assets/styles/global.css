@@ -42,7 +42,7 @@ body,
 }
 
 .App {
-  display: inline-flex;
+  display: grid;
   align-items: center;
   width: 100%;
 }
