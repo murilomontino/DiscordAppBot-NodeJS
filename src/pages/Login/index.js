@@ -6,7 +6,7 @@ import Right_container from "./components/right_container"
 
 function Login() {
   return (
-    <div className="container">
+    <div className="Login-Container">
       
         <Left_container/>
         <Right_container/>
