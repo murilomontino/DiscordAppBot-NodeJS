@@ -5,13 +5,14 @@ import './navegador.css'
 const Navegador = () => {
     
     return (
-        <nav>
+        <nav className='Navegador'>
             <ul className='Login'>
-                <li><Link to='/'> Login </Link></li>
-                <li><Link to ='/Main'> Main</Link></li>
+                <li><Link to='/Login'> Login </Link></li>
+                <li><Link to ='/'> Main</Link></li>
 
             </ul>
         </nav>
+        
     )
 }
 

@@ -1,9 +1,22 @@
+
 nav {
-    display: inline;
-    color: blueviolet;
+
+    background-color: aliceblue;
+    
 }
 
 .Login {
     list-style-type: none;
+    color: antiquewhite;
     font-size: 22;
+    text-transform: uppercase;
+}
+
+ul {
+   
+}
+
+li {
+    display: inline-block;
+    padding: 5px;
 }
