@@ -59,10 +59,7 @@ textarea {
   color: var(--color-font-primary);
 }
 
-.container {
-  width: 90vw;
-  max-width: 700px;
-}
+
 
 @media (max-width: 800px) {
   :root {

@@ -5,7 +5,9 @@ import App from './App';
 
 const Index = () => {
   return (
-    <App className='App'/>
+    <div className='App'>
+      <App/>
+    </div>
   )
 
 }
