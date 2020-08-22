@@ -12,8 +12,8 @@ function App() {
     <BrowserRouter>
       {/* <Navegador/> */}
       <Switch>
-        <Route path="/Login" exact component={Login} />
-        <Route path="/" component={Main} />
+        <Route path="/Main" exact component={Main} />
+        <Route path="/" component={Login} />
       </Switch>
     </BrowserRouter>
     </div> 
