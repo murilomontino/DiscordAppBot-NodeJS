@@ -25,8 +25,10 @@ function Login() {
       <section className="right-container">
         <div className="input-container">
           <p>Entre com seu Token:</p>
+          <form action="/main">
           <input type="text" name="name" />
           <button>Entrar</button>
+          </form>
         </div>
       </section>
     </div>
