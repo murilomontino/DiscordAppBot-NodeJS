@@ -47,16 +47,6 @@
   color: #cccccc;
 }
 
-#title-bar {
-	-webkit-app-region: drag;
-	margin-bottom: 5px;
-	box-sizing: border-box;
-	height: 32px;
-	width: 80%;	
-	padding: 5px;
-	color: #ADADAD;
-  }
-
 a {
   color: #68217A;
 }
