@@ -5,7 +5,7 @@ function Main() {
   return (
     <div className="background">
         <div className="menu-container">
-          <div className="item-menu"></div>
+          <div className="item-menu"><a href="/">Login</a></div>
           <div className="item-menu"></div>
           <div className="item-menu"></div>
         </div>

@@ -37,9 +37,8 @@
 
 html,
 body,
-#root,
 .App {
-  height: 100vh;
+  height: 95vh;
 }
 
 .App {
@@ -47,9 +46,13 @@ body,
   align-items: center;
   width: 100%;
   flex-direction: column;
+  position: absolute;
+  bottom: 0;
 }
+
 body {
   background-color: var(--color-background);
+  
 }
 
 body,
@@ -60,6 +63,9 @@ textarea {
   color: var(--color-font-primary);
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 
 
 @media (max-width: 800px) {
@@ -71,5 +77,11 @@ textarea {
 @media (max-height: 500px) {
   :root {
     font-size: 50%;
+  }
+
+  html,
+  body,
+  .App {
+    height: 90vh;
   }
 }

@@ -27,12 +27,12 @@ const MenuTitleBar = () => {
     }
     
     return (
-        <div id='title-bar'>
-        <div id="title">Discord App Bot </div>
-        <div id="title-bar-btns">
-            <button id="min-btn"  onClick={Minimize}>-</button>
-            <button id="max-btn"  onClick={Maximize}>+</button>
-            <button id="close-btn" onClick={Close}>X</button>
+        <div className="title-bar">
+        <div className="title-text"> Discord App Bot </div>
+        <div className="title-bar-btns">
+            <button   onClick={Minimize}>-</button>
+            <button   onClick={Maximize}>+</button>
+            <button    onClick={Close}>X</button>
         </div>
         </div>
 

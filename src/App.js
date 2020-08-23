@@ -8,15 +8,15 @@ import './assets/styles/global.css';
 
 function App() {
   return (
-    
+    <div className='App'>
     <BrowserRouter>
-      <Navegador/>
+      {/* <Navegador/>  */}
       <Switch>
-        <Route path="/Login" exact component={Login} />
-        <Route path="/" component={Main} />
+        <Route path="/Main" exact component={Main} />
+        <Route path="/" component={Login} />
       </Switch>
     </BrowserRouter>
-      
+    </div>
   )
 }
 
