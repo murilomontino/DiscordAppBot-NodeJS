@@ -15,5 +15,5 @@ const Index = () => {
 
 ReactDOM.render(<MenuTitleBar/>, document.getElementById('menutitlebar'))
 ReactDOM.render(<Index/>, document.getElementById('root'))
-ReactDOM.render(<MenuTitleBar/>, document.getElementById('menu-title-bar'))
+
 
