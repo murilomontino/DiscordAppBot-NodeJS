@@ -7,10 +7,11 @@ import './assets/styles/global.css';
 
 
 function App() {
+  
   return (
     <div className='App'>
     <BrowserRouter>
-      {/* <Navegador/>  */}
+      {/* <Navegador/> */}
       <Switch>
         <Route path="/Main" exact component={Main} />
         <Route path="/" component={Login} />

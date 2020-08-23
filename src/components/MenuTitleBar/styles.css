@@ -13,7 +13,7 @@
 .title-text {
 
   position: absolute;
-  left: 12px;  
+  left: 20px;  
   font-size: 13px;
   display: flex;
   align-self: center;
@@ -42,10 +42,6 @@
   background-color: var(--color-input);
 }
 
-#content {
-  padding: 12px;
-  color: #cccccc;
-}
 
 
 .icon-close, .icon-minus, .icon-square{

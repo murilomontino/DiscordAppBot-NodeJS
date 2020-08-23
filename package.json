@@ -10,6 +10,10 @@
     "discord.js": "^12.2.0",
     "electron": "^9.2.0",
     "nodemon": "^2.0.4",
+<<<<<<< HEAD
+=======
+    "react-router-dom": "^5.2.0",
+>>>>>>> b28343fefa22ad7fa74e2ab3274529f9b3fb8057
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -36,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
   }
 }
