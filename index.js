@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 
 
+
+
 function createWindow(){
   
     const win = new BrowserWindow( { 
@@ -19,7 +21,6 @@ function createWindow(){
     win.webContents.openDevTools()
 
 }
-
 app.on("ready", createWindow)
 
 
