@@ -8,13 +8,15 @@ function createWindow(){
         height:600, 
         frame: false, 
         webPreferences: {
-            nodeIntegration: false, 
-            preload: __dirname + '/preload.js' 
+            nodeIntegration: true,
+            enableRemoteModule: true
+ 
+             
         }    
     })
     win.removeMenu()
     win.loadURL("http://localhost:3000/")
-    // win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
 }
 

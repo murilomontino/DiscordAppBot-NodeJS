@@ -12,7 +12,7 @@
 .left-container {
   background: var(--color-primary);
   float: left;
-  height: 96vh;
+  height: 90vh;
   width: 400px;
   border-radius: 2rem;
   margin-left: 1rem;

@@ -3,12 +3,11 @@ import React from 'react'
 import './styles.css'
 
 
-
 const MenuTitleBar = () => {
-    
     const Close = ()=>{
         try{
             const remote = window.require('electron').remote.getCurrentWindow()
+            
             remote.close()
         }
         catch{
@@ -49,7 +48,7 @@ const MenuTitleBar = () => {
         <div id="title-bar-btns">
             <button id="min-btn"  onClick={Minimize}>-</button>
             <button id="max-btn"  onClick={Maximize}>+</button>
-            <button id="close-btn" onClick={Close}>X</button>
+            <button id="close-btn" onClick={Close}>x</button>
         </div>
         </div>
 

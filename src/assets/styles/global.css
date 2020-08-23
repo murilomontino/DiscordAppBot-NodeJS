@@ -39,14 +39,14 @@ html,
 body,
 #root,
 .App {
-  height: 100vh;
+  height: 90vh;
 }
 
 .App {
   display: flex;
   align-items: center;
   width: 100%;
-  flex-direction: column;
+  flex-direction: row;
 }
 body {
   background-color: var(--color-background);
