@@ -1,0 +1,52 @@
+
+
+
+
+#title {
+	position: fixed;
+	top: 0px;
+	left: 12px;	
+	line-height: 32px;
+	font-size: 14px;
+}
+
+#title-bar-btns {
+
+	-webkit-app-region: no-drag;
+	position: fixed;
+	top: 1px;
+	right: 0px;	
+}
+
+#title-bar-btns button {
+	height: 32px;
+	width: 32px;
+	background-color: transparent;
+	
+	border: none;
+	font-size: 16px;
+}
+
+#title-bar-btns button:hover {
+	background-color: #3F3F41;
+
+}
+
+#content {
+	
+	padding: 12px;	
+	color: #CCCCCC;
+}
+
+#title-bar {
+	-webkit-app-region: drag;
+	margin-bottom: 5px;
+	height: 32px;
+	width: 80%;	
+	padding: 5px;
+	color: #ADADAD;
+  }
+
+a {
+  color: #68217A;
+}

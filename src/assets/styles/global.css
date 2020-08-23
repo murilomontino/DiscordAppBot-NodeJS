@@ -12,6 +12,20 @@
   --color-button-light: #3ac285;
 }
 
+#title-bar {
+  -webkit-app-region: drag;
+  margin-bottom: 5px;
+	height: 32px;
+	width: 80%;	
+	padding: 0px;
+	color: #ADADAD;
+	font-family: sans-serif;
+}
+
+menu-title-bar{
+  background-color: white;
+}
+
 @font-face {
   font-family: "Poppins-Regular";
   src: local("Poppins-Regular"),
@@ -45,7 +59,7 @@ body,
   display: flex;
   align-items: center;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
 }
 body {
   background-color: var(--color-background);

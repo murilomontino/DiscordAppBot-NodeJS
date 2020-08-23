@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
+import MenuTitleBar from './components/MenuTitleBar'
 
 const Index = () => {
   return (
@@ -12,5 +12,7 @@ const Index = () => {
 
 }
 
+
 ReactDOM.render(<Index/>, document.getElementById('root'))
+ReactDOM.render(<MenuTitleBar/>, document.getElementById('menu-title-bar') )
 
