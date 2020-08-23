@@ -2,7 +2,7 @@
   -webkit-app-region: drag;
   height: 35px;
   width: 100%;
-  color: #adadad;
+
   background: var(--color-background);
   display: flex;
   position: fixed;
@@ -44,6 +44,12 @@
 
 
 
-a {
-  color: #68217A;
+.icon-close, .icon-minus, .icon-square{
+  fill: var(--color-font-primary);
 }
+
+.icon-square{
+  height: 12px;
+
+}
+

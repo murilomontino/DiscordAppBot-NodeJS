@@ -6,7 +6,6 @@
   border-radius: 2rem;
   margin-left: 1rem;
   padding: 4rem;
-  min-height: 300px;
   align-self: center;
   position: relative;
 }
@@ -124,6 +123,12 @@
   height: 100%;
 }
 
+.icon-arrow{
+  height: 15px;
+  fill: var(--color-font-primary);
+  margin-left: 2rem;
+}
+
 @media (max-width: 1000px) {
 
   .menu-container {
@@ -131,8 +136,9 @@
   }
 }
 
-@media (max-width: 800px) {
-  .right-container .input-container{
-    width: 90%;
+@media (max-height: 500px) {
+
+  .left-container {
+    height: 85vh;
   }
 }
