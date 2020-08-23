@@ -1,4 +1,4 @@
-#title-bar {
+.title-bar {
   -webkit-app-region: drag;
   height: 35px;
   width: 100%;
@@ -10,7 +10,7 @@
   
 }
 
-#title-text {
+.title-text {
 
   position: absolute;
   left: 12px;  
@@ -20,7 +20,7 @@
 
 }
 
-#title-bar-btns {
+.title-bar-btns {
   -webkit-app-region: no-drag;
   position: absolute;
   right: 0px;
@@ -29,7 +29,7 @@
   align-self: center;
 }
 
-#title-bar-btns button {
+.title-bar-btns button {
   width: 45px;
   height: 100%;
   background-color: transparent;
@@ -38,7 +38,7 @@
 
 }
 
-#title-bar-btns button:hover {
+.title-bar-btns button:hover {
   background-color: var(--color-input);
 }
 
