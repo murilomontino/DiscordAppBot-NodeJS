@@ -1,29 +1,46 @@
 import React from 'react'
-// import {remote} from 'electron'
 
 import './styles.css'
 
-const remote = window.require("electron").remote.getCurrentWindow()
+
 
 const MenuTitleBar = () => {
     
     const Close = ()=>{
-        remote.close()
-        console.log('testando')
+        try{
+            const remote = window.require('electron').remote.getCurrentWindow()
+            remote.close()
+        }
+        catch{
+
+        }
 
     }
 
     const Minimize = () =>{
-        remote.minimize();
+        try{
+            const remote = window.require('electron').remote.getCurrentWindow()
+            remote.minimize()
+        }
+        catch{
+
+        }
     }
 
     const Maximize = () =>{
-        
-        if (!remote.isMaximized()) {
-            remote.maximize();
-          } else {
-            remote.unmaximize();
+        try {
+            const remote = window.require('electron').remote.getCurrentWindow()
+            
+            if (!remote.isMaximized()) {
+                remote.maximize();
+            } else {
+                remote.unmaximize();
             }
+
+        } catch (error) {
+            
+        }
+        
     }
     
     return (
