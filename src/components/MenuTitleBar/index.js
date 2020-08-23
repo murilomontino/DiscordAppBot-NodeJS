@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
 // import {remote} from 'electron'
 
-import './styles.css'
+import './styles.css';
+
+import { ReactComponent as CloseIcon} from '../../assets/Icons/closeIcon.svg';
+import { ReactComponent as MinusIcon} from '../../assets/Icons/minusIcon.svg';
+import { ReactComponent as SquareIcon} from '../../assets/Icons/squareIcon.svg';
 
 const remote = window.require("electron").remote.getCurrentWindow()
 
@@ -28,11 +32,11 @@ const MenuTitleBar = () => {
     
     return (
         <div className="title-bar">
-        <div className="title-text"> Discord App Bot </div>
+        <div className="title-text"> Cthulhu bot </div>
         <div className="title-bar-btns">
-            <button   onClick={Minimize}>-</button>
-            <button   onClick={Maximize}>+</button>
-            <button    onClick={Close}>X</button>
+            <button   onClick={Minimize}><MinusIcon className="icon-minus" /></button>
+            <button   onClick={Maximize}><SquareIcon className="icon-square"/></button>
+            <button   onClick={Close}><CloseIcon className="icon-close" /></button>
         </div>
         </div>
 

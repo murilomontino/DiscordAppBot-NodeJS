@@ -6,7 +6,7 @@ function createWindow(){
     minWidth: 700, width: 1000, height:600, frame: false, webPreferences: {nodeIntegration: true}})
     win.removeMenu()
     win.loadURL("http://localhost:3000/")
-     win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     
 }
