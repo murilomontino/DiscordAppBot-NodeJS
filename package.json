@@ -9,11 +9,14 @@
     "d20": "^1.4.1",
     "discord.js": "^12.2.0",
     "electron": "^9.2.0",
+    "fs": "0.0.1-security",
+    "is-electron": "^2.2.0",
     "nodemon": "^2.0.4",
-    "react-router-dom": "^5.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "webpack": "^4.44.1"
   },
   "scripts": {
     "electron": "nodemon --watch * --exec electron .",
@@ -36,8 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
   }
 }

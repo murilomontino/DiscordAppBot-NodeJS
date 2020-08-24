@@ -1,13 +1,25 @@
-const fs = require("fs");
-const dir = "./commands/";
+import isElectron from 'is-electron'
 
-module.exports = (prefix) =>{
-    var commands = {};
 
-    const scripts = fs.readdirSync(dir);
-    scripts.forEach(script=>{
-        commands[prefix+script.split(".")[0]] = require("../"+dir+script);
-    });
+const commandsReader = (prefix) =>{
+        const dir = "src/botDiscord/commands/"
+        let commands = {};
+        
+        const electron = require('electron')
+        const remote = electron.remote
+        const fs = remote.require('fs')
+        fs.readdirSync()
 
-    return commands;
+        if (isElectron()) {
+            const fs = window.require('fs');
+            const scripts = fs.readdirSync(dir)
+            scripts.forEach(script=>{
+                commands[prefix+script.split(".")[0]] = window.require("../"+dir+script);
+            });
+        }
+        
+        return commands;
+    
 }
+
+export default commandsReader

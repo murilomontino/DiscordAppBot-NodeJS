@@ -1,10 +1,15 @@
-const Discord = require('discord.js')
+import commandsReader from './scripts/commandsReader'
+import Discord from 'discord.js'
+
+
 const Config = require('./config/config.json')
 
 class Bot extends Discord.Client{
     constructor(...args){
         super(...args)
-        this.commands = require("./scripts/commandsReader")(Config.prefix)
+        this.commands = ( () => {
+            return commandsReader(Config.prefix)
+        })()
         this.config = require('./config/config.json')
 
         this.on("ready", () =>{
@@ -25,10 +30,20 @@ class Bot extends Discord.Client{
         
             
         })
-
-        this.login(this.config.token)
+        
+        this.Login = (token) =>{
+            try {
+                this.login(this.config.token)
+                console.log('Suceffuly')
+            } catch (error) {
+                
+            }
+            
+            
+        }
+        
     }
 
 }
 
-module.exports = Bot
+export default Bot
