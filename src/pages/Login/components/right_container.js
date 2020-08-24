@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-// import { ipcRenderer } from 'electron'
 
 const { ipcRenderer } = window.require('electron')
  
@@ -10,10 +9,12 @@ const Right_container = () => {
     
     
     const Logar = (event) => {
-        ipcRenderer.send('@notification/REQUEST', {
-            title: 'Pong',
-            body: 'Hello Vagabundo!'
+        const message = ipcRenderer.sendSync('@token/REQUEST', {
+            title: 'logar',
+            body: token
         })
+
+        console.log(message)
     }
 
     const HandleChange = (event) =>{

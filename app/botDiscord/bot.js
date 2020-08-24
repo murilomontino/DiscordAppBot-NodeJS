@@ -1,16 +1,14 @@
-import commandsReader from './scripts/commandsReader'
-import Discord from 'discord.js'
+const Discord = require('discord.js')
 
-
-const Config = require('./config/config.json')
+const commandsReader = require('./scripts/commandsReader')
 
 class Bot extends Discord.Client{
     constructor(...args){
         super(...args)
-        this.commands = ( () => {
-            return commandsReader(Config.prefix)
-        })()
+        
         this.config = require('./config/config.json')
+        this.commands = commandsReader(this.config.prefix)
+        
 
         this.on("ready", () =>{
             console.log(`${this.user.tag}`)
@@ -46,4 +44,4 @@ class Bot extends Discord.Client{
 
 }
 
-export default Bot
+module.exports = Bot

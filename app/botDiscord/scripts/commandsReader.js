@@ -1,13 +1,16 @@
 
+const fs = require('fs')
 
 const commandsReader = (prefix) =>{
-        const dir = "src/botDiscord/commands/"
+        const dir = "app/botDiscord/commands/"
+        const commandsDir = '../commands/'
         let commands = {};
-    
-        const fs = window.require('fs');
-            const scripts = fs.readdirSync(dir)
-            scripts.forEach(script=>{
-                commands[prefix+script.split(".")[0]] = window.require("../"+dir+script);
+        
+       
+        const scripts = fs.readdirSync(dir)
+        
+        scripts.forEach(  script=>    {
+                commands[prefix+script.split(".")[0]] = require(commandsDir+script)
             })
        
         
@@ -15,4 +18,4 @@ const commandsReader = (prefix) =>{
     
 }
 
-export default commandsReader
+module.exports = commandsReader
