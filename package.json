@@ -19,7 +19,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "electron": "nodemon --watch * --exec electron ./public/electron",
+    "electron": "electron ./public/electron",
+    "electron-dev": "nodemon --watch * --exec electron ./public/electron",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

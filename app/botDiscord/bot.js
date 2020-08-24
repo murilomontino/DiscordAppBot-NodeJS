@@ -12,7 +12,7 @@ class Bot extends Discord.Client{
         })()
         this.config = require('./config/config.json')
 
-        this.on("ready", ( ) =>{
+        this.on("ready", () =>{
             console.log(`${this.user.tag}`)
         
         })

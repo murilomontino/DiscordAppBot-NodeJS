@@ -10,8 +10,10 @@ const Right_container = () => {
     
     
     const Logar = (event) => {
-        ipcRenderer.send('asynchronous-message', 'ping')
-        // document.Discord.Login(token)
+        ipcRenderer.send('@notification/REQUEST', {
+            title: 'Pong',
+            body: 'Hello Vagabundo!'
+        })
     }
 
     const HandleChange = (event) =>{
