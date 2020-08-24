@@ -1,12 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
+// import { ipcRenderer } from 'electron'
 
+const { ipcRenderer } = window.require('electron')
+ 
 const Right_container = () => {
     
     const [token, setToken] = useState('')
-
+    
+    
     const Logar = (event) => {
-        document.Discord.Login(token)
+        ipcRenderer.send('asynchronous-message', 'ping')
+        // document.Discord.Login(token)
     }
 
     const HandleChange = (event) =>{
