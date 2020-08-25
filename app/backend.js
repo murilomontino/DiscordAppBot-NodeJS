@@ -3,12 +3,16 @@ const Bot = require('./botDiscord/bot')
 const DiscordAppBot = new Bot()
 
 const logar = (token) => {
-    DiscordAppBot.Login(token)
+    return DiscordAppBot.login(token)
 }
+       
+     
 
-const BackEnd = {
+
+
+const Backend = {
     logar
 }
 
 
-module.exports = BackEnd
+module.exports = Backend

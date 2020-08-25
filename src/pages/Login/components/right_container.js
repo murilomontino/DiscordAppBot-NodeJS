@@ -1,40 +1,51 @@
 import React from 'react'
 import { useState } from 'react'
+import { Redirect } from 'react-router'
 
 const { ipcRenderer } = window.require('electron')
  
 const Right_container = () => {
     
     const [token, setToken] = useState('')
-    
-    
-    const Logar = (event) => {
-        const message = ipcRenderer.sendSync('@token/REQUEST', {
+    const [redirect, setRedirect] = useState(false)
+
+    function Logar(event) {
+        
+        const { onBot } = ipcRenderer.sendSync('@token/REQUEST', {
             title: 'logar',
-            body: token
+            body: token ? token : 0
         })
 
-        console.log(message)
+        if(onBot){
+            setRedirect(true)
+        }
+
+        
     }
 
-    const HandleChange = (event) =>{
+    function HandleChange(event){
         setToken(event.target.value)
+        
     }
-
-    return (
-    
-        <section className="right-container">
-                    
-            <div className="input-container">
+  
+    if(redirect){
+        return <Redirect to="/Main" /> 
+    }
+    else
+        return (
+        
+            <section className="right-container">
+                        
+                <div className="input-container">
                 <p>Entre com seu Token:</p>
-                
+                <form>
                 <input type="text" name="name" value={token} onChange={HandleChange} />
                 <button type='submit' onClick={Logar}>Entrar</button>
-                
-            </div>
+                </form>
+                </div>
 
-        </section>
-    )
+            </section>
+        )
 }
 
 export default Right_container

@@ -29,17 +29,6 @@ class Bot extends Discord.Client{
             
         })
         
-        this.Login = (token) =>{
-            try {
-                this.login(this.config.token)
-                console.log('Suceffuly')
-            } catch (error) {
-                
-            }
-            
-            
-        }
-        
     }
 
 }
