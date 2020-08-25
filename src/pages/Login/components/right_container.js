@@ -13,7 +13,6 @@ const Right_container = () => {
    
 
     function Logar(token) {
-        console.log("logar");
         
         setLoading(true)
 

@@ -1,4 +1,4 @@
-const Backend = require('./backend')
+const Comunication = require('./comunication')
 
 const { ipcMain, Notification } = require('electron');
 
@@ -23,7 +23,7 @@ ipcMain.on('@token/REQUEST', (event, message) => {
     
     const { title, body } = message
     
-    Backend[title](body).then((result) => {
+    Comunication[title](body).then((result) => {
       event.returnValue = { onBot: true }
     }).catch((err) => {
       event.returnValue = { onBot: false }

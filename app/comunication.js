@@ -7,12 +7,9 @@ const logar = (token) => {
 }
        
      
-
-
-
-const Backend = {
+const Comunication = {
     logar
 }
 
 
-module.exports = Backend
+module.exports = Comunication
