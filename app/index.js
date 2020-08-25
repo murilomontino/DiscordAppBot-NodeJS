@@ -22,7 +22,6 @@ ipcMain.on('@token/REQUEST', (event, message) => {
   try{
     
     const { title, body } = message
-    console.log(body)
     
     Backend[title](body).then((result) => {
       event.returnValue = { onBot: true }

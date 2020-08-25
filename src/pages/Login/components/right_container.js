@@ -8,9 +8,15 @@ const Right_container = () => {
     
     const [token, setToken] = useState('')
     const [redirect, setRedirect] = useState(false)
+    const [loading, setLoading] = useState(false)
+
+    const TelaDeCarregamento = () => <p>CARREGANDO</p>
+   
 
     function Logar(event) {
         
+        setLoading(true)
+
         const { onBot } = ipcRenderer.sendSync('@token/REQUEST', {
             title: 'logar',
             body: token ? token : 0
@@ -18,10 +24,15 @@ const Right_container = () => {
 
         if(onBot){
             setRedirect(true)
+        
         }
 
+        let delay = 1000
+        setTimeout(()=>setLoading(false), delay)
+        
         
     }
+
 
     function HandleChange(event){
         setToken(event.target.value)
@@ -33,16 +44,19 @@ const Right_container = () => {
     }
     else
         return (
-        
+            
             <section className="right-container">
-                        
+                { loading && <TelaDeCarregamento/> }
+                { !loading && 
+
                 <div className="input-container">
-                <p>Entre com seu Token:</p>
-                <form>
-                <input type="text" name="name" value={token} onChange={HandleChange} />
-                <button type='submit' onClick={Logar}>Entrar</button>
-                </form>
+                    <p>Entre com seu Token:</p>
+                    <form>
+                        <input type="text" name="name" value={token} onChange={HandleChange} />
+                        <button type='submit' onClick={Logar}>Entrar</button>
+                    </form>
                 </div>
+                }
 
             </section>
         )
