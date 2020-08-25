@@ -1,6 +1,7 @@
 .title-bar {
   -webkit-app-region: drag;
   height: 35px;
+
   width: 100%;
 
   background: var(--color-background);
