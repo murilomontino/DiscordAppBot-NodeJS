@@ -9,7 +9,9 @@ const Right_container = () => {
     const [redirect, setRedirect] = useState(false)
     const [loading, setLoading] = useState(false)
     const inputToken = useRef(null);
-    const TelaDeCarregamento = () => <p>CARREGANDO</p>
+    
+    // Loading animation
+    const TelaDeCarregamento = () => <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
    
 
     function Logar(token) {
@@ -39,8 +41,6 @@ const Right_container = () => {
         event.preventDefault();
     }
     
-
-
     if(redirect){
         return <Redirect to="/Main" /> 
     }
