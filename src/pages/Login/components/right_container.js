@@ -24,11 +24,11 @@ const Right_container = () => {
         })
 
         if(onBot){
+            setTimeout(()=>{},1000)
             setRedirect(true)
         
-        }
-
-        setTimeout(()=>setLoading(false), 1000)
+        }else
+            setTimeout(()=>setLoading(false), 1000)
         
         
     }
