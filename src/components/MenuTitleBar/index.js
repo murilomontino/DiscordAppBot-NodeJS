@@ -1,5 +1,4 @@
 import React from 'react';
-// import {remote} from 'electron'
 
 import './styles.css';
 
@@ -9,29 +8,23 @@ import { ReactComponent as SquareIcon} from '../../assets/Icons/squareIcon.svg';
 
 const MenuTitleBar = () => {
     const Close = ()=>{
-        try{
+            
             const remote = window.require('electron').remote.getCurrentWindow()
             
             remote.close()
-        }
-        catch{
-
-        }
+       
 
     }
 
     const Minimize = () =>{
-        try{
+        
             const remote = window.require('electron').remote.getCurrentWindow()
             remote.minimize()
-        }
-        catch{
-
-        }
+      
     }
 
     const Maximize = () =>{
-        try {
+       
             const remote = window.require('electron').remote.getCurrentWindow()
             
             if (!remote.isMaximized()) {
@@ -40,9 +33,7 @@ const MenuTitleBar = () => {
                 remote.unmaximize();
             }
 
-        } catch (error) {
-            
-        }
+      
         
     }
     

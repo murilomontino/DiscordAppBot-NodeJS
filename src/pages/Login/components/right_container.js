@@ -27,21 +27,23 @@ const Right_container = () => {
         
         }
 
-        let delay = 1000
-        setTimeout(()=>setLoading(false), delay)
+        setTimeout(()=>setLoading(false), 1000)
         
         
     }
 
 
-    function HandleChange(event){
+    function handleChange(event){
         setToken(event.target.value)
         
     }
-  
+    
+
+
     if(redirect){
         return <Redirect to="/Main" /> 
     }
+
     else
         return (
             
@@ -52,7 +54,7 @@ const Right_container = () => {
                 <div className="input-container">
                     <p>Entre com seu Token:</p>
                     <form>
-                        <input type="text" name="name" value={token} onChange={HandleChange} />
+                        <input type="text" name="name" value={token} onChange={handleChange} />
                         <button type='submit' onClick={Logar}>Entrar</button>
                     </form>
                 </div>
