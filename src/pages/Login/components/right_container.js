@@ -1,19 +1,19 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Redirect } from 'react-router'
 
 const { ipcRenderer } = window.require('electron')
  
 const Right_container = () => {
     
-    const [token, setToken] = useState('')
     const [redirect, setRedirect] = useState(false)
     const [loading, setLoading] = useState(false)
-
+    const inputToken = useRef(null);
     const TelaDeCarregamento = () => <p>CARREGANDO</p>
    
 
-    function Logar(event) {
+    function Logar(token) {
+        console.log("logar");
         
         setLoading(true)
 
@@ -35,8 +35,9 @@ const Right_container = () => {
 
 
     function HandleChange(event){
-        setToken(event.target.value)
-        
+      
+        Logar(inputToken.current.value);
+        event.preventDefault();
     }
   
     if(redirect){
@@ -51,9 +52,9 @@ const Right_container = () => {
 
                 <div className="input-container">
                     <p>Entre com seu Token:</p>
-                    <form>
-                        <input type="text" name="name" value={token} onChange={HandleChange} />
-                        <button type='submit' onClick={Logar}>Entrar</button>
+                    <form onSubmit={HandleChange}>
+                        <input type="text" name="token" ref={inputToken}/>
+                        <button type='submit' >Entrar</button>
                     </form>
                 </div>
                 }
