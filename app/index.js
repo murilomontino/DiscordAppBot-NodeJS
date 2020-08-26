@@ -6,7 +6,7 @@ ipcMain.on('@comunication/REQUEST', async (event, message) => {
   
   try {
     
-    const { title, body } = message;
+    const { title, body } = message
     
  
   } catch (err) {

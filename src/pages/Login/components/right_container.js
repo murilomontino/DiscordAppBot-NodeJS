@@ -38,6 +38,8 @@ const Right_container = () => {
     event.preventDefault();
   }
 
+ 
+
   if (redirect) {
     return <Redirect to="/Main" />;
   } else
@@ -62,10 +64,8 @@ const Right_container = () => {
               <input
                 type="text"
                 name="token"
-                placeholder={isWrongToken?"Ops, token incorreto! :(": ''}
-                onFocus={(e) => {
-                  RemoveBorderRed();
-                }}
+                placeholder={ isWrongToken?"Ops, token incorreto! :(": ''}
+                onFocus={RemoveBorderRed}
                 ref={inputToken}
                 className={isWrongToken ? "wrong-token" : undefined}
               />

@@ -1,7 +1,5 @@
 require('../app')
 
-
-
 const  { BrowserWindow, app, ipcMain } = require('electron')
 
 const path = require('path');
