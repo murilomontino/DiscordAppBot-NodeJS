@@ -14,10 +14,10 @@ const Right_container = () => {
     const TelaDeCarregamento = () => <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
    
 
-    function Logar(token) {
+    async function Logar(token) {
         
-        setLoading(true)
-
+        await setLoading(true)
+                
         const { onBot } = ipcRenderer.sendSync('@token/REQUEST', {
             title: 'logar',
             body: token ? token : 0
