@@ -6,36 +6,17 @@ import { ReactComponent as CloseIcon} from '../../assets/Icons/closeIcon.svg';
 import { ReactComponent as MinusIcon} from '../../assets/Icons/minusIcon.svg';
 import { ReactComponent as SquareIcon} from '../../assets/Icons/squareIcon.svg';
 
+const { ipcRenderer } = window.require('electron')
+
 const MenuTitleBar = () => {
-    const Close = ()=>{
-            
-            const remote = window.require('electron').remote.getCurrentWindow()
-            
-            remote.close()
+    
+    const Close = () => ipcRenderer.invoke('@window/REQUEST', 'close' )
+    
+    const Minimize = () => ipcRenderer.invoke('@window/REQUEST', 'minimize' )
+    
+    const Maximize = () => ipcRenderer.invoke('@window/REQUEST', 'maximize' )
        
-
-    }
-
-    const Minimize = () =>{
-        
-            const remote = window.require('electron').remote.getCurrentWindow()
-            remote.minimize()
-      
-    }
-
-    const Maximize = () =>{
-       
-            const remote = window.require('electron').remote.getCurrentWindow()
             
-            if (!remote.isMaximized()) {
-                remote.maximize();
-            } else {
-                remote.unmaximize();
-            }
-
-      
-        
-    }
     
     return (
         <div className="title-bar">

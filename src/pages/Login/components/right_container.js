@@ -21,11 +21,11 @@ const Right_container = () => {
         })
 
         if(onBot){
+            setTimeout(()=>{},1000)
             setRedirect(true)
         
-        }
-
-        setTimeout(()=>setLoading(false), 1000)
+        }else
+            setTimeout(()=>setLoading(false), 1000)
         
         
     }
@@ -47,6 +47,7 @@ const Right_container = () => {
             <section className="right-container">
                 { loading &&   // Loading animation
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                // Loading animation end
                  }
 
                 { !loading && 

@@ -1,13 +1,12 @@
 require('../app')
 
-const electron = require('electron');
+const electron  = require('electron');
 
 const { app } = electron;
 const { BrowserWindow } = electron;
 
 const path = require('path');
 const isDev = require('electron-is-dev');
-
 
 let mainWindow;
 
@@ -35,7 +34,10 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
 }
+
+
 
 app.on('ready', createWindow);
 
@@ -50,3 +52,23 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+// ================================================================================================
+
+electron.ipcMain.handle('@window/REQUEST', async (event, message) => {
+  try {
+    
+    
+    if(message === 'maximize'){
+        if(mainWindow.isMaximized()){
+            mainWindow.unmaximize()
+        } else
+            mainWindow.maximize()
+    }else
+        mainWindow[message]()
+
+  } catch (error) {
+   
+  }
+
+})
