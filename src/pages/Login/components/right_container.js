@@ -10,11 +10,7 @@ const Right_container = () => {
     const [loading, setLoading] = useState(false)
     const inputToken = useRef(null);
     
-    // Loading animation
-    const TelaDeCarregamento = () => <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-   
-
-    function Logar(token) {
+      function Logar(token) {
         console.log("logar");
         
         setLoading(true)
@@ -35,7 +31,7 @@ const Right_container = () => {
     }
 
 
-    function HandleChange(event){
+    function HandleSubmit(event){
       
         Logar(inputToken.current.value);
         event.preventDefault();
@@ -49,12 +45,15 @@ const Right_container = () => {
         return (
             
             <section className="right-container">
-                { loading && <TelaDeCarregamento/> }
+                { loading &&   // Loading animation
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                 }
+
                 { !loading && 
 
                 <div className="input-container">
                     <p>Entre com seu Token:</p>
-                    <form onSubmit={HandleChange}>
+                    <form onSubmit={HandleSubmit}>
                         <input type="text" name="token" ref={inputToken}/>
                         <button type='submit' >Entrar</button>
                     </form>
