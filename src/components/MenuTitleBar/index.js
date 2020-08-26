@@ -6,23 +6,6 @@ import { ReactComponent as CloseIcon} from '../../assets/Icons/closeIcon.svg';
 import { ReactComponent as MinusIcon} from '../../assets/Icons/minusIcon.svg';
 import { ReactComponent as SquareIcon} from '../../assets/Icons/squareIcon.svg';
 
-<<<<<<< HEAD
-const MenuTitleBar = () => {
-    const remote = window.require('electron').remote.getCurrentWindow()
-
-    const Close = ()=> remote.close()
-
-    const Minimize = () =>remote.minimize()
-
-    const Maximize = () =>{
-
-            if (!remote.isMaximized()) {
-                remote.maximize();
-            } else {
-                remote.unmaximize();
-            } 
-    }
-=======
 const { ipcRenderer } = window.require('electron')
 
 const MenuTitleBar = () => {
@@ -35,7 +18,6 @@ const MenuTitleBar = () => {
        
             
     
->>>>>>> 6e01ab251587adecbd49096fc87b943a5ae75279
     return (
         <div className="title-bar">
         <div className="title-text"> Cthulhu bot </div>
