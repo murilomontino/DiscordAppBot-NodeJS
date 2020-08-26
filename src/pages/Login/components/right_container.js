@@ -11,7 +11,7 @@ const Right_container = () => {
     const inputToken = useRef(null);
     
     // Loading animation
-    const TelaDeCarregamento = () => <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    const TelaDeCarregamento = () => <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
    
 
     function Logar(token) {
@@ -22,13 +22,16 @@ const Right_container = () => {
             title: 'logar',
             body: token ? token : 0
         })
-
-        if(onBot){
-            setTimeout(()=>{},1000)
-            setRedirect(true)
         
-        }else
-            setTimeout(()=>setLoading(false), 1000)
+        setTimeout(() => {
+            if(onBot){
+                setRedirect(true)
+            }else
+                setLoading(false)
+
+        }, 1000 )
+
+        
         
         
     }
