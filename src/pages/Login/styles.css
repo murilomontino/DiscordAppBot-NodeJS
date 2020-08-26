@@ -82,6 +82,12 @@
   margin-bottom: 1rem;
 }
 
+.wrong-token{
+  border: 2px solid var(--color-red-warning) !important;
+}
+.wrong-token::placeholder{
+  color:  var(--color-red-warning);
+}
 .right-container button {
   width: 35%;
   height: 60px;
