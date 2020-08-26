@@ -1,20 +1,16 @@
-const Backend = require('./backend')
+const Comunication = require('./comunication')
 
-const { ipcMain, Notification } = require('electron');
+const { ipcMain } = require('electron');
 
-ipcMain.on('@notification/REQUEST', async (event, message) => {
+ipcMain.on('@comunication/REQUEST', async (event, message) => {
   
   try {
-    const { title, body } = message;
-
-    const notification = new Notification({
-      title,
-      body,
-    })
     
-    notification.show()
+    const { title, body } = message
+    
+ 
   } catch (err) {
-    event.sender.send('@notification/FAILURE', 'Houve um erro na criação da notificação')
+    
   }
 })
 
@@ -23,12 +19,19 @@ ipcMain.on('@token/REQUEST', (event, message) => {
     
     const { title, body } = message
     
+<<<<<<< HEAD
     Backend[title](body).then( result => 
     event.returnValue = { onBot: true }
     ).catch(err => {
+=======
+    Comunication[title](body).then((result) => {
+      event.returnValue = { onBot: true }
+    }).catch((err) => {
+>>>>>>> 6e01ab251587adecbd49096fc87b943a5ae75279
       event.returnValue = { onBot: false }
     });
 
+    
   } catch (err){
 
   }
