@@ -2,12 +2,16 @@ import React from "react";
 import { useState, useRef } from "react";
 import { Redirect } from "react-router";
 
+import './loading.css'
+
 const { ipcRenderer } = window.require("electron");
 
 const Right_container = () => {
+  
   const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isWrongToken, setIsWrongToken] = useState(false);
+  
   const inputToken = useRef(null);
 
   async function Logar(token) {
