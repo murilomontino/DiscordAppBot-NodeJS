@@ -62,7 +62,7 @@ const Right_container = () => {
               <input
                 type="text"
                 name="token"
-                placeholder={isWrongToken?"Ops, token incorreto! :(":false}
+                placeholder={isWrongToken?"Ops, token incorreto! :(": ''}
                 onFocus={(e) => {
                   RemoveBorderRed();
                 }}

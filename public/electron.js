@@ -1,9 +1,8 @@
 require('../app')
 
-const electron  = require('electron');
 
-const { app } = electron;
-const { BrowserWindow } = electron;
+
+const  { BrowserWindow, app, ipcMain } = require('electron')
 
 const path = require('path');
 const isDev = require('electron-is-dev');
@@ -18,10 +17,9 @@ function createWindow() {
     minWidth: 700,
     frame: false,
     webPreferences: {
-      nodeIntegration: true,
-      webSecurity: false
+      nodeIntegration: true
     },
-  });
+  })
 
   mainWindow.loadURL(
     isDev ? 'http://localhost:3000' : `file://${path.resolve(__dirname, '..', 'build', 'index.html')}`,
@@ -56,7 +54,7 @@ app.on('activate', () => {
 // ================================================================================================
 // Eventos do MenuTitleBar 
 
-electron.ipcMain.handle('@window/REQUEST', async (event, message) => {
+ipcMain.handle('@window/REQUEST', async (event, message) => {
   try {
     
     
