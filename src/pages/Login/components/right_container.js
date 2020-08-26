@@ -16,7 +16,7 @@ const Right_container = () => {
 
     async function Logar(token) {
         
-        await setLoading(true)
+        setLoading(true)
                 
         const { onBot } = ipcRenderer.sendSync('@token/REQUEST', {
             title: 'logar',
@@ -37,7 +37,7 @@ const Right_container = () => {
     }
 
 
-    function HandleChange(event){
+    const HandleChange = (event) => {
       
         Logar(inputToken.current.value);
         event.preventDefault();

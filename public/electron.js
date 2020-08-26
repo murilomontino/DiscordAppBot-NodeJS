@@ -54,6 +54,7 @@ app.on('activate', () => {
 });
 
 // ================================================================================================
+// Eventos do MenuTitleBar 
 
 electron.ipcMain.handle('@window/REQUEST', async (event, message) => {
   try {
