@@ -23,9 +23,9 @@ ipcMain.on('@token/REQUEST', (event, message) => {
     
     const { title, body } = message
     
-    Backend[title](body).then((result) => {
-      event.returnValue = { onBot: true }
-    }).catch((err) => {
+    Backend[title](body).then( result => 
+    event.returnValue = { onBot: true }
+    ).catch(err => {
       event.returnValue = { onBot: false }
     });
 

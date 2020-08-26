@@ -7,36 +7,20 @@ import { ReactComponent as MinusIcon} from '../../assets/Icons/minusIcon.svg';
 import { ReactComponent as SquareIcon} from '../../assets/Icons/squareIcon.svg';
 
 const MenuTitleBar = () => {
-    const Close = ()=>{
-            
-            const remote = window.require('electron').remote.getCurrentWindow()
-            
-            remote.close()
-       
+    const remote = window.require('electron').remote.getCurrentWindow()
 
-    }
+    const Close = ()=> remote.close()
 
-    const Minimize = () =>{
-        
-            const remote = window.require('electron').remote.getCurrentWindow()
-            remote.minimize()
-      
-    }
+    const Minimize = () =>remote.minimize()
 
     const Maximize = () =>{
-       
-            const remote = window.require('electron').remote.getCurrentWindow()
-            
+
             if (!remote.isMaximized()) {
                 remote.maximize();
             } else {
                 remote.unmaximize();
-            }
-
-      
-        
+            } 
     }
-    
     return (
         <div className="title-bar">
         <div className="title-text"> Cthulhu bot </div>

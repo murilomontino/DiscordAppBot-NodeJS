@@ -6,14 +6,9 @@ const commandsReader = (prefix) =>{
         const commandsDir = '../commands/'
         let commands = {};
         
-       
-        const scripts = fs.readdirSync(dir)
-        
-        scripts.forEach(  script=>    {
-                commands[prefix+script.split(".")[0]] = require(commandsDir+script)
-            })
-       
-        
+        const scripts = fs.readdirSync(dir) 
+
+        scripts.forEach(  script=> commands[prefix+script.split(".")[0]] = require(commandsDir+script))  
         return commands;
     
 }

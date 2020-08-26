@@ -24,13 +24,13 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL(
-    isDev ? 'http://localhost:3000' : `file://${path.resolve(__dirname, '..', 'build', 'index.html')}`,
-  );
+  
+    isDev ? (mainWindow.loadURL('http://localhost:3000'), mainWindow.webContents.openDevTools()) 
+    : mainWindow.loadURL(`file://${path.resolve(__dirname, '..', 'build', 'index.html')}`);
 
-  if (isDev) {
-    mainWindow.webContents.openDevTools();
-  }
+  //if (isDev) {
+   // mainWindow.webContents.openDevTools();
+  //}
 
   mainWindow.on('closed', () => {
     mainWindow = null;
