@@ -14,16 +14,12 @@ ipcMain.on('@comunication/REQUEST', async (event, message) => {
   }
 })
 
-ipcMain.on('@token/REQUEST', (event, message) => {
+ipcMain.handle('@token/REQUEST', async (event, message) => {
   try{
     
     const { title, body } = message
     
-    Comunication[title](body).then((result) => {
-      event.returnValue = { onBot: true }
-    }).catch((err) => {
-      event.returnValue = { onBot: false }
-    });
+    return await Comunication[title](body)
 
     
   } catch (err){

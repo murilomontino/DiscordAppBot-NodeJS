@@ -13,19 +13,19 @@ const Right_container = () => {
   const [isWrongToken, setIsWrongToken] = useState(false);
   
   const inputToken = useRef(null);
-
-  ipcRenderer.invoke('@tokenCheck/REQUEST', {title: 'checkToken'} ).then(response => response)
+  
+  // ipcRenderer.invoke('@tokenCheck/REQUEST', {title: 'checkToken'} ).then(response => response)
 
   async function Logar(token) {
     setLoading(true);
 
-    const { onBot } = await ipcRenderer.sendSync("@token/REQUEST", {
+    const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "logar",
       body: token ? token : 0,
     });
 
     setTimeout(() => {
-      if (onBot) {
+      if (response) {
         setRedirect(true);
       } else {
         setLoading(false);
@@ -71,7 +71,7 @@ const Right_container = () => {
                             type="text"
                             name="token"
                             placeholder={ isWrongToken?"Ops, token incorreto! :(": ''}
-                            onFocus={RemoveBorderRed}
+                            onFocus={isWrongToken? RemoveBorderRed: ()=>{}}
                             ref={inputToken}
                             className={isWrongToken ? "wrong-token" : undefined}
                           />
