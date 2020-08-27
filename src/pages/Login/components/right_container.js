@@ -41,8 +41,8 @@ const Right_container = () => {
     
   
   const HandleSubmit = (event) => {
-    Logar(inputToken)
     event.preventDefault()
+    Logar(inputToken)
   }
 
  const HandleTokenChange = (event) => setInputToken(event.target.value)
