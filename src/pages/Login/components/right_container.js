@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Redirect } from "react-router";
 
 import './loading.css'
@@ -11,11 +11,12 @@ const Right_container = () => {
   const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isWrongToken, setIsWrongToken] = useState(false);
-  
-  const inputToken = useRef(null);
-  
-  // ipcRenderer.invoke('@tokenCheck/REQUEST', {title: 'checkToken'} ).then(response => response)
-
+  const [inputToken, setInputToken] = useState( async () => {
+    const initialState = await ipcRenderer.invoke('@tokenCheck/REQUEST', {title: 'checkToken'} ).then(response => setInputToken(response))
+    return initialState
+  })
+  // const [checkBox, setCheckBox] = useState(false)
+ 
   async function Logar(token) {
     setLoading(true);
 
@@ -23,6 +24,8 @@ const Right_container = () => {
       title: "logar",
       body: token ? token : 0,
     });
+
+    setInputToken('')
 
     setTimeout(() => {
       if (response) {
@@ -34,17 +37,16 @@ const Right_container = () => {
     }, 1000);
   }
 
-  const RemoveBorderRed = () => {
-    if (isWrongToken) {
-      setIsWrongToken(false);
-    }
-  }
+  const RemoveBorderRed = () => isWrongToken?  setIsWrongToken(false) : ()=>{}
+    
+  
   const HandleSubmit = (event) => {
-    Logar(inputToken.current.value);
-    event.preventDefault();
+    Logar(inputToken)
+    event.preventDefault()
   }
 
- 
+ const HandleTokenChange = (event) => setInputToken(event.target.value)
+
 
  
   return (
@@ -72,7 +74,8 @@ const Right_container = () => {
                             name="token"
                             placeholder={ isWrongToken?"Ops, token incorreto! :(": ''}
                             onFocus={isWrongToken? RemoveBorderRed: ()=>{}}
-                            ref={inputToken}
+                            value={inputToken}
+                            onChange={HandleTokenChange}
                             className={isWrongToken ? "wrong-token" : undefined}
                           />
                           <button type="submit">Entrar</button>
