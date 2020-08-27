@@ -14,10 +14,12 @@ const Right_container = () => {
   
   const inputToken = useRef(null);
 
+  ipcRenderer.invoke('@tokenCheck/REQUEST', {title: 'checkToken'} ).then(response => response)
+
   async function Logar(token) {
     setLoading(true);
 
-    const { onBot } = ipcRenderer.sendSync("@token/REQUEST", {
+    const { onBot } = await ipcRenderer.sendSync("@token/REQUEST", {
       title: "logar",
       body: token ? token : 0,
     });
@@ -44,38 +46,38 @@ const Right_container = () => {
 
  
 
-  if (redirect) {
-    return <Redirect to="/Main" />;
-  } else
-    return (
+ 
+  return (
       <section className="right-container">
+        
+        { redirect && <Redirect to="/Main" /> }
         {
           loading && ( // Loading animation
-            <div className="lds-ellipsis">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+                      <div className="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
           )
           // Loading animation end
         }
 
         {!loading && (
-          <div className="input-container">
-            <p>Entre com seu Token:</p>
-            <form onSubmit={HandleSubmit}>
-              <input
-                type="text"
-                name="token"
-                placeholder={ isWrongToken?"Ops, token incorreto! :(": ''}
-                onFocus={RemoveBorderRed}
-                ref={inputToken}
-                className={isWrongToken ? "wrong-token" : undefined}
-              />
-              <button type="submit">Entrar</button>
-            </form>
-          </div>
+                      <div className="input-container">
+                        <p>Entre com seu Token:</p>
+                        <form onSubmit={HandleSubmit}>
+                          <input
+                            type="text"
+                            name="token"
+                            placeholder={ isWrongToken?"Ops, token incorreto! :(": ''}
+                            onFocus={RemoveBorderRed}
+                            ref={inputToken}
+                            className={isWrongToken ? "wrong-token" : undefined}
+                          />
+                          <button type="submit">Entrar</button>
+                        </form>
+                      </div>
         )}
       </section>
     );

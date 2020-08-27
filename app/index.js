@@ -7,7 +7,7 @@ ipcMain.on('@comunication/REQUEST', async (event, message) => {
   try {
     
     const { title, body } = message
-    
+    await Comunication[title]({event, body})
  
   } catch (err) {
     
@@ -33,3 +33,11 @@ ipcMain.on('@token/REQUEST', (event, message) => {
 
 })
 
+ipcMain.handle('@tokenCheck/REQUEST', async (event, message) => {
+  
+  const { title } = message   
+  const value = await Comunication[title]()
+  
+  return value
+
+})
