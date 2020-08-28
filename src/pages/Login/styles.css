@@ -68,8 +68,10 @@
   position: -ms-page;
   font-size: 2rem;
 }
-
-.right-container input {
+#p-before-input{
+  margin-left: 0.3rem;
+}
+.right-container input[type=text] {
   height: 60px;
   width: 100%;
   background-color: var(--color-input);
@@ -77,9 +79,28 @@
   outline: none;
   border: 0;
   padding-left: 1rem;
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.right-container form{
+  height: 100%;
+}
+
+
+.check-box-container p{
+
+  font-size: 1.5rem;
+
+  margin-left: 1rem;
+}
+
+.check-box-container{
+  display: flex;
+  flex-direction: row;
+  height: 37%;
+  align-items: center;
+  padding-left: 0.3rem;
 }
 
 .wrong-token{
@@ -88,6 +109,8 @@
 .wrong-token::placeholder{
   color:  var(--color-red-warning);
 }
+
+
 .right-container button {
   width: 35%;
   height: 60px;
@@ -99,7 +122,7 @@
   font-family: Archivo-Bold;
   position: absolute;
   right: 0;
-  bottom: 0;
+
   font-size: 1.7rem;
   transition: background-color 0.2s;
 }

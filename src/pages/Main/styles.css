@@ -1,5 +1,5 @@
 .background{
-    background: var(--color-primary);
+    background: var(--color-background-dark);
     height: 100%;
     width: 100%;
     display: flex;
