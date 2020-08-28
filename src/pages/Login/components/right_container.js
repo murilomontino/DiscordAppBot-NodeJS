@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -9,20 +9,35 @@ import "./checkbox.css";
 const { ipcRenderer } = window.require("electron");
 
 const Right_container = () => {
-  const [redirect, setRedirect] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [isWrongToken, setIsWrongToken] = useState(false);
-  const [inputToken, setInputToken] = useState(async () => {
-    const initialState = await ipcRenderer
-      .invoke("@tokenCheck/REQUEST", { title: "checkToken" })
-      .then((response) => setInputToken(response));
-    return initialState;
-  });
-  // const [checkBox, setCheckBox] = useState(false)
+
+  const [redirect, setRedirect] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [isWrongToken, setIsWrongToken] = useState(false)
+  const [inputToken, setInputToken] = useState('')
+  
+  const [checkBox, setCheckBox] = useState(false)
+
+  const [loadingToken, setLoadingToken] = useState(false)
+
+  useEffect(()=>{
+   const fetchToken = (async () => {
+      const check = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkBox' })
+      setCheckBox(check)
+      if(check){
+        const token = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkToken' }).then(response => 
+        response )
+        setInputToken(token)
+      }
+    })()
+    setLoadingToken(false) 
+  } , [])
+
+  
 
   const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [
     redirect,
-  ]);
+  ])
+
   const memoizodLoading = useMemo(() => {
     return (
       loading && ( // Loading animation
@@ -35,8 +50,32 @@ const Right_container = () => {
         // Loading animation end
       )
     );
-  }, [loading]);
+  }, [loading])
 
+
+  const memoizodCheck = useMemo(()=>{
+    const boxChecked = () => checkBox? setCheckBox(false): setCheckBox(true) 
+
+    return ( <div className="check-box-container">
+    <input type="checkbox"  id="cbx" style={{ display: "none" }} checked={checkBox} onChange={boxChecked} />
+    <label htmlFor="cbx" className="check">
+      <svg width="18px" height="18px" viewBox="0 0 18 18">
+        <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5
+         C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+        <polyline points="1 9 7 14 15 4"></polyline>
+      </svg>
+    </label>
+
+    <p>Lembrar token</p>
+    <button type="submit">Entrar</button>
+  </div>)
+
+  }, [checkBox])
+
+  if(loadingToken){
+    return (memoizodLoading)
+  }
+  
   async function Logar(token) {
     setLoading(true);
 
@@ -52,13 +91,13 @@ const Right_container = () => {
         setRedirect(true);
       } else {
         setLoading(false);
+        setCheckBox(false)
         setIsWrongToken(true);
       }
     }, 1000);
   }
 
-  const RemoveBorderRed = () =>
-    isWrongToken ? setIsWrongToken(false) : () => {};
+  const RemoveBorderRed = () => isWrongToken ? setIsWrongToken(false) : () => {}
 
   const HandleSubmit = (event) => {
     event.preventDefault();
@@ -85,20 +124,7 @@ const Right_container = () => {
               onChange={HandleTokenChange}
               className={isWrongToken ? "wrong-token" : undefined}
             />
-            
-            <div className="check-box-container">
-              <input type="checkbox" id="cbx" style={{ display: "none" }} />
-              <label htmlFor="cbx" className="check">
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5
-                   C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
-              </label>
-
-              <p>Lembrar token</p>
-              <button type="submit">Entrar</button>
-            </div>
+           {memoizodCheck}
           </form>
         </div>
       )}

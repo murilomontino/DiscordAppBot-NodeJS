@@ -1,6 +1,6 @@
 const Comunication = require('./comunication')
 
-const { ipcMain } = require('electron');
+const { ipcMain } = require('electron')
 
 ipcMain.on('@comunication/REQUEST', async (event, message) => {
   
@@ -18,8 +18,9 @@ ipcMain.handle('@token/REQUEST', async (event, message) => {
   try{
     
     const { title, body } = message
+    const value = await Comunication[title](body)
     
-    return await Comunication[title](body)
+    return value
 
     
   } catch (err){

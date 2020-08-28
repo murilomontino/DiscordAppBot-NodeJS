@@ -2,5 +2,8 @@
     "prefix": "!",
     "debug": true,
     "token": "NzE1NjgyMDcxOTQyNTI5MTM0.XuW_-w.UGFoK5PZ38PADlRy3qyrNGJk_1Q",
-    "checkBox": true
+    "checkBox": true,
+    "nameBot": "Cthulhu BOT",
+    "img-face": "./cthulhu-face.jpg"
+
 }
