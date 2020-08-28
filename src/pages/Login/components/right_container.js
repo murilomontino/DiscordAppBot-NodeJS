@@ -8,14 +8,20 @@ const { ipcRenderer } = window.require("electron");
 
 const Right_container = () => {
 
-  const [redirect, setRedirect] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [isWrongToken, setIsWrongToken] = useState(false);
+  const [redirect, setRedirect] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [isWrongToken, setIsWrongToken] = useState(false)
+  
+  
+  const [checkBox, setCheckBox] = useState(async () => {
+      const initalState = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkBox' }).then(response => setInputToken(response))
+      return initalState
+  })
+
   const [inputToken, setInputToken] = useState(async () => {
     const initialState = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkToken' }).then(response => setInputToken(response))
-    return initialState
+    return checkBox? initialState : false
   })
-  // const [checkBox, setCheckBox] = useState(false)
 
   const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [redirect])
   const memoizodLoading = useMemo(() => {
@@ -53,15 +59,22 @@ const Right_container = () => {
 
   const RemoveBorderRed = () => isWrongToken ? setIsWrongToken(false) : () => { }
 
-
   const HandleSubmit = (event) => {
-    event.preventDefault()
     Logar(inputToken)
+    event.preventDefault()
+
   }
 
-  const HandleTokenChange = (event) => setInputToken(event.target.value)
+  const HandleTokenChange = (event) => {
+    setInputToken(event.target.value)
+    event.preventDefault()
 
+  }
 
+const HandleCheckChange = (event) => {
+  setCheckBox( checkBox? true : false )
+  
+}
 
   return (
     <section className="right-container">
@@ -83,6 +96,7 @@ const Right_container = () => {
               className={isWrongToken ? "wrong-token" : undefined}
             />
             <button type="submit">Entrar</button>
+            <input type='checkbox' onChange={HandleCheckChange}></input>
           </form>
         </div>
       )}

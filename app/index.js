@@ -1,6 +1,6 @@
 const Comunication = require('./comunication')
 
-const { ipcMain } = require('electron');
+const { ipcMain } = require('electron')
 
 ipcMain.on('@comunication/REQUEST', async (event, message) => {
   
