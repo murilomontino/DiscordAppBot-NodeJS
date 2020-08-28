@@ -77,7 +77,7 @@
   background-color: var(--color-input);
   border-radius: 1rem;
   outline: none;
-  border: 0;
+  border: 2px solid var(--color-input-border);
   padding-left: 1rem;
   font-size: 2rem;
   margin-top: 1rem;
