@@ -57,7 +57,7 @@
 }
 
 .information-container {
-  width: 30%;
+  width: 25%;
   padding: 1.5rem;
   
 }
@@ -90,6 +90,7 @@
 #bot-name {
   font-family: Poppins-Bold;
   font-size: 2.5rem;
+  word-wrap: break-word;
 }
 
 #bot-creator {
@@ -120,7 +121,7 @@
   }
 }
 
-@media (max-height: 400px) {
+@media (max-height: 600px) {
   #bot-name {
     font-size: 1.8rem;
   }
