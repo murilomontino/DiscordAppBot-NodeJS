@@ -17,9 +17,10 @@ const Right_container = () => {
   
   const [checkBox, setCheckBox] = useState(false)
 
-  const [loadingToken, setLoadingToken] = useState(false)
+  const [processToken, setProcessToken] = useState(true)
 
   useEffect(()=>{
+   // eslint-disable-next-line no-unused-vars
    const fetchToken = (async () => {
       const check = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkBox' })
       setCheckBox(check)
@@ -29,7 +30,8 @@ const Right_container = () => {
         setInputToken(token)
       }
     })()
-    setLoadingToken(false) 
+    
+    setProcessToken(false)
   } , [])
 
   
@@ -72,7 +74,8 @@ const Right_container = () => {
 
   }, [checkBox])
 
-  if(loadingToken){
+
+  if(processToken){
     return (memoizodLoading)
   }
   

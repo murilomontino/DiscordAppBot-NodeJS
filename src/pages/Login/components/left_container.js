@@ -3,6 +3,7 @@ import { ReactComponent as ArrowIcon} from '../../../assets/Icons/arrowIcon.svg'
 
 const Left_container = () => {
     return (
+        
         <section className="left-container">
             <div className="title-container">
                 <h1>  <strong>Cthulhu</strong> bot</h1>
