@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -17,7 +17,7 @@ const Right_container = () => {
   
   const [checkBox, setCheckBox] = useState(false)
 
-  const [processToken, setProcessToken] = useState(true)
+  const [processToken, setProcessToken ] = useState(true)
 
   useEffect(()=>{
    // eslint-disable-next-line no-unused-vars
@@ -34,7 +34,29 @@ const Right_container = () => {
     setProcessToken(false)
   } , [])
 
-  
+  const callBackLogar = useCallback(
+    async (token) => {
+      setLoading(true);
+
+
+    const response = await ipcRenderer.invoke("@token/REQUEST", {
+      title: "logar",
+      body: token ? token : 0,
+    });
+
+    setInputToken("");
+
+    setTimeout(() => {
+      if (response) {
+        setRedirect(true);
+      } else {
+        setLoading(false);
+        setCheckBox(false)
+        setIsWrongToken(true);
+      }
+    }, 1000);
+    }, []
+  )
 
   const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [
     redirect,
@@ -79,32 +101,13 @@ const Right_container = () => {
     return (memoizodLoading)
   }
   
-  async function Logar(token) {
-    setLoading(true);
 
-    const response = await ipcRenderer.invoke("@token/REQUEST", {
-      title: "logar",
-      body: token ? token : 0,
-    });
-
-    setInputToken("");
-
-    setTimeout(() => {
-      if (response) {
-        setRedirect(true);
-      } else {
-        setLoading(false);
-        setCheckBox(false)
-        setIsWrongToken(true);
-      }
-    }, 1000);
-  }
 
   const RemoveBorderRed = () => isWrongToken ? setIsWrongToken(false) : () => {}
 
   const HandleSubmit = (event) => {
     event.preventDefault();
-    Logar(inputToken);
+    callBackLogar(inputToken);
   };
 
   const HandleTokenChange = (event) => setInputToken(event.target.value);
