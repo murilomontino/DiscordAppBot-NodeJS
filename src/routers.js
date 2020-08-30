@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Main from "./pages/Main";
-// import Profile from "./pages/Profile"
 
 export default () => {
     return (

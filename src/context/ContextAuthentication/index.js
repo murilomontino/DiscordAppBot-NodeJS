@@ -31,7 +31,7 @@ const ContextAuthProvider = ( { children }) => {
   async function Login(token) {
     
     const response = await ipcRenderer.invoke("@token/REQUEST", {
-      title: "logar",
+      title: "loginWithToken",
       body: token ? token : '',
     })
 
