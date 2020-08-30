@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 // import Profile from "./pages/Profile"
 
-const Routers = () => {
+export default () => {
     return (
         <BrowserRouter>
             <Switch>
@@ -16,4 +16,4 @@ const Routers = () => {
     )
 }
 
-export default Routers
+ 

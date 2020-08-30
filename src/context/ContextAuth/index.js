@@ -1,11 +1,12 @@
 import React, { useState, useContext, createContext, useEffect} from 'react'
+import { Redirect } from "react-router"
 
-
+const { ipcRenderer } = window.require('electron')
 const ContextAuth = createContext()
 
 const ContextAuthProvider = ( { children }) => {
-    const { ipcRenderer } = window.require('electron')
-
+    
+    const [redirect, setRedirect] = useState(false)
     const [inputToken, setInputToken] = useState('')
     const [checkBox, setCheckBox] = useState(false)
     const [loading, setLoading] = useState(true)
@@ -22,35 +23,54 @@ const ContextAuthProvider = ( { children }) => {
       setLoading(false)
     })()
     
-  } , [ipcRenderer])
+  } , [])
 
  
+ 
+  async function Login(token) {
+      
+    const response = await ipcRenderer.invoke("@token/REQUEST", {
+      title: "logar",
+      body: token ? token : 0,
+    })
+    
+      if (response) 
+        setRedirect(true)
+       
+    }
 
   if(loading)
     return <div/>
 
+
+
   return (
+    <>
+        {redirect && <Redirect to="/Main" />}
         <ContextAuth.Provider value={{
           inputToken, 
           checkBox, 
           setInputToken, 
           setCheckBox,
+          Login
           
           }} >
              { children }
         </ContextAuth.Provider>
+    </>
     )
 }
 
 
 export const useAuth = () => {
-    const { inputToken, checkBox, setInputToken, setCheckBox } = useContext(ContextAuth)
+    const { inputToken, checkBox, setInputToken, setCheckBox, Login } = useContext(ContextAuth)
     
     return ({
         inputToken,
         setInputToken,
         checkBox,
         setCheckBox,
+        Login
         
     })
 }

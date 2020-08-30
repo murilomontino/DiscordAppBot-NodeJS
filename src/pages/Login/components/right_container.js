@@ -1,44 +1,18 @@
-import React, { useState, useMemo, useCallback } from "react"
-
-import { Redirect } from "react-router"
+import React, { useState, useMemo } from "react"
 
 import "./loading.css"
 
 import "./checkbox.css"
 
-import { useAuth } from '../../../context/ContextAuth/'
-const { ipcRenderer } = window.require("electron")
+import { useAuth } from '../../../context/ContextAuth'
 
 
-const Right_container = () => {
+export default () => {
 
-  const [redirect, setRedirect] = useState(false)
   const [loading, setLoading] = useState(false)
   const [isWrongToken, setIsWrongToken] = useState(false)
   
-  const { inputToken, checkBox, setInputToken, setCheckBox } = useAuth()
-
-
-  const callBackLogar = useCallback(
-    async (token) => {
-      setLoading(true)
-
-    const response = await ipcRenderer.invoke("@token/REQUEST", {
-      title: "logar",
-      body: token ? token : 0,
-    })
-    setInputToken("")
-
-    setTimeout(() => {
-      if (response) {
-        setRedirect(true)
-      } else {
-        setLoading(false)
-        setIsWrongToken(true)
-      }
-    }, 1000)
-    }, [setInputToken]
-  )
+  const { inputToken, checkBox, setInputToken, setCheckBox, Login } = useAuth()
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -79,7 +53,19 @@ const Right_container = () => {
 
   const HandleSubmit = (event) => {
     event.preventDefault();
-    callBackLogar(inputToken);
+    (async () => {
+      setLoading(true)
+      
+      setTimeout(()=>{
+        Login(inputToken)
+        // setInputToken("")
+        setLoading(false)
+        setIsWrongToken(true)
+      }, 1000)
+      
+    })()
+   
+   
   }
 
   const HandleTokenChange = (event) => setInputToken(event.target.value);
@@ -87,7 +73,6 @@ const Right_container = () => {
 
   return (
     <section className="right-container">
-      {redirect && <Redirect to="/Main" />}
       
       {memoizodLoading}
 
@@ -100,7 +85,7 @@ const Right_container = () => {
               name="token"
               placeholder={isWrongToken ? "Ops, token incorreto! :(" : ""}
               onFocus={isWrongToken ? RemoveBorderRed : () => {}}
-              value={inputToken}
+              value={ isWrongToken ? '': inputToken}
               onChange={HandleTokenChange}
               className={isWrongToken ? "wrong-token" : undefined}
             />
@@ -112,4 +97,4 @@ const Right_container = () => {
   )
 }
 
-export default Right_container
+

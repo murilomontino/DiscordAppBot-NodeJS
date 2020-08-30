@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent as ArrowIcon} from '../../../assets/Icons/arrowIcon.svg';
 
-const Left_container = () => {
+export default () => {
     return (
         
         <section className="left-container">
@@ -18,4 +18,3 @@ const Left_container = () => {
     )
 }
 
-export default Left_container

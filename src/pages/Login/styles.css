@@ -106,6 +106,7 @@
 .wrong-token{
   border: 2px solid var(--color-red-warning) !important;
 }
+
 .wrong-token::placeholder{
   color:  var(--color-red-warning);
 }
