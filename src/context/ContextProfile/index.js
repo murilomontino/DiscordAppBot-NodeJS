@@ -1,11 +1,10 @@
 import React, { useState, useContext, createContext, useEffect } from 'react'
 
-
+const { ipcRenderer } = window.require('electron')
 const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
 
-    const { ipcRenderer } = window.require('electron')
 
 
     return (

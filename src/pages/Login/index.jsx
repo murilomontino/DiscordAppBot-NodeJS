@@ -6,7 +6,7 @@ import "./styles.css"
 import LeftContainer from './components/left_container'
 import RightContainer from './components/right_container'
 
-import ContextAuthProvider from '../../context/ContextAuth'
+import ContextAuthProvider from '../../context/ContextAuthentication'
 
 export default () => {
   return (

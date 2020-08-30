@@ -10,7 +10,8 @@ const ContextAuthProvider = ( { children }) => {
     const [inputToken, setInputToken] = useState('')
     const [checkBox, setCheckBox] = useState(false)
     const [loading, setLoading] = useState(true)
-    
+    const [logout, setLogout] = useState(false)
+
     useEffect(()=>{
    // eslint-disable-next-line no-unused-vars
         const fetchToken = (async () => {
@@ -29,20 +30,30 @@ const ContextAuthProvider = ( { children }) => {
  
   async function Login(token) {
       
-    const response = await ipcRenderer.invoke("@token/REQUEST", {
+    return ipcRenderer.invoke("@token/REQUEST", {
       title: "logar",
-      body: token ? token : 0,
-    })
-    
-      if (response) 
-        setRedirect(true)
-       
-    }
+      body: token ? token : '',
+    }).then(
+      response => {
+        if (response !== 'Token Inválido') {
+          setRedirect(true)
+          return true
+        }
+        return false
+      }
+    )}
 
+  async function Logout(){
+    
+  }
+  
   if(loading)
     return <div/>
 
-
+  if(logout){
+    setLogout(false)
+    return <Redirect to="/Login"/>
+  }
 
   return (
     <>
@@ -52,7 +63,8 @@ const ContextAuthProvider = ( { children }) => {
           checkBox, 
           setInputToken, 
           setCheckBox,
-          Login
+          Login,
+          Logout
           
           }} >
              { children }
@@ -63,14 +75,15 @@ const ContextAuthProvider = ( { children }) => {
 
 
 export const useAuth = () => {
-    const { inputToken, checkBox, setInputToken, setCheckBox, Login } = useContext(ContextAuth)
+    const { inputToken, checkBox, setInputToken, setCheckBox, Login, Logout } = useContext(ContextAuth)
     
     return ({
         inputToken,
         setInputToken,
         checkBox,
         setCheckBox,
-        Login
+        Login,
+        Logout
         
     })
 }

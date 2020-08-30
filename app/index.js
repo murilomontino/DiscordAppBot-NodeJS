@@ -18,13 +18,16 @@ ipcMain.handle('@token/REQUEST', async (event, message) => {
   try{
     
     const { title, body } = message
-    const value = await Comunication[title](body)
+    try {
+      const value = await Comunication[title](body)
+      return value
+    } catch (error) {
+        return 'Token Inválido'
+    }
     
-    return value
 
     
   } catch (err){
-
   }
  
 

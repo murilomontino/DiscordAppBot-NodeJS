@@ -4,7 +4,7 @@ import "./loading.css"
 
 import "./checkbox.css"
 
-import { useAuth } from '../../../context/ContextAuth'
+import { useAuth } from '../../../context/ContextAuthentication'
 
 
 export default () => {
@@ -56,11 +56,13 @@ export default () => {
     (async () => {
       setLoading(true)
       
-      setTimeout(()=>{
-        Login(inputToken)
-        // setInputToken("")
+      setTimeout( async () =>{
+        const response = await Login(inputToken)
+        if(response)
+          return () => {}
         setLoading(false)
-        setIsWrongToken(true)
+        setIsWrongToken(true) 
+      
       }, 1000)
       
     })()
