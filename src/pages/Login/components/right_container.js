@@ -1,13 +1,13 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react"
 
-import { Redirect } from "react-router";
+import { Redirect } from "react-router"
 
-import "./loading.css";
+import "./loading.css"
 
-import "./checkbox.css";
+import "./checkbox.css"
 
 import { useAuth } from '../../../context/ContextAuth/'
-const { ipcRenderer } = window.require("electron");
+const { ipcRenderer } = window.require("electron")
 
 
 const Right_container = () => {
@@ -21,7 +21,7 @@ const Right_container = () => {
 
   const callBackLogar = useCallback(
     async (token) => {
-      setLoading(true);
+      setLoading(true)
 
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "logar",
@@ -54,9 +54,6 @@ const Right_container = () => {
     )
   }, [loading])
   
-  const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [
-    redirect,
-  ])
 
   const memoizodCheck = useMemo(()=>{
     const boxChecked = () => checkBox? setCheckBox(false): setCheckBox(true) 
@@ -90,7 +87,8 @@ const Right_container = () => {
 
   return (
     <section className="right-container">
-      {memoizodRedirect}
+      {redirect && <Redirect to="/Main" />}
+      
       {memoizodLoading}
 
       {!loading && (
