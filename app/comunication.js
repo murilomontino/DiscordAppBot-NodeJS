@@ -11,7 +11,7 @@ const checkBox = async () => config.checkBox
        
      
 const Comunication = {
-    logar,
+    loginWithToken,
     checkToken,
     checkBox
 }
