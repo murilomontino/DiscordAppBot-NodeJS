@@ -35,7 +35,7 @@ const ContextAuthProvider = ( { children }) => {
       body: token ? token : '',
     })
 
-    if (response !== 'Token Inválido') {
+    if (response !== 'Error') {
           setRedirect(true)
           return true
         }

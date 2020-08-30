@@ -22,7 +22,7 @@ ipcMain.handle('@token/REQUEST', async (event, message) => {
       const value = await Comunication[title](body)
       return value
     } catch (error) {
-        return 'Token Inválido'
+        return 'Error'
     }
     
 
