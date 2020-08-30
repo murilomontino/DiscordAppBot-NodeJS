@@ -1,5 +1,5 @@
-import React from "react";
-import { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
+
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -18,28 +18,26 @@ const Right_container = () => {
   
   const { inputToken, checkBox, setInputToken, setCheckBox } = useAuth()
 
+
   const callBackLogar = useCallback(
     async (token) => {
       setLoading(true);
 
-
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "logar",
       body: token ? token : 0,
-    });
-
-    setInputToken("");
+    })
+    setInputToken("")
 
     setTimeout(() => {
       if (response) {
-        setRedirect(true);
+        setRedirect(true)
       } else {
-        setLoading(false);
-        setCheckBox(false)
-        setIsWrongToken(true);
+        setLoading(false)
+        setIsWrongToken(true)
       }
-    }, 1000);
-    }, [setCheckBox, setInputToken]
+    }, 1000)
+    }, [setInputToken]
   )
 
   const memoizodLoading = useMemo(() => {
@@ -53,7 +51,7 @@ const Right_container = () => {
         </div>
         // Loading animation end
       )
-    );
+    )
   }, [loading])
   
   const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [

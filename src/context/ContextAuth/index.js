@@ -16,8 +16,7 @@ const ContextAuthProvider = ( { children }) => {
         const check = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkBox' })
         setCheckBox(check)
         if(check){
-            const token = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkToken' }).then(response => 
-            response )
+            const token = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkToken'}) 
             setInputToken(token)
       }
       setLoading(false)
