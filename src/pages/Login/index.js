@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
-import React, {useMemo} from "react";
+import React,  {useState} from "react";
+
 import "./styles.css";
 
 import Left_container from './components/left_container'
@@ -8,16 +9,13 @@ import Right_container from './components/right_container'
 import ContextAuthProvider from '../../context/ContextAuth/'
 
 function Login() {
-  
-  const memoizodLeft = useMemo(()=><Left_container/>, [])
-
-
+     
   return (
     <div className="main-container">
       
-      {memoizodLeft}
+      <Left_container/>
       <ContextAuthProvider>
-        <Right_container/>
+        <Right_container />
       </ContextAuthProvider>
       
       
