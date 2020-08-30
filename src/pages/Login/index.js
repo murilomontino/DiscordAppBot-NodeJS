@@ -5,7 +5,7 @@ import "./styles.css";
 import Left_container from './components/left_container'
 import Right_container from './components/right_container'
 
- 
+import ContextAuthProvider from '../../context/ContextAuth/'
 
 function Login() {
   
@@ -16,7 +16,10 @@ function Login() {
     <div className="main-container">
       
       {memoizodLeft}
-      <Right_container/>
+      <ContextAuthProvider>
+        <Right_container/>
+      </ContextAuthProvider>
+      
       
     </div>
   );

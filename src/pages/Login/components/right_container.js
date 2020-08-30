@@ -1,38 +1,22 @@
 import React from "react";
-import { useState, useMemo, useEffect, useCallback } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
 
 import "./checkbox.css";
 
+import { useAuth } from '../../../context/ContextAuth/'
 const { ipcRenderer } = window.require("electron");
+
 
 const Right_container = () => {
 
   const [redirect, setRedirect] = useState(false)
   const [loading, setLoading] = useState(false)
   const [isWrongToken, setIsWrongToken] = useState(false)
-  const [inputToken, setInputToken] = useState('')
   
-  const [checkBox, setCheckBox] = useState(false)
-
-  const [processToken, setProcessToken ] = useState(true)
-
-  useEffect(()=>{
-   // eslint-disable-next-line no-unused-vars
-   const fetchToken = (async () => {
-      const check = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkBox' })
-      setCheckBox(check)
-      if(check){
-        const token = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkToken' }).then(response => 
-        response )
-        setInputToken(token)
-      }
-    })()
-    
-    setProcessToken(false)
-  } , [])
+  const { inputToken, checkBox, setInputToken, setCheckBox } = useAuth()
 
   const callBackLogar = useCallback(
     async (token) => {
@@ -55,12 +39,8 @@ const Right_container = () => {
         setIsWrongToken(true);
       }
     }, 1000);
-    }, []
+    }, [setCheckBox, setInputToken]
   )
-
-  const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [
-    redirect,
-  ])
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -75,7 +55,10 @@ const Right_container = () => {
       )
     );
   }, [loading])
-
+  
+  const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [
+    redirect,
+  ])
 
   const memoizodCheck = useMemo(()=>{
     const boxChecked = () => checkBox? setCheckBox(false): setCheckBox(true) 
@@ -94,23 +77,18 @@ const Right_container = () => {
     <button type="submit">Entrar</button>
   </div>)
 
-  }, [checkBox])
-
-
-  if(processToken){
-    return (memoizodLoading)
-  }
-  
-
+  }, [setCheckBox, checkBox])
 
   const RemoveBorderRed = () => isWrongToken ? setIsWrongToken(false) : () => {}
+  
 
   const HandleSubmit = (event) => {
     event.preventDefault();
     callBackLogar(inputToken);
-  };
+  }
 
   const HandleTokenChange = (event) => setInputToken(event.target.value);
+
 
   return (
     <section className="right-container">
@@ -135,7 +113,7 @@ const Right_container = () => {
         </div>
       )}
     </section>
-  );
-};
+  )
+}
 
-export default Right_container;
+export default Right_container
