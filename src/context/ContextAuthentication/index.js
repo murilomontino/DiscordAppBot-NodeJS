@@ -29,19 +29,18 @@ const ContextAuthProvider = ( { children }) => {
  
  
   async function Login(token) {
-      
-    return ipcRenderer.invoke("@token/REQUEST", {
+    
+    const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "logar",
       body: token ? token : '',
-    }).then(
-      response => {
-        if (response !== 'Token Inválido') {
+    })
+
+    if (response !== 'Token Inválido') {
           setRedirect(true)
           return true
         }
-        return false
-      }
-    )}
+    return false
+    }
 
   async function Logout(){
     
