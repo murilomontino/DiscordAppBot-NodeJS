@@ -78,7 +78,7 @@ export default () => {
 
   return (
     <section className="right-container">
-      {redirect && <Redirect to="/Main" />}
+      {redirect && <Redirect to="/" />}
       {memoizodLoading}
 
       {!loading && (

@@ -41,6 +41,10 @@ const ContextAuthProvider = ( { children }) => {
     }
 
   async function HandleLogout(){
+    await ipcRenderer.invoke("@token/REQUEST", {
+      title: "logoutBot",
+      body: '',
+    })
     setAuthentication(false)
   }
   
