@@ -8,7 +8,7 @@ export default () => {
   return (
     <div className='App'>
     <ContextAuthProvider>
-      <Routers history={history}/>
+      <Routers/>
     </ContextAuthProvider>
     </div>
   )

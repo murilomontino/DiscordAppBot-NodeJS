@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react"
+import { Redirect } from "react-router"
 
 import "./loading.css"
 
@@ -11,8 +12,8 @@ export default () => {
 
   const [loading, setLoading] = useState(false)
   const [isWrongToken, setIsWrongToken] = useState(false)
-  
-  const { inputToken, checkBox, setInputToken, setCheckBox, Login } = useAuth()
+  const [redirect, setRedirect ] = useState(false)
+  const { inputToken, checkBox, setInputToken, setCheckBox, HandleLogin } = useAuth()
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -57,9 +58,11 @@ export default () => {
       setLoading(true)
       
       setTimeout( async () =>{
-        const response = await Login(inputToken)
-        if(response)
+        const response = await HandleLogin(inputToken)
+        if(response){
+          setRedirect(true)
           return () => {}
+        }
         setLoading(false)
         setIsWrongToken(true) 
       
@@ -75,7 +78,7 @@ export default () => {
 
   return (
     <section className="right-container">
-      
+      {redirect && <Redirect to="/Main" />}
       {memoizodLoading}
 
       {!loading && (

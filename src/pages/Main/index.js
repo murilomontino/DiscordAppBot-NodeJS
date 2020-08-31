@@ -3,13 +3,13 @@ import "./styles.css";
 import Profile from "../Profile";
 import {useAuth} from '../../context/ContextAuthentication'
 function Main() {
-  const { Logout } = useAuth()
+  const { HandleLogout } = useAuth()
 
   return (
     <div className="background">
       <div className="menu-container">
         <div className="item-menu">
-          <button onClick={Logout}>Login</button>
+          <button onClick={HandleLogout}>Login</button>
         </div>
         <div className="item-menu"></div>
         <div className="item-menu"></div>

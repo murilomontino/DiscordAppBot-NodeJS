@@ -1,16 +1,14 @@
 import React, { useState, useContext, createContext, useEffect} from 'react'
-import { Redirect } from "react-router"
 
 const { ipcRenderer } = window.require('electron')
 const ContextAuth = createContext()
 
 const ContextAuthProvider = ( { children }) => {
     
-    const [redirect, setRedirect] = useState(false)
     const [inputToken, setInputToken] = useState('')
     const [checkBox, setCheckBox] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [logout, setLogout] = useState(false)
+    const [authentication, setAuthentication] = useState(false)
 
     useEffect(()=>{
    // eslint-disable-next-line no-unused-vars
@@ -28,7 +26,7 @@ const ContextAuthProvider = ( { children }) => {
 
  
  
-  async function Login(token) {
+  async function HandleLogin(token) {
     
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "loginWithToken",
@@ -36,53 +34,50 @@ const ContextAuthProvider = ( { children }) => {
     })
 
     if (response !== 'Error') {
-          setRedirect(true)
+        setAuthentication(true)
           return true
         }
     return false
     }
 
-  async function Logout(){
-    
+  async function HandleLogout(){
+    setAuthentication(false)
   }
   
   if(loading)
     return <div/>
 
-  if(logout){
-    setLogout(false)
-    return <Redirect to="/Login"/>
-  }
 
   return (
-    <>
-        {redirect && <Redirect to="/Main" />}
         <ContextAuth.Provider value={{
           inputToken, 
           checkBox, 
           setInputToken, 
           setCheckBox,
-          Login,
-          Logout
+          HandleLogin,
+          HandleLogout,
+          authentication, 
+          loading
           
           }} >
              { children }
         </ContextAuth.Provider>
-    </>
     )
 }
 
 
 export const useAuth = () => {
-    const { inputToken, checkBox, setInputToken, setCheckBox, Login, Logout } = useContext(ContextAuth)
+    const { inputToken, checkBox, setInputToken, setCheckBox, HandleLogin, HandleLogout, authentication, loading } = useContext(ContextAuth)
     
     return ({
         inputToken,
         setInputToken,
         checkBox,
         setCheckBox,
-        Login,
-        Logout
+        HandleLogin,
+        HandleLogout,
+        authentication, 
+        loading
         
     })
 }
