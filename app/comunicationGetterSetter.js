@@ -1,5 +1,3 @@
-
-
 const comunicationBot = (CLient) => {
 
     const DiscordAppBot = CLient
