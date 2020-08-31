@@ -22,7 +22,7 @@
 }
 
 .information-container {
-  width: 25%;
+  width: 35%;
   padding: 1.5rem;
 }
 .description-container {
@@ -32,8 +32,18 @@
   border-radius: 2rem;
   position: absolute;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.description-internal-container{
+  width: 80%;
+  max-height: 95%;
+  font-size: 1.4rem;
+  overflow: hidden;
+  
+}
 .down-container {
   height: 65%;
   width: 100%;

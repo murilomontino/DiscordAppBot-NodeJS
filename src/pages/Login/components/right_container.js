@@ -22,7 +22,7 @@ const Right_container = () => {
   const callBackLogar = useCallback(
     async (token) => {
       setLoading(true);
-
+     
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "logar",
       body: token ? token : 0,
@@ -37,7 +37,7 @@ const Right_container = () => {
         setIsWrongToken(true)
       }
     }, 1000)
-    }, [setInputToken]
+    }, []
   )
 
   const memoizodLoading = useMemo(() => {
@@ -85,14 +85,17 @@ const Right_container = () => {
     callBackLogar(inputToken);
   }
 
-  const HandleTokenChange = (event) => setInputToken(event.target.value);
+  //
+const HandleTokenChange = (event) => setInputToken(event.target.value);
 
+  
+  
 
   return (
     <section className="right-container">
       {memoizodRedirect}
       {memoizodLoading}
-
+      {console.log("dentro")}
       {!loading && (
         <div className="input-container">
           <p id="p-before-input">Entre com seu Token:</p>

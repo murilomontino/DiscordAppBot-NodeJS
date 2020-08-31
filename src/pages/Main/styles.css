@@ -4,11 +4,14 @@
   width: 100%;
   display: flex;
   align-items: center;
+  min-height: 600px;
+  max-height: 1080px;
+  position: relative;
 }
 
 .right-main-container {
-  height: 80vh;
-  width: 90%;
+  height: 90%;
+  width: 80%;
   background: var(--color-background);
   border-radius: 2rem;
   position: absolute;

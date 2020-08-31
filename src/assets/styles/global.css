@@ -65,19 +65,21 @@ textarea {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+
 }
+
+
 
 
 @media (max-width: 800px) {
   :root {
-    font-size: 50%;
+    font-size: 55%;
   }
 }
 
 @media (max-height: 500px) {
   :root {
-    font-size: 50%;
+    font-size: 54%;
   }
 
   html,
