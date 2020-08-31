@@ -1,8 +1,8 @@
-const Discord = require('discord.js')
+const { Client } = require('discord.js')
 
 const commandsReader = require('./scripts/commandsReader')
 
-class Bot extends Discord.Client{
+class Bot extends Client{
     constructor(...args){
         super(...args)
         

@@ -13,10 +13,10 @@ const ContextAuthProvider = ( { children }) => {
     useEffect(()=>{
    // eslint-disable-next-line no-unused-vars
         const fetchToken = (async () => {
-        const check = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkBox' })
+        const check = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkBox', body:'' })
         setCheckBox(check)
         if(check){
-            const token = await ipcRenderer.invoke('@tokenCheck/REQUEST', { title: 'checkToken'}) 
+            const token = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkToken', body:''}) 
             setInputToken(token)
       }
       setLoading(false)
@@ -24,7 +24,8 @@ const ContextAuthProvider = ( { children }) => {
     
   } , [])
 
- 
+  if(loading)
+    return <div/>
  
   async function HandleLogin(token) {
     
@@ -48,8 +49,7 @@ const ContextAuthProvider = ( { children }) => {
     setAuthentication(false)
   }
   
-  if(loading)
-    return <div/>
+
 
 
   return (

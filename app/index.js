@@ -19,7 +19,7 @@ ipcMain.handle('@token/REQUEST', async (event, message) => {
     
     const { title, body } = message
     try {
-      const value = await Comunication[title](body)
+      const value = await Comunication[title]({body, event})
       return value
     } catch (error) {
         return 'Error'
@@ -30,14 +30,5 @@ ipcMain.handle('@token/REQUEST', async (event, message) => {
   } catch (err){
   }
  
-
-})
-
-ipcMain.handle('@tokenCheck/REQUEST', async (event, message) => {
-  
-  const { title } = message   
-  const value = await Comunication[title]()
-  
-  return value
 
 })
