@@ -88,14 +88,14 @@
 }
 
 
-.check-box-container p{
+.after-input-container p{
 
   font-size: 1.5rem;
 
   margin-left: 1rem;
 }
 
-.check-box-container{
+.after-input-container{
   display: flex;
   flex-direction: row;
   height: 37%;

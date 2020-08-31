@@ -18,7 +18,7 @@ function Main() {
     <div className="background">
       <div className="menu-container">
         <div className="item-menu">
-          <button onClick={HandleTeste}>Login</button>
+          <a href="/">Login</a>
         </div>
         <div className="item-menu"></div>
         <div className="item-menu"></div>
