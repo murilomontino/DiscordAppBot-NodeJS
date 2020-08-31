@@ -5,7 +5,12 @@ const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
 
-
+    const HandleTeste = () =>{
+        ipcRenderer.invoke("@token/REQUEST", {
+          title: 'getBotUsername'
+        }).then(response => console.log(response))
+        
+      }
 
     return (
         <ContextProfile.Provider value={{

@@ -7,12 +7,7 @@ const {ipcRenderer}  = window.require('electron')
 function Main() {
 //  const { HandleLogout } = useAuth()
 
-  const HandleTeste = () =>{
-    ipcRenderer.invoke("@token/REQUEST", {
-      title: 'getBotUsername'
-    }).then(response => console.log(response))
-    
-  }
+
 
   return (
     <div className="background">

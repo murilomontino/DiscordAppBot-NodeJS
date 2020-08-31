@@ -67,7 +67,7 @@ export default () => {
   const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false);
 
   useEffect(() => {
-   
+
     if (isSubmited) {
       (async () => {
         setLoading(true);
@@ -82,6 +82,7 @@ export default () => {
           setIsWrongToken(true);
         }, 1000);
       })();
+      setIsSubmited(false);
     }
   }, [inputToken, isSubmited]);
 
