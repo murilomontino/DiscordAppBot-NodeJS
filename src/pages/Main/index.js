@@ -1,15 +1,24 @@
 import React from "react";
 import "./styles.css";
 import Profile from "../Profile";
-import {useAuth} from '../../context/ContextAuthentication'
+//import {useAuth} from '../../context/ContextAuthentication'
+
+const {ipcRenderer}  = window.require('electron')
 function Main() {
-  const { HandleLogout } = useAuth()
+//  const { HandleLogout } = useAuth()
+
+  const HandleTeste = () =>{
+    ipcRenderer.invoke("@token/REQUEST", {
+      title: 'getBotUsername'
+    }).then(response => console.log(response))
+    
+  }
 
   return (
     <div className="background">
       <div className="menu-container">
         <div className="item-menu">
-          <button onClick={HandleLogout}>Login</button>
+          <button onClick={HandleTeste}>Login</button>
         </div>
         <div className="item-menu"></div>
         <div className="item-menu"></div>

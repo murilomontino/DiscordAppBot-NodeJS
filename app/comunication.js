@@ -1,9 +1,9 @@
 const Bot = require('./botDiscord/bot')
-
 const DiscordAppBot = new Bot()
 const fs = require('fs')
 const config = require('./botDiscord/config/config.json')
- 
+const {...comunicationGetSet} = require('./comunicationGetterSetter')(DiscordAppBot)
+
 const loginWithToken = async ({token, ...body}) => { 
     const response = await DiscordAppBot.login(token)
     await DiscordAppBot.user.setStatus('online')
@@ -17,14 +17,12 @@ const checkBox = async () => config.checkBox
        
 const logoutBot = async () => {await DiscordAppBot.logout()}
 
-const botUsername = () => DiscordAppBot.user.username
-
 const saveTokenCheck = ({checkBox, token, ...body}) => {
     
     if(token === config.token && checkBox===true){
         return
     }
-
+    console.log('saveCheck')
     config.checkBox = checkBox
     config.token = checkBox? token: ''
 
@@ -32,14 +30,13 @@ const saveTokenCheck = ({checkBox, token, ...body}) => {
 
 }
 
-
 const Comunication = {
     loginWithToken,
     checkToken,
     checkBox,
     logoutBot,
-    botUsername,
-    saveTokenCheck
+    saveTokenCheck,
+    ...comunicationGetSet
 }
 
 
