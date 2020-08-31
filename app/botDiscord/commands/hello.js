@@ -1,3 +1,3 @@
 module.exports = (client, msg) =>{
-    msg.channel.send("Hello Vagabundo!")
+    msg.channel.send(client.user.avatarURL())
 }
