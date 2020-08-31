@@ -2,14 +2,15 @@ import React from 'react'
 
 import './assets/styles/global.css';
 import Routers from './routers'
+import ContextAuthProvider from './context/ContextAuthentication'
 
-function App() {
-  
+
+export default () => {
   return (
     <div className='App'>
-      <Routers/>
+      <ContextAuthProvider>
+        <Routers/>
+      </ContextAuthProvider>
     </div>
   )
 }
-
-export default App

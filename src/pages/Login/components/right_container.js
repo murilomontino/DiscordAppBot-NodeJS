@@ -1,44 +1,19 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo } from "react"
+import { Redirect } from "react-router"
 
-import { Redirect } from "react-router";
+import "./loading.css"
 
-import "./loading.css";
+import "./checkbox.css"
 
-import "./checkbox.css";
-
-import { useAuth } from '../../../context/ContextAuth/'
-const { ipcRenderer } = window.require("electron");
+import { useAuth } from '../../../context/ContextAuthentication'
 
 
-const Right_container = () => {
+export default () => {
 
-  const [redirect, setRedirect] = useState(false)
   const [loading, setLoading] = useState(false)
   const [isWrongToken, setIsWrongToken] = useState(false)
-  
-  const { inputToken, checkBox, setInputToken, setCheckBox } = useAuth()
-
-
-  const callBackLogar = useCallback(
-    async (token) => {
-      setLoading(true);
-     
-    const response = await ipcRenderer.invoke("@token/REQUEST", {
-      title: "logar",
-      body: token ? token : 0,
-    })
-    setInputToken("")
-
-    setTimeout(() => {
-      if (response) {
-        setRedirect(true)
-      } else {
-        setLoading(false)
-        setIsWrongToken(true)
-      }
-    }, 1000)
-    }, []
-  )
+  const [redirect, setRedirect ] = useState(false)
+  const { inputToken, checkBox, setInputToken, setCheckBox, HandleLogin } = useAuth()
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -54,9 +29,6 @@ const Right_container = () => {
     )
   }, [loading])
   
-  const memoizodRedirect = useMemo(() => redirect && <Redirect to="/Main" />, [
-    redirect,
-  ])
 
   const memoizodCheck = useMemo(()=>{
     const boxChecked = () => checkBox? setCheckBox(false): setCheckBox(true) 
@@ -82,7 +54,23 @@ const Right_container = () => {
 
   const HandleSubmit = (event) => {
     event.preventDefault();
-    callBackLogar(inputToken);
+    (async () => {
+      setLoading(true)
+      
+      setTimeout( async () =>{
+        const response = await HandleLogin(inputToken)
+        if(response){
+          setRedirect(true)
+          return () => {}
+        }
+        setLoading(false)
+        setIsWrongToken(true) 
+      
+      }, 1000)
+      
+    })()
+   
+   
   }
 
   //
@@ -93,7 +81,7 @@ const HandleTokenChange = (event) => setInputToken(event.target.value);
 
   return (
     <section className="right-container">
-      {memoizodRedirect}
+      {redirect && <Redirect to="/" />}
       {memoizodLoading}
       {console.log("dentro")}
       {!loading && (
@@ -105,7 +93,7 @@ const HandleTokenChange = (event) => setInputToken(event.target.value);
               name="token"
               placeholder={isWrongToken ? "Ops, token incorreto! :(" : ""}
               onFocus={isWrongToken ? RemoveBorderRed : () => {}}
-              value={inputToken}
+              value={ isWrongToken ? '': inputToken}
               onChange={HandleTokenChange}
               className={isWrongToken ? "wrong-token" : undefined}
             />
@@ -117,4 +105,4 @@ const HandleTokenChange = (event) => setInputToken(event.target.value);
   )
 }
 
-export default Right_container
+

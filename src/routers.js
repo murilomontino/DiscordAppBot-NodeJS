@@ -1,19 +1,31 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Main from "./pages/Main";
-// import Profile from "./pages/Profile"
+import {useAuth} from './context/ContextAuthentication/'
 
-const Routers = () => {
+const CustomRoute = ( {isPrivate, ...rest}) => {
+    const {loading, authentication} = useAuth()
+
+    if(loading)
+        return <div/> 
+
+    if(!authentication && isPrivate)
+        return <Redirect to='/Login'/>
+
+    return <Route {...rest}/>
+}
+
+export default () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/Main" exact component={Main} />
-                <Route path="/" component={Login} />
+                <CustomRoute isPrivate path="/" exact component={Main} />
+                <CustomRoute path="/Login" component={Login} />
             </Switch>
         </BrowserRouter>
     )
 }
 
-export default Routers
+ 

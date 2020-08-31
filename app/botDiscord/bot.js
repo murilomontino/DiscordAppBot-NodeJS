@@ -1,8 +1,8 @@
-const Discord = require('discord.js')
+const { Client } = require('discord.js')
 
 const commandsReader = require('./scripts/commandsReader')
 
-class Bot extends Discord.Client{
+class Bot extends Client{
     constructor(...args){
         super(...args)
         
@@ -12,19 +12,29 @@ class Bot extends Discord.Client{
 
         this.on("ready", () =>{
             console.log(`${this.user.tag}`)
-        
         })
 
-        this.on("message", async msg => {
-            if(!msg.author.bot){
-                console.log(`${msg.author.username}: ${msg.content}`)
+      
+        this.logout = async () =>{
+            this.token = null
+            setTimeout(async ()=>await this.user.setStatus('invisible'), 1000)
         
-                const args = msg.content.split(" ")
-                if(this.commands[args[0]]) {
-                    await this.commands[args[0]](this,msg)        
+            console.log('Bot offline')
+        }
+
+        this.on("message", async msg => {
+           if(this.user.presence.status === 'online'){
+                if(!msg.author.bot){
+                    console.log(`${msg.author.username}: ${msg.content}`)
+            
+                    const args = msg.content.split(" ")
+                    if(this.commands[args[0]]) {
+                        await this.commands[args[0]](this,msg)        
+                    }
+                    
                 }
-                
             }
+          
         
             
         })
