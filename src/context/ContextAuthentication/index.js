@@ -24,8 +24,10 @@ const ContextAuthProvider = ({ children }) => {
   }), [])
 
   useEffect(() => {
-    fetchToken()
-    setLoading(false)
+    (async () => {
+      await fetchToken()
+      setLoading(false)
+    })()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -60,7 +62,7 @@ const ContextAuthProvider = ({ children }) => {
       title: "logoutBot",
       body: '',
     })
-    fetchToken()
+    await fetchToken()
     setAuthentication(false)
   }
 
