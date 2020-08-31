@@ -6,8 +6,8 @@ ipcMain.on('@comunication/REQUEST', async (event, message) => {
   
   try {
     
-    const { title, body } = message
-    await Comunication[title]({event, body})
+    const { title, ...body } = message
+    await Comunication[title]({ ...body})
  
   } catch (err) {
     
@@ -17,9 +17,9 @@ ipcMain.on('@comunication/REQUEST', async (event, message) => {
 ipcMain.handle('@token/REQUEST', async (event, message) => {
   try{
     
-    const { title, body } = message
+    const { title, ...body } = message
     try {
-      const value = await Comunication[title]({body, event})
+      const value = await Comunication[title]({...body, event})
       return value
     } catch (error) {
         return 'Error'
