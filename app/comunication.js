@@ -9,11 +9,13 @@ const checkToken = async () => config.token
 
 const checkBox = async () => config.checkBox
        
-     
+const logoutBot = () => DiscordAppBot.destroy()
+
 const Comunication = {
     loginWithToken,
     checkToken,
-    checkBox
+    checkBox,
+    logoutBot
 }
 
 

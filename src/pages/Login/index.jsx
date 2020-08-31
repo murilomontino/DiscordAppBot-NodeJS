@@ -6,16 +6,13 @@ import "./styles.css"
 import LeftContainer from './components/left_container'
 import RightContainer from './components/right_container'
 
-import ContextAuthProvider from '../../context/ContextAuthentication'
-
 export default () => {
   return (
     <div className="main-container">
       
       <LeftContainer/>
-      <ContextAuthProvider>
-        <RightContainer />
-      </ContextAuthProvider>
+      <RightContainer/>
+      
       
       
     </div>
