@@ -40,7 +40,7 @@ export default () => {
       checkBox ? setCheckBox(false) : setCheckBox(true);
 
     return (
-      <div className="after-input-container">
+     <>
         <input
           type="checkbox"
           id="cbx"
@@ -59,8 +59,8 @@ export default () => {
         </label>
 
         <p>Lembrar token</p>
-        <button type="submit">Entrar</button>
-      </div>
+     </>
+  
     );
   }, [setCheckBox, checkBox]);
 
@@ -89,7 +89,7 @@ export default () => {
   const HandleSubmit = (event) => {
     event.preventDefault();
     setIsSubmited(true);
-    setInputToken( token => inputTokenRef.current.value !== ""?inputTokenRef.current.value:token);
+    setInputToken( token => inputTokenRef.current.value !== ""?inputTokenRef.current.value:(checkBox?token:""));
     
   };
 
@@ -97,7 +97,7 @@ export default () => {
     <section className="right-container">
       {redirect && <Redirect to="/" />}
       {memoizodLoading}
-
+  
       {!loading && (
         <div className="input-container">
           <p id="p-before-input">Entre com seu Token:</p>
@@ -106,13 +106,17 @@ export default () => {
               type="text"
               name="token"
               placeholder={
-                isWrongToken ? "Ops, token incorreto! :(" : inputToken
+                isWrongToken ? "Ops, token incorreto! :(" :(checkBox?inputToken:"")
               }
-              onFocus={isWrongToken ? RemoveBorderRed : () => {}}
+              onFocus={isWrongToken ? RemoveBorderRed:(input)=>{input.target.placeholder = ""}}
+              onBlur={(input) => checkBox?input.target.placeholder=inputToken:input.target.placeholder=""}
               ref={inputTokenRef}
               className={isWrongToken ? "wrong-token" : undefined}
             />
+             <div className="after-input-container">
             {memoizodCheck}
+            <button type="submit">Entrar</button>
+            </div>
           </form>
         </div>
       )}
