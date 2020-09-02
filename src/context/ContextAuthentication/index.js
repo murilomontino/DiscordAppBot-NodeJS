@@ -12,7 +12,7 @@ const ContextAuthProvider = ({ children }) => {
   const [authentication, setAuthentication] = useState(false)
 
   const fetchToken = useCallback((async () => {
-    const check = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkBox', body: '' })
+    const check = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkBoxIsChecked', body: '' })
     setCheckBoxIsChecked(check)
     if (check) {
       const token = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkToken', body: '' })
