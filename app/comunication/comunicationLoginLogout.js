@@ -18,15 +18,16 @@ const comunicationBot = (CLient, configuration) => {
     const logoutBot = async () => { await DiscordAppBot.logout() }
 
     const saveTokenCheck = ({ checkBox, token, ...body }) => {
+        
 
-        if (token === config.token && checkBox === true) {
+        if (token === config.token && checkBox === true && config.checkBox === true) {
             return
         }
-        console.log('saveCheck')
+
         config.checkBox = checkBox
         config.token = checkBox ? token : ''
-
-        fs.writeFile(__dirname + '/botDiscord/config/config.json', JSON.stringify(config), err => { })
+        const dir_name = __dirname.replace('comunication', '')
+        fs.writeFile(dir_name+'botDiscord/config/config.json', JSON.stringify(config), err => { })
 
     }
     
