@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Main from "./pages/Main";
-import {useAuth} from './context/ContextAuthentication/'
+import {useAuthentication} from './context/ContextAuthentication/'
 
 const CustomRoute = ( {isPrivate, ...rest}) => {
-    const {loading, authentication} = useAuth()
+    const {loading, authentication} = useAuthentication()
 
     if(loading)
         return <div/> 

@@ -7,13 +7,13 @@ const ContextAuth = createContext()
 const ContextAuthProvider = ({ children }) => {
 
   const [inputToken, setInputToken] = useState('')
-  const [checkBox, setCheckBox] = useState(false)
+  const [checkBoxIsChecked, setCheckBoxIsChecked] = useState(false)
   const [loading, setLoading] = useState(true)
   const [authentication, setAuthentication] = useState(false)
 
   const fetchToken = useCallback((async () => {
     const check = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkBox', body: '' })
-    setCheckBox(check)
+    setCheckBoxIsChecked(check)
     if (check) {
       const token = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkToken', body: '' })
       setInputToken(token)
@@ -46,7 +46,7 @@ const ContextAuthProvider = ({ children }) => {
 
       ipcRenderer.send("@comunication/REQUEST", {
         title: 'saveTokenCheck',
-        checkBox: checkBox,
+        checkBox: checkBoxIsChecked,
         token: token
       })
 
@@ -69,9 +69,9 @@ const ContextAuthProvider = ({ children }) => {
   return (
     <ContextAuth.Provider value={{
       inputToken,
-      checkBox,
+      checkBoxIsChecked,
       setInputToken,
-      setCheckBox,
+      setCheckBoxIsChecked,
       HandleLogin,
       HandleLogout,
       authentication,
@@ -84,14 +84,14 @@ const ContextAuthProvider = ({ children }) => {
 }
 
 
-export const useAuth = () => {
-  const { inputToken, checkBox, setInputToken, setCheckBox, HandleLogin, HandleLogout, authentication, loading } = useContext(ContextAuth)
+export const useAuthentication = () => {
+  const { inputToken, checkBoxIsChecked, setInputToken, setCheckBoxIsChecked, HandleLogin, HandleLogout, authentication, loading } = useContext(ContextAuth)
 
   return ({
     inputToken,
     setInputToken,
-    checkBox,
-    setCheckBox,
+    checkBoxIsChecked,
+    setCheckBoxIsChecked,
     HandleLogin,
     HandleLogout,
     authentication,
