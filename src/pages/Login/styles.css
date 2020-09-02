@@ -83,6 +83,11 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.right-container input[type=text]::placeholder{
+  color:var(--color-font-secundary);
+}
+
+
 
 .right-container form{
   height: 100%;
@@ -109,7 +114,7 @@
 }
 
 .wrong-token::placeholder{
-  color:  var(--color-red-warning);
+  color:  var(--color-red-warning)!important;
 }
 
 

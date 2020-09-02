@@ -4,7 +4,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  min-height: 600px;
+  min-height: 500px;
   max-height: 1080px;
   position: relative;
 }

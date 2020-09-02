@@ -5,7 +5,7 @@ import "./loading.css";
 
 import "./checkbox.css";
 
-import { useAuth } from "../../../context/ContextAuthentication";
+import { useAuthentication } from "../../../context/ContextAuthentication";
 
 export default () => {
   const [loading, setLoading] = useState(false);
@@ -14,11 +14,11 @@ export default () => {
   const [isSubmited, setIsSubmited] = useState(false);
   const {
     inputToken,
-    checkBox,
+    checkBoxIsChecked,
     setInputToken,
-    setCheckBox,
+    setCheckBoxIsChecked,
     HandleLogin,
-  } = useAuth();
+  } = useAuthentication();
   const inputTokenRef = useRef(null);
 
   const memoizodLoading = useMemo(() => {
@@ -37,15 +37,15 @@ export default () => {
 
   const memoizodCheck = useMemo(() => {
     const boxChecked = () =>
-      checkBox ? setCheckBox(false) : setCheckBox(true);
+      checkBoxIsChecked ? setCheckBoxIsChecked(false) : setCheckBoxIsChecked(true);
 
     return (
-      <div className="after-input-container">
+     <>
         <input
           type="checkbox"
           id="cbx"
           style={{ display: "none" }}
-          checked={checkBox}
+          checked={checkBoxIsChecked}
           onChange={boxChecked}
         />
         <label htmlFor="cbx" className="check">
@@ -59,10 +59,10 @@ export default () => {
         </label>
 
         <p>Lembrar token</p>
-        <button type="submit">Entrar</button>
-      </div>
+     </>
+  
     );
-  }, [setCheckBox, checkBox]);
+  }, [setCheckBoxIsChecked, checkBoxIsChecked]);
 
   const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false);
 
@@ -89,15 +89,43 @@ export default () => {
   const HandleSubmit = (event) => {
     event.preventDefault();
     setIsSubmited(true);
-    setInputToken( token => inputTokenRef.current.value !== ""?inputTokenRef.current.value:token);
+    let isInputNotEmpty = inputTokenRef.current.value !== "";
+    let currentInputValue = inputTokenRef.current.value;
+    setInputToken( (token) => isInputNotEmpty ? currentInputValue:(checkBoxIsChecked?token:""));
     
   };
+
+  const SetInputOnBlur = (event) => {
+      if(checkBoxIsChecked){
+        event.target.placeholder=inputToken;
+      }else{
+        event.target.placeholder=""
+      }
+  }
+
+  const SetInputOnFocus = (event) => {
+      if(isWrongToken){
+        RemoveBorderRed();
+      }else{
+        event.target.placeholder = "";
+      }
+  }
+
+  const SetInputPlaceHolder = () => {
+      if(isWrongToken){
+        return "Ops, token incorreto! :(";
+      }else if(checkBoxIsChecked){
+        return inputToken;
+      }else{
+        return "";
+      }
+  }
 
   return (
     <section className="right-container">
       {redirect && <Redirect to="/" />}
       {memoizodLoading}
-
+  
       {!loading && (
         <div className="input-container">
           <p id="p-before-input">Entre com seu Token:</p>
@@ -105,14 +133,16 @@ export default () => {
             <input
               type="text"
               name="token"
-              placeholder={
-                isWrongToken ? "Ops, token incorreto! :(" : inputToken
-              }
-              onFocus={isWrongToken ? RemoveBorderRed : () => {}}
+              placeholder={SetInputPlaceHolder()}
+              onFocus={(e) => SetInputOnFocus(e)}
+              onBlur={(e) => SetInputOnBlur(e)}
               ref={inputTokenRef}
               className={isWrongToken ? "wrong-token" : undefined}
             />
+             <div className="after-input-container">
             {memoizodCheck}
+            <button type="submit">Entrar</button>
+            </div>
           </form>
         </div>
       )}
