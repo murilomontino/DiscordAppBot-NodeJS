@@ -1,20 +1,20 @@
-import React, { useState, useContext, createContext, useEffect } from 'react'
+import React, { useContext, createContext} from 'react'
 
 const { ipcRenderer } = window.require('electron')
 const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
 
-    const HandleTeste = () =>{
-        ipcRenderer.invoke("@token/REQUEST", {
+    async function GetBotName(){
+        const response = await ipcRenderer.invoke("@token/REQUEST", {
           title: 'getBotUsername'
-        }).then(response => console.log(response))
-        
+        })
+        return response;
       }
 
     return (
         <ContextProfile.Provider value={{
-
+           
 
         }} >
             {children}
@@ -23,13 +23,12 @@ const ContextProfileProvider = ({ children }) => {
 }
 
 
-const useProfile = () => {
-    const { } = useContext(ContextProfile)
+export const useProfile = () => {
+    const {} = useContext(ContextProfile)
 
     return ({
-
-
+       
     })
 }
 
-export { ContextProfileProvider, useProfile }
+export { ContextProfileProvider}
