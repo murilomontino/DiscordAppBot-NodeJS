@@ -4,6 +4,8 @@ const comunicationBot = (CLient) => {
 
     const getBotUsername = () => DiscordAppBot.user.username
 
+    const getBotTag = () => DiscordAppBot.user.tag
+
     const setBotUsername =({name}) => DiscordAppBot.user.setUsername(name)
     
     const getBotAvatarURL = ()=> DiscordAppBot.user.avatarURL()
@@ -15,6 +17,7 @@ const comunicationBot = (CLient) => {
 
     return {
         getBotUsername,
+        getBotTag,
         setBotUsername,
         getBotAvatarURL,
         setBotAvatarURL,

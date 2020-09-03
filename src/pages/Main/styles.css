@@ -11,7 +11,7 @@
 
 .right-main-container {
   height: 90%;
-  width: 80%;
+  width: 89%;
   background: var(--color-background);
   border-radius: 2rem;
   position: absolute;
@@ -20,8 +20,8 @@
 }
 
 .menu-container {
-  width: 9%;
   height: 100%;
+  width: 9%;  
   display: flex;
   justify-content: center;
   align-items: center;

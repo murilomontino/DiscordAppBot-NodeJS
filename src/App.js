@@ -1,16 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import './assets/styles/global.css';
-import Routers from './routers'
-import ContextAuthProvider from './context/ContextAuthentication'
-
+import "./assets/styles/global.css";
+import Routers from "./routers";
+import ContextAuthProvider from "./context/ContextAuthentication";
+import ContextProfileProvider from "./context/ContextProfile";
 
 export default () => {
   return (
-    <div className='App'>
+    <div className="App">
       <ContextAuthProvider>
-        <Routers/>
+        <ContextProfileProvider>
+          <Routers />
+        </ContextProfileProvider>
       </ContextAuthProvider>
     </div>
-  )
-}
+  );
+};
