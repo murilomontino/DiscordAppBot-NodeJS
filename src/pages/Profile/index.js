@@ -15,7 +15,7 @@ function Profile() {
       <div className="top-container">
         <div className="top-left-container">
           <div className="profile-pic">
-            <img src={botAvatarURL} alt="Avatar Bot"></img>
+            <img src={botAvatarURL} alt="Profile Avatar Bot"></img>
           </div>
           <div className="bot-information">
             <p id="is-online">ONLINE </p>
