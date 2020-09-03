@@ -3,17 +3,19 @@ import "./styles.css";
 import Profile from "../Profile";
 //import {useAuth} from '../../context/ContextAuthentication'
 
-// const {ipcRenderer}  = window.require('electron')
+const {ipcRenderer}  = window.require('electron')
 function Main() {
 //  const { HandleLogout } = useAuth()
 
-
+  const HandleOnClick = () =>{
+    ipcRenderer.invoke('@token/REQUEST', {title: 'GetBotOnwerApplication' })
+  }
 
   return (
     <div className="background">
       <div className="menu-container">
         <div className="item-menu">
-          <a href="/">Login</a>
+          <button onClick={HandleOnClick}>Login</button>
         </div>
         <div className="item-menu"></div>
         <div className="item-menu"></div>

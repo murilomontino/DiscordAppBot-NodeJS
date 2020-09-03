@@ -14,7 +14,13 @@ class Bot extends Client{
             console.log(`${this.user.tag}`)
         })
 
-      
+        this.AuthorAplication = async () => {
+            const application = await this.fetchApplication()
+            const owner = application.owner
+            const description = application.description
+            return { owner, description }
+        }
+
         this.logout = async () =>{
             this.token = null
             setTimeout(async ()=>await this.user.setStatus('invisible'), 1000)
