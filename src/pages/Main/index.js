@@ -8,7 +8,8 @@ function Main() {
 //  const { HandleLogout } = useAuth()
 
   const HandleOnClick = () =>{
-    ipcRenderer.invoke('@token/REQUEST', {title: 'GetBotOnwerApplication' })
+    console.log('chegou aki')
+    ipcRenderer.invoke('@token/REQUEST', {title: 'getBotOnwerApplication' })
   }
 
   return (
