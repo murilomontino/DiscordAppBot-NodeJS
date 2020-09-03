@@ -14,6 +14,11 @@
   width: 18vh;
   background-color: cornsilk;
   border-radius: 50%;
+  overflow: hidden;
+}
+.profile-pic img{
+  height: 100%;
+  width: 100%;
 }
 
 .top-left-container {

@@ -23,6 +23,14 @@ const ContextAuthProvider = ({ children }) => {
     
   }), [])
 
+  const BoxSavedConfig = useCallback((async (token) => {
+    await ipcRenderer.send("@comunication/REQUEST", {
+      title: 'saveTokenCheck',
+      checkBox: checkBoxIsChecked,
+      token: token
+    })
+  }), [checkBoxIsChecked])
+
   useEffect(() => {
     (async () => {
       await fetchToken()
@@ -42,18 +50,11 @@ const ContextAuthProvider = ({ children }) => {
     })
 
     if (response !== 'Error') {
-
-
-      ipcRenderer.send("@comunication/REQUEST", {
-        title: 'saveTokenCheck',
-        checkBox: checkBoxIsChecked,
-        token: token
-      })
-
-
+      BoxSavedConfig(token)
       setAuthentication(true)
       return true
     }
+    BoxSavedConfig(token)
     return false
   }
 

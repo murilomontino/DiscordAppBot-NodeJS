@@ -1,20 +1,55 @@
-import React, { useContext, createContext} from 'react'
+import React, { useContext, createContext, useState} from 'react'
 
 const { ipcRenderer } = window.require('electron')
 const ContextProfile = createContext()
 
-const ContextProfileProvider = ({ children }) => {
 
-    async function GetBotName(){
-        const response = await ipcRenderer.invoke("@token/REQUEST", {
+const ContextProfileProvider = ({ children }) => {
+    const [botName, setBotName] = useState("...");
+    const [botAvatarURL, setBotAvatarURL] = useState("");
+    const [botTag, setBotTag] = useState("");
+    const [botStatus, setBotStatus] = useState("");
+
+    const GetBotUsername= () =>{
+        ipcRenderer.invoke("@token/REQUEST", {
           title: 'getBotUsername'
-        })
-        return response;
+        }).then(response => setBotName(response))
+           
       }
+
+      const GetBotAvatarURL= () =>{
+        ipcRenderer.invoke("@token/REQUEST", {
+          title: 'getBotAvatarURL'
+        }).then(response => setBotAvatarURL(response))
+           
+      }
+
+      const GetBotTag= () =>{
+        ipcRenderer.invoke("@token/REQUEST", {
+          title: 'getBotTag'
+        }).then(response => setBotTag(response))
+           
+      }
+
+      const GetBotStatus= () =>{
+        ipcRenderer.invoke("@token/REQUEST", {
+          title: 'getBotStatus'
+        }).then(response => setBotStatus(response))
+           
+      }
+
+
 
     return (
         <ContextProfile.Provider value={{
-           
+            GetBotUsername,
+            botName,
+            GetBotAvatarURL,
+            botAvatarURL,
+            GetBotTag,
+            botTag,
+            GetBotStatus,
+            botStatus
 
         }} >
             {children}
@@ -24,11 +59,18 @@ const ContextProfileProvider = ({ children }) => {
 
 
 export const useProfile = () => {
-    const {} = useContext(ContextProfile)
+    const {GetBotUsername, botName, GetBotAvatarURL, botAvatarURL, GetBotTag, botTag, GetBotStatus, botStatus} = useContext(ContextProfile)
 
     return ({
-       
+        GetBotUsername, 
+        botName,
+        GetBotAvatarURL,
+        botAvatarURL,
+        GetBotTag,
+        botTag,
+        GetBotStatus,
+        botStatus
     })
 }
 
-export { ContextProfileProvider}
+export default ContextProfileProvider

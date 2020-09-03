@@ -4,14 +4,10 @@ const { ipcMain } = require('electron')
 
 ipcMain.on('@comunication/REQUEST', async (event, message) => {
   
-  try {
-    
     const { title, ...body } = message
     await Comunication[title]({ ...body})
  
-  } catch (err) {
-    
-  }
+
 })
 
 ipcMain.handle('@token/REQUEST', async (event, message) => {

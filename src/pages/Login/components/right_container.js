@@ -73,7 +73,8 @@ export default () => {
         setLoading(true);
 
         setTimeout(async () => {
-          const response = await HandleLogin(inputToken);
+          const response = await HandleLogin(inputToken)
+
           if (response) {
             setRedirect(true);
             return () => {};
@@ -84,7 +85,7 @@ export default () => {
       })();
       setIsSubmited(false);
     }
-  }, [inputToken, isSubmited]);
+  }, [HandleLogin, inputToken, isSubmited]);
 
   const HandleSubmit = (event) => {
     event.preventDefault();
