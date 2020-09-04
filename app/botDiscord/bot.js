@@ -9,12 +9,14 @@ class Bot extends Client{
         this.config = require('./config/config.json')
         this.commands = commandsReader(this.config.prefix)
 
-        this.on("ready", () =>{
+        this.on("ready", async () =>{
             console.log(`${this.user.tag}`)
+            this.clientApplication = await this.fetchApplication()
         })
 
         this.on("message", async msg => {
-           if(this.user.presence.status === 'online'){
+           
+            if(this.user.presence.status === 'online'){
                 if(!msg.author.bot){
                     console.log(`${msg.author.username}: ${msg.content}`)
             
@@ -45,8 +47,7 @@ class Bot extends Client{
     getDescription = () => this.clientApplication.description
 
     async login(token){
-        await Client.prototype.login.call(this, token)
-        this.clientApplication = await this.fetchApplication()
+        await Client.prototype.login.call(this, token)   
     }
 
 }

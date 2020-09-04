@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import Profile from "../Profile";
+import ContextProfileProvider from "../../context/ContextProfile/";
 
 const {ipcRenderer}  = window.require('electron')
 function Main() {
@@ -20,8 +21,9 @@ function Main() {
       </div>
       <div className="right-main-container">
       
+      <ContextProfileProvider>
         <Profile/>
-      
+      </ContextProfileProvider>
 
       </div>
     </div>

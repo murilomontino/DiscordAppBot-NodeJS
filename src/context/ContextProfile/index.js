@@ -6,13 +6,10 @@ const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
   
-  // const [botName, setBotName] = useState("...");
-  // const [botAvatarURL, setBotAvatarURL] = useState("");
-  // const [botTag, setBotTag] = useState("");
-  // const [botStatus, setBotStatus] = useState("");
+
   const [loading, setLoading] = useState(true)
 
-  const [todos, setTodos] = useState()
+  const [all, setAll] = useState()
 
   useEffect(() => {
     (async () => {
@@ -21,16 +18,19 @@ const ContextProfileProvider = ({ children }) => {
       const botAvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
       const botTag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
       const botStatus =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
+
       
-      setTodos({
+      setAll({
         botName,
         botAvatarURL,
         botTag,
         botStatus
       })
 
-      setLoading(false)
+      
     })()
+    setLoading(false)
+
 
   }, [])
 
@@ -42,7 +42,7 @@ const ContextProfileProvider = ({ children }) => {
   return (
     <ContextProfile.Provider value={{
       
-      todos
+      all
 
     }} >
       {children}
@@ -52,9 +52,9 @@ const ContextProfileProvider = ({ children }) => {
 
 
 export const useProfile = () => {
-  const {  todos } = useContext(ContextProfile)
+  const {  all } = useContext(ContextProfile)
   return ({
-    ...todos
+    ...all
   })
 }
 

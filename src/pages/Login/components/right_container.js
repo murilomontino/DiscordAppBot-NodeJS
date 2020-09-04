@@ -81,7 +81,7 @@ export default () => {
           }
           setLoading(false);
           setIsWrongToken(true);
-        }, 1);
+        }, 1000);
       })();
       setIsSubmited(false);
     }
