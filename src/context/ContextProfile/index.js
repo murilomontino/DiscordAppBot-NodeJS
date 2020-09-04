@@ -6,7 +6,6 @@ const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
   
-
   const [loading, setLoading] = useState(true)
 
   const [botInformation, setBotInformation] = useState({
