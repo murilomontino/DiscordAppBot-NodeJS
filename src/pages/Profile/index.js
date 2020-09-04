@@ -1,34 +1,24 @@
-import React, { useEffect } from "react";
-import "./styles.css";
-import { useProfile } from "../../context/ContextProfile";
+import React from "react"
+import "./styles.css"
+import { useProfile } from "../../context/ContextProfile"
 
 function Profile() {
   const {
-    GetBotUsername,
     botName,
-    GetBotAvatarURL,
     botAvatarURL,
-    GetBotStatus,
     botStatus,
-    GetBotTag,
-    botTag
+    botOwner
+
   } = useProfile();
 
-  useEffect(() => {
-    GetBotUsername();
-    GetBotAvatarURL();
-    GetBotStatus();
-    GetBotTag();
-    
-  }, []);
 
   return (
     <>
-      {console.log(botTag)}
+      
       <div className="top-container">
         <div className="top-left-container">
           <div className="profile-pic">
-            <img src={botAvatarURL} alt="Profile Picture"></img>
+            <img src={botAvatarURL} alt="Profile Avatar Bot"></img>
           </div>
           <div className="bot-information">
             <p id="is-online">{botStatus}</p>

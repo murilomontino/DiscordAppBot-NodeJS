@@ -1,76 +1,75 @@
-import React, { useContext, createContext, useState} from 'react'
+import React, { useContext, createContext, useState, useEffect } from 'react'
 
 const { ipcRenderer } = window.require('electron')
 const ContextProfile = createContext()
 
 
 const ContextProfileProvider = ({ children }) => {
-    const [botName, setBotName] = useState("...");
-    const [botAvatarURL, setBotAvatarURL] = useState("");
-    const [botTag, setBotTag] = useState("");
-    const [botStatus, setBotStatus] = useState("");
+  
+  const [botName, setBotName] = useState("...");
+  const [botAvatarURL, setBotAvatarURL] = useState("");
+  const [botTag, setBotTag] = useState("");
+  const [botStatus, setBotStatus] = useState("");
+  const [botOwner, setBotOwner] = useState("");
+  const [loading, setLoading] = useState(true)
 
-    const GetBotUsername= () =>{
-        ipcRenderer.invoke("@token/REQUEST", {
-          title: 'getBotUsername'
-        }).then(response => setBotName(response))
-           
-      }
+  useEffect(() => {
+    (async () => {
+      const botName =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotUsername'})
+      setBotName(botName)
+      const botAvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
+      setBotAvatarURL(botAvatarURL)
+      const botTag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
+      setBotTag(botTag)
+      const botStatus =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
+      setBotStatus(botStatus)
+      const botOwner =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotOnwerApplication'})
+      setBotOwner(botOwner)
+      setLoading(false)
+    })()
 
-      const GetBotAvatarURL= () =>{
-        ipcRenderer.invoke("@token/REQUEST", {
-          title: 'getBotAvatarURL'
-        }).then(response => setBotAvatarURL(response))
-           
-      }
-
-      const GetBotTag= () =>{
-        ipcRenderer.invoke("@token/REQUEST", {
-          title: 'getBotTag'
-        }).then(response => setBotTag(response))
-           
-      }
-
-      const GetBotStatus= () =>{
-        ipcRenderer.invoke("@token/REQUEST", {
-          title: 'getBotStatus'
-        }).then(response => setBotStatus(response))
-           
-      }
+  }, [])
 
 
 
-    return (
-        <ContextProfile.Provider value={{
-            GetBotUsername,
-            botName,
-            GetBotAvatarURL,
-            botAvatarURL,
-            GetBotTag,
-            botTag,
-            GetBotStatus,
-            botStatus
+  if (loading)
+    return <div />
 
-        }} >
-            {children}
-        </ContextProfile.Provider>
-    )
+  return (
+    <ContextProfile.Provider value={{
+      
+      botName,
+     
+      botAvatarURL,
+     
+      botTag,
+      
+      botStatus,
+
+      botOwner
+
+    }} >
+      {children}
+    </ContextProfile.Provider>
+  )
 }
 
 
 export const useProfile = () => {
-    const {GetBotUsername, botName, GetBotAvatarURL, botAvatarURL, GetBotTag, botTag, GetBotStatus, botStatus} = useContext(ContextProfile)
+  const {  botName,  botAvatarURL,  botTag,  botStatus, botOwner } = useContext(ContextProfile)
 
-    return ({
-        GetBotUsername, 
-        botName,
-        GetBotAvatarURL,
-        botAvatarURL,
-        GetBotTag,
-        botTag,
-        GetBotStatus,
-        botStatus
-    })
+  return ({
+    
+    botName,
+    
+    botAvatarURL,
+    
+    botTag,
+    
+    botStatus,
+    
+    botOwner
+  })
 }
 
 export default ContextProfileProvider

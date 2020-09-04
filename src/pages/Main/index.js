@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles.css";
 import Profile from "../Profile";
-//import {useAuth} from '../../context/ContextAuthentication'
 
-// const {ipcRenderer}  = window.require('electron')
+
+
 function Main() {
-//  const { HandleLogout } = useAuth()
+
 
 
 
