@@ -50,7 +50,7 @@ body,
   flex-direction: column;
   position: absolute;
   bottom: 0;
-  overflow-y:scroll;
+  overflow-y:auto;
 
  
 }
