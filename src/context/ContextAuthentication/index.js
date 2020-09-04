@@ -8,6 +8,7 @@ const ContextAuthProvider = ({ children }) => {
 
   const [inputToken, setInputToken] = useState('')
   const [checkBoxIsChecked, setCheckBoxIsChecked] = useState(false)
+  
   const [loading, setLoading] = useState(true)
   const [authentication, setAuthentication] = useState(false)
 

@@ -1,12 +1,11 @@
 import React from "react";
 import "./styles.css";
 import Profile from "../Profile";
+import ContextProfileProvider from "../../context/ContextProfile/";
 
 
 
 function Main() {
-
-
 
 
   return (
@@ -19,9 +18,10 @@ function Main() {
         <div className="item-menu"></div>
       </div>
       <div className="right-main-container">
-
-      <Profile/>
-
+      
+      <ContextProfileProvider>
+        <Profile/>
+      </ContextProfileProvider>
 
       </div>
     </div>

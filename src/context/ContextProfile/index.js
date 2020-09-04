@@ -6,27 +6,44 @@ const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
   
-  const [botName, setBotName] = useState("...");
-  const [botAvatarURL, setBotAvatarURL] = useState("");
-  const [botTag, setBotTag] = useState("");
-  const [botStatus, setBotStatus] = useState("");
-  const [botOwner, setBotOwner] = useState("");
   const [loading, setLoading] = useState(true)
+
+  const [botInformation, setBotInformation] = useState({
+    botAvatarURL: "",
+    botName: "",
+    botTag: "",
+    botStatus: "",
+    botDescription: "",
+    botCreator: ""
+  })
 
   useEffect(() => {
     (async () => {
-      const botName =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotUsername'})
-      setBotName(botName)
-      const botAvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
-      setBotAvatarURL(botAvatarURL)
-      const botTag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
-      setBotTag(botTag)
-      const botStatus =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
-      setBotStatus(botStatus)
-      const botOwner =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotOnwerApplication'})
-      setBotOwner(botOwner)
-      setLoading(false)
+      
+      const Name =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotUsername'})
+      const AvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
+      const Tag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
+      // const Status =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
+      const Status = 'ONLINE'
+      const Creator = await ipcRenderer.invoke("@token/REQUEST", {title: 'getCreatorBotName'})
+      const Description = await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotDescriptionApplication'})
+      
+      setBotInformation({
+        botName: Name,
+        botAvatarURL: AvatarURL,
+        botTag: Tag,
+        botStatus: Status,
+        botCreator: Creator,
+        botDescription: Description
+      })
+
+      
     })()
+    
+    setTimeout(()=> setLoading(false), 1)
+
+    
+
 
   }, [])
 
@@ -38,15 +55,7 @@ const ContextProfileProvider = ({ children }) => {
   return (
     <ContextProfile.Provider value={{
       
-      botName,
-     
-      botAvatarURL,
-     
-      botTag,
-      
-      botStatus,
-
-      botOwner
+      botInformation
 
     }} >
       {children}
@@ -56,19 +65,10 @@ const ContextProfileProvider = ({ children }) => {
 
 
 export const useProfile = () => {
-  const {  botName,  botAvatarURL,  botTag,  botStatus, botOwner } = useContext(ContextProfile)
-
+  const {  botInformation } = useContext(ContextProfile)
+  console.log(botInformation)
   return ({
-    
-    botName,
-    
-    botAvatarURL,
-    
-    botTag,
-    
-    botStatus,
-    
-    botOwner
+    ...botInformation
   })
 }
 

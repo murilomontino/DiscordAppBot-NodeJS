@@ -17,8 +17,13 @@ const comunicationBot = (CLient) => {
     const setBotActivity = ({name, url, type, shardID}) => DiscordAppBot.user.setActivity(name, {url, type, shardID})
 
     const getBotOnwerApplication = () => DiscordAppBot.getOwner()
+
+    const getCreatorBotName = async () => {
+        const { username } = await DiscordAppBot.getOwner()
+        return username
+    }
     
-    const getBotDescriptionApplication = () => DiscordAppBot.getDescription()
+    const getBotDescriptionApplication = async () => await DiscordAppBot.getDescription()
 
 
     return {
@@ -30,7 +35,8 @@ const comunicationBot = (CLient) => {
         setBotAvatarURL,
         setBotActivity,
         getBotOnwerApplication,
-        getBotDescriptionApplication
+        getBotDescriptionApplication,
+        getCreatorBotName
     }
 }
 
