@@ -23,6 +23,10 @@ const comunicationBot = (CLient) => {
     
     const getBotDescriptionApplication = async () => await DiscordAppBot.getDescription()
 
+    const getBotStatus = async () => {
+        const {status} = await DiscordAppBot.user.presence
+        return status    
+    }
 
     return {
         getBotUsername,
@@ -33,7 +37,8 @@ const comunicationBot = (CLient) => {
         setBotActivity,
         getBotOnwerApplication,
         getBotDescriptionApplication,
-        getCreatorBotName
+        getCreatorBotName,
+        getBotStatus
     }
 }
 
