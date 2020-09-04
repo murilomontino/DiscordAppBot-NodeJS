@@ -9,27 +9,41 @@ const ContextProfileProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(true)
 
-  const [all, setAll] = useState()
+  const [botInformation, setBotInformation] = useState({
+    botAvatarURL: "",
+    botName: "",
+    botTag: "",
+    botStatus: "",
+    botDescription: "",
+    botCreator: ""
+  })
 
   useEffect(() => {
     (async () => {
       
-      const botName =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotUsername'})
-      const botAvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
-      const botTag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
-      const botStatus =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
-
+      const Name =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotUsername'})
+      const AvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
+      const Tag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
+      // const Status =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
+      const Status = 'ONLINE'
+      const Creator = await ipcRenderer.invoke("@token/REQUEST", {title: 'getCreatorBotName'})
+      const Description = await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotDescriptionApplication'})
       
-      setAll({
-        botName,
-        botAvatarURL,
-        botTag,
-        botStatus
+      setBotInformation({
+        botName: Name,
+        botAvatarURL: AvatarURL,
+        botTag: Tag,
+        botStatus: Status,
+        botCreator: Creator,
+        botDescription: Description
       })
 
       
     })()
-    setLoading(false)
+    
+    setTimeout(()=> setLoading(false), 1)
+
+    
 
 
   }, [])
@@ -42,7 +56,7 @@ const ContextProfileProvider = ({ children }) => {
   return (
     <ContextProfile.Provider value={{
       
-      all
+      botInformation
 
     }} >
       {children}
@@ -52,9 +66,10 @@ const ContextProfileProvider = ({ children }) => {
 
 
 export const useProfile = () => {
-  const {  all } = useContext(ContextProfile)
+  const {  botInformation } = useContext(ContextProfile)
+  console.log(botInformation)
   return ({
-    ...all
+    ...botInformation
   })
 }
 

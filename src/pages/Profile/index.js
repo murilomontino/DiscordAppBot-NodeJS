@@ -5,7 +5,10 @@ import { useProfile } from "../../context/ContextProfile"
 function Profile() {
   const {
     botName,
-    botAvatarURL
+    botAvatarURL,
+    botStatus,
+    botCreator,
+    botDescription
 
   } = useProfile();
 
@@ -18,18 +21,16 @@ function Profile() {
             <img src={botAvatarURL} alt="Profile Avatar Bot"></img>
           </div>
           <div className="bot-information">
-            <p id="is-online">ONLINE </p>
+            <p id="is-online">{botStatus} </p>
             <p id="bot-name">{botName}</p>
-            <p id="bot-creator">Creator name</p>
+            <p id="bot-creator">{botCreator}</p>
           </div>
         </div>
 
         <div className="top-right-container">
           <div className="bot-description">
             <p>
-              Memes, image manipulation, memey gambling, stealing, and
-              stupidity. Our currency is in depth, our animals are cute, and our
-              bot is the best
+              {botDescription}
             </p>
           </div>
         </div>

@@ -11,7 +11,7 @@ class Bot extends Client{
 
         this.on("ready", async () =>{
             console.log(`${this.user.tag}`)
-            this.clientApplication = await this.fetchApplication()
+            
         })
 
         this.on("message", async msg => {
@@ -35,19 +35,21 @@ class Bot extends Client{
         
     }
     
-  
+    getCreator = async () =>  await this.clientApplication.owner.username
+ 
     logout = async () =>{
         this.token = null
         setTimeout(async ()=>await this.user.setStatus('invisible'), 1000)
         console.log('Bot offline')
     }
 
-    getOwner = () => this.clientApplication.owner
+    getOwner = async () => this.clientApplication.owner
 
-    getDescription = () => this.clientApplication.description
+    getDescription = async () => this.clientApplication.description
 
     async login(token){
-        await Client.prototype.login.call(this, token)   
+        await Client.prototype.login.call(this, token)
+        this.clientApplication = await this.fetchApplication()   
     }
 
 }
