@@ -13,15 +13,9 @@ const ContextAuthProvider = ({ children }) => {
   const [authentication, setAuthentication] = useState(false)
 
   const fetchToken = useCallback((async () => {
-    const check = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkBoxIsChecked', body: '' })
-    setCheckBoxIsChecked(check)
-    if (check) {
-      const token = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkToken', body: '' })
-      setInputToken(token)
-    }
-    else
-      setInputToken('')
-    
+    const {token, checkBox} = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkTokenBox', body: '' })
+    setCheckBoxIsChecked(checkBox)
+    setInputToken(token)
   }), [])
 
   const BoxSavedConfig = useCallback((async (token) => {
@@ -37,25 +31,24 @@ const ContextAuthProvider = ({ children }) => {
       await fetchToken()
       setLoading(false)
     })()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [fetchToken])
 
   if (loading)
     return <div />
 
-  async function HandleLogin(token) {
+  async function HandleLogin() {
 
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "loginWithToken",
-      token: token ? token : '',
+      token: inputToken,
     })
 
     if (response !== 'Error') {
-      BoxSavedConfig(token)
+      BoxSavedConfig(inputToken)
       setAuthentication(true)
       return true
     }
-    BoxSavedConfig(token)
+    BoxSavedConfig(inputToken)
     return false
   }
 

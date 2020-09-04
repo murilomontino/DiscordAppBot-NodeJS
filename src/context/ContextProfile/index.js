@@ -23,8 +23,7 @@ const ContextProfileProvider = ({ children }) => {
       const Name =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotUsername'})
       const AvatarURL =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotAvatarURL'})
       const Tag =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotTag'})
-      // const Status =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
-      const Status = 'ONLINE'
+      const Status =  await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotStatus'})
       const Creator = await ipcRenderer.invoke("@token/REQUEST", {title: 'getCreatorBotName'})
       const Description = await ipcRenderer.invoke("@token/REQUEST", {title: 'getBotDescriptionApplication'})
       
@@ -32,7 +31,7 @@ const ContextProfileProvider = ({ children }) => {
         botName: Name,
         botAvatarURL: AvatarURL,
         botTag: Tag,
-        botStatus: Status,
+        botStatus: Status.toUpperCase(),
         botCreator: Creator,
         botDescription: Description
       })
@@ -66,7 +65,7 @@ const ContextProfileProvider = ({ children }) => {
 
 export const useProfile = () => {
   const {  botInformation } = useContext(ContextProfile)
-  console.log(botInformation)
+
   return ({
     ...botInformation
   })
