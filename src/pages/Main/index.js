@@ -1,14 +1,11 @@
 import React from "react";
 import "./styles.css";
 import Profile from "../Profile";
-//import {useAuth} from '../../context/ContextAuthentication'
 
 const {ipcRenderer}  = window.require('electron')
 function Main() {
-//  const { HandleLogout } = useAuth()
 
   const HandleOnClick = () =>{
-    console.log('chegou aki')
     ipcRenderer.invoke('@token/REQUEST', {title: 'getBotOnwerApplication' })
   }
 
@@ -22,9 +19,9 @@ function Main() {
         <div className="item-menu"></div>
       </div>
       <div className="right-main-container">
-
-      <Profile/>
-
+      
+        <Profile/>
+      
 
       </div>
     </div>
