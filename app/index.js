@@ -3,7 +3,8 @@ const { ipcMain } = require('electron')
 module.exports = (mainWindow) => {
   
   const Comunication = require('./comunication')(mainWindow)
-  const port1 = ipcMain.on('@comunication/REQUEST', async (event, message) => {
+  
+  ipcMain.on('@comunication/REQUEST', async (event, message) => {
     try{
       const { title, ...body } = message
       await Comunication[title]({ ...body})
@@ -13,8 +14,8 @@ module.exports = (mainWindow) => {
   })
 
   
-  const port2 = ipcMain.handle('@token/REQUEST', async (event, message) => {
-  try{
+  ipcMain.handle('@token/REQUEST', async (event, message) => {
+    try{
     
     const { title, ...body } = message
     try {
@@ -24,13 +25,30 @@ module.exports = (mainWindow) => {
         return 'Error'
     }
   } catch (err){
-  }
-})
+  }})
 
-  return {
-    port1,
-    port2
-  }
+  
+// ================================================================================================
+// Eventos do MenuTitleBar 
+
+  ipcMain.handle('@window/REQUEST', async (event, message) => {
+    try {
+      
+      
+      if(message === 'maximize'){
+          if(mainWindow.isMaximized()){
+              mainWindow.unmaximize()
+          } else
+              mainWindow.maximize()
+      }else
+          mainWindow[message]()
+  
+    } catch (error) {
+     
+    }
+  
+  })
+
 
 }
 

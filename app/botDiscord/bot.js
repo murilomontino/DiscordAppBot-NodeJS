@@ -2,10 +2,20 @@ const { Client } = require('discord.js')
 
 const commandsReader = require('./scripts/commandsReader')
 
+const date = (msg) => {
+    const day = msg.createdAt.getDate()<10? `0${msg.createdAt.getDate()}`: msg.createdAt.getDate()
+    const month = msg.createdAt.getMonth()<10? `0${msg.createdAt.getMonth()}`: msg.createdAt.getMonth()
+    const year = msg.createdAt.getFullYear()
+    const hour = msg.createdAt.getHours()<10? `0${msg.createdAt.getHours()}`: msg.createdAt.getHours()
+    const minutes = msg.createdAt.getMinutes()<10? `0${msg.createdAt.getMinutes()}`: msg.createdAt.getMinutes()
+
+    return  `${day}/${month}/${year} (${hour}:${minutes})`
+}
+
 class Bot extends Client {
-    constructor(mainWindow, ...args) {
+    constructor(webContents, ...args) {
         super(...args)
-        this.mainWindow = mainWindow
+        this.webContents = webContents
         this.config = require('./config/config.json')
         this.commands = commandsReader(this.config.prefix)
 
@@ -16,14 +26,13 @@ class Bot extends Client {
 
         this.on("message", async msg => {
 
-            let messageFormated =  `${msg.author.username}: ${msg.content}`
+           
+            const messageFormated =  `${date(msg)} ${msg.author.username}: ${msg.content}`
                         
-            this.mainWindow.send('console/LOG', {messageFormated} )
-            
-
             if (this.user.presence.status === 'online') {
+
+                this.webContents.send('console/LOG', {messageFormated} )
                 if (!msg.author.bot) {
-                    console.log(`${msg.createdAt} ${msg.author.username}: ${msg.content}`)
 
                     const args = msg.content.split(" ")
                     if (this.commands[args[0]]) {

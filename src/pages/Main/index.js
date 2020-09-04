@@ -17,9 +17,9 @@ function Main() {
   })
 
 
-  const HandleOnClick = () =>{
-    ipcRenderer.invoke('@token/REQUEST', {title: 'getBotOnwerApplication' })
-  }
+  // const HandleOnClick = () =>{
+  //   ipcRenderer.invoke('@token/REQUEST', {title: 'getBotOnwerApplication' })
+  // }
 
   return (
     
