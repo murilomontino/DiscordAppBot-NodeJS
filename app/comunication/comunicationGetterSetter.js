@@ -4,7 +4,7 @@ const comunicationBot = (CLient) => {
 
     const getBotUsername = () => DiscordAppBot.user.username
 
-    const getBotStatus = () => DiscordAppBot.user.presence.status
+    
 
     const getBotTag = () => DiscordAppBot.user.client.owner
 

@@ -5,8 +5,8 @@
   display: flex;
   align-items: center;
   min-height: 500px;
-
   position: relative;
+  
 }
 
 .right-main-container {
@@ -17,6 +17,8 @@
   position: absolute;
   right: 1.5rem;
   padding: 4rem;
+
+
 }
 
 .menu-container {
@@ -26,6 +28,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
 
 .item-menu {
