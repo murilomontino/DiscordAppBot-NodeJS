@@ -1,4 +1,3 @@
-require('../app')
 
 const  { BrowserWindow, app, ipcMain } = require('electron')
 
@@ -22,7 +21,7 @@ function createWindow() {
   mainWindow.loadURL(
     isDev ? 'http://localhost:3000' : `file://${path.resolve(__dirname, '..', 'build', 'index.html')}`,
   )
-
+  
   if (isDev) {
    mainWindow.webContents.openDevTools();
   }
@@ -30,6 +29,9 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  require('../app')(mainWindow.webContents)
+
 
 }
 
@@ -48,6 +50,9 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+
+
 
 // ================================================================================================
 // Eventos do MenuTitleBar 

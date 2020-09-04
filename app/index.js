@@ -1,17 +1,19 @@
-const Comunication = require('./comunication')
-
 const { ipcMain } = require('electron')
 
-ipcMain.on('@comunication/REQUEST', async (event, message) => {
-  try{
-    const { title, ...body } = message
-    await Comunication[title]({ ...body})
-    
-  } catch (error) {}
+module.exports = (mainWindow) => {
   
-})
+  const Comunication = require('./comunication')(mainWindow)
+  const port1 = ipcMain.on('@comunication/REQUEST', async (event, message) => {
+    try{
+      const { title, ...body } = message
+      await Comunication[title]({ ...body})
+      
+    } catch (error) {}
+    
+  })
 
-ipcMain.handle('@token/REQUEST', async (event, message) => {
+  
+  const port2 = ipcMain.handle('@token/REQUEST', async (event, message) => {
   try{
     
     const { title, ...body } = message
@@ -21,11 +23,19 @@ ipcMain.handle('@token/REQUEST', async (event, message) => {
     } catch (error) {
         return 'Error'
     }
-    
-
-    
   } catch (err){
   }
- 
-
 })
+
+  return {
+    port1,
+    port2
+  }
+
+}
+
+
+
+
+
+
