@@ -8,22 +8,30 @@ function Profile() {
     botName,
     GetBotAvatarURL,
     botAvatarURL,
+    GetBotStatus,
+    botStatus,
+    GetBotTag,
+    botTag
   } = useProfile();
 
   useEffect(() => {
     GetBotUsername();
     GetBotAvatarURL();
+    GetBotStatus();
+    GetBotTag();
+    
   }, []);
 
   return (
     <>
+      {console.log(botTag)}
       <div className="top-container">
         <div className="top-left-container">
           <div className="profile-pic">
             <img src={botAvatarURL} alt="Profile Picture"></img>
           </div>
           <div className="bot-information">
-            <p id="is-online">ONLINE </p>
+            <p id="is-online">{botStatus}</p>
             <p id="bot-name">{botName}</p>
             <p id="bot-creator">Creator name</p>
           </div>

@@ -81,6 +81,7 @@
 #is-online {
   color: var(--color-primary);
   font-family: Poppins-Bold;
+  text-transform: uppercase;
 }
 @media (max-width: 950px) {
   .information-container {
