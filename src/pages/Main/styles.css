@@ -6,7 +6,7 @@
   align-items: center;
   min-height: 500px;
   position: relative;
-  
+  margin-top: 35px;
 }
 
 .right-main-container {
@@ -34,11 +34,26 @@
 .item-menu {
   height: 50px;
   width: 50px;
-  background-color: lavenderblush;
+  background-color: var(--color-primary);
   margin-top: 4rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  border: 0;
 }
-
-
+.item-menu:hover{
+  background-color: var(--color-font-primary);
+}
+.icon-menu{
+  height: 25px;
+  fill: var(--color-font-primary);  
+}
+.item-menu:hover > .icon-menu{
+  fill: var(--color-primary);
+}
 
 @media (max-width: 950px) {
   .right-main-container {
