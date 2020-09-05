@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from "react";
+import React, { useState, useMemo, useRef, useCallback } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -8,18 +8,19 @@ import "./checkbox.css";
 import { useAuthentication } from "../../../context/ContextAuthentication";
 
 export default () => {
-  const [loading, setLoading] = useState(false);
-  const [isWrongToken, setIsWrongToken] = useState(false);
-  const [redirect, setRedirect] = useState(false);
-  const [isSubmited, setIsSubmited] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [isWrongToken, setIsWrongToken] = useState(false)
+  const [redirect, setRedirect] = useState(false)
+
   const {
     inputToken,
     checkBoxIsChecked,
     setInputToken,
     setCheckBoxIsChecked,
     HandleLogin,
-  } = useAuthentication();
-  const inputTokenRef = useRef(null);
+  } = useAuthentication()
+
+  const inputTokenRef = useRef(null)
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -33,7 +34,7 @@ export default () => {
         // Loading animation end
       )
     );
-  }, [loading]);
+  }, [loading])
 
   const memoizodCheck = useMemo(() => {
     const boxChecked = () =>
@@ -62,37 +63,31 @@ export default () => {
      </>
   
     );
-  }, [setCheckBoxIsChecked, checkBoxIsChecked]);
+  }, [setCheckBoxIsChecked, checkBoxIsChecked])
 
-  const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false);
+  const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false)
 
-  useEffect(() => {
+  const isSubmited = useCallback(async () => {
+      setLoading(true)
+      const response = await HandleLogin()
 
-    if (isSubmited) {
-      (async () => {
-        setLoading(true);
-
-        setTimeout(async () => {
-          const response = await HandleLogin(inputToken)
-
+        setTimeout(() => {
           if (response) {
-            setRedirect(true);
-            return () => {};
+            setRedirect(true)
+            return () => {}
           }
-          setLoading(false);
-          setIsWrongToken(true);
-        }, 1000);
-      })();
-      setIsSubmited(false);
-    }
-  }, [HandleLogin, inputToken, isSubmited]);
+          setLoading(false)
+          setIsWrongToken(true)
+        }, 1000)
+      
+    }, [HandleLogin])
 
   const HandleSubmit = (event) => {
-    event.preventDefault();
-    setIsSubmited(true);
-    let isInputNotEmpty = inputTokenRef.current.value !== "";
-    let currentInputValue = inputTokenRef.current.value;
-    setInputToken( (token) => isInputNotEmpty ? currentInputValue:(checkBoxIsChecked?token:""));
+    event.preventDefault()
+    let isInputNotEmpty = inputTokenRef.current.value !== ""
+    let currentInputValue = inputTokenRef.current.value
+    setInputToken( (token) => isInputNotEmpty ? currentInputValue:(checkBoxIsChecked?token:""))
+    isSubmited()
     
   };
 

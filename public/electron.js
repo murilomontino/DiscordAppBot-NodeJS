@@ -1,4 +1,3 @@
-require('../app')
 
 const  { BrowserWindow, app, ipcMain } = require('electron')
 
@@ -16,20 +15,22 @@ function createWindow() {
     frame: false,
     webPreferences: {
       nodeIntegration: true
-    },
+    }
   })
 
   mainWindow.loadURL(
     isDev ? 'http://localhost:3000' : `file://${path.resolve(__dirname, '..', 'build', 'index.html')}`,
   )
-
+  
   if (isDev) {
    mainWindow.webContents.openDevTools();
   }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
-  });
+  })
+
+  require('../app')(mainWindow)
 
 }
 
@@ -49,23 +50,6 @@ app.on('activate', () => {
   }
 });
 
-// ================================================================================================
-// Eventos do MenuTitleBar 
 
-ipcMain.handle('@window/REQUEST', async (event, message) => {
-  try {
-    
-    
-    if(message === 'maximize'){
-        if(mainWindow.isMaximized()){
-            mainWindow.unmaximize()
-        } else
-            mainWindow.maximize()
-    }else
-        mainWindow[message]()
 
-  } catch (error) {
-   
-  }
 
-})

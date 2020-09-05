@@ -15,6 +15,12 @@ const comunicationBot = (CLient, configuration) => {
 
     const checkBoxIsChecked = async () => config.checkBox
 
+    const checkTokenBox = async () => {
+        const token = await checkToken()
+        const checkBox = await checkBoxIsChecked()
+        return {token, checkBox}
+    }
+
     const logoutBot = async () => { await DiscordAppBot.logout() }
 
     const saveTokenCheck = ({ checkBox, token, ...body }) => {
@@ -32,6 +38,7 @@ const comunicationBot = (CLient, configuration) => {
     }
     
     return {
+        checkTokenBox,
         loginWithToken,
         checkBoxIsChecked,
         logoutBot,
