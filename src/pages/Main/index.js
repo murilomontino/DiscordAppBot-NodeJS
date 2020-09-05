@@ -26,7 +26,7 @@ function Main() {
     <div className="background">
       <div className="menu-container">
         <div className="item-menu">
-          <a href="/">Login</a>
+          <button>teste</button>
         </div>
         <div className="item-menu"></div>
         <div className="item-menu"></div>
