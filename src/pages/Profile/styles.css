@@ -52,6 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select:text;
 }
 .bot-information{
   margin-left: 1.5rem;
