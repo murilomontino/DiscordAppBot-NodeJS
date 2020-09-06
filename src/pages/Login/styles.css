@@ -86,7 +86,7 @@
   margin-bottom: 1rem;
 }
 .right-container input[type=text]::placeholder{
-  color:var(--color-font-primary);
+  color:var(--color-font-terceary);
 }
 
 
