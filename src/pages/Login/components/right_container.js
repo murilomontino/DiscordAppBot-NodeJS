@@ -15,9 +15,9 @@ export default () => {
   const {
     inputToken,
     checkBoxIsChecked,
-    setInputToken,
     setCheckBoxIsChecked,
     HandleLogin,
+    tokenRef
   } = useAuthentication()
 
   const inputTokenRef = useRef(null)
@@ -67,9 +67,9 @@ export default () => {
 
   const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false)
 
-  const isSubmited = useCallback(async () => {
+  const isSubmited = useCallback(async (token) => {
       setLoading(true)
-      const response = await HandleLogin()
+      const response = await HandleLogin(token)
 
         setTimeout(() => {
           if (response) {
@@ -85,9 +85,9 @@ export default () => {
   const HandleSubmit = (event) => {
     event.preventDefault()
     let isInputNotEmpty = inputTokenRef.current.value !== ""
-    let currentInputValue = inputTokenRef.current.value
-    setInputToken( (token) => isInputNotEmpty ? currentInputValue:(checkBoxIsChecked?token:""))
-    isSubmited()
+    let currentInputValue = isInputNotEmpty ? inputTokenRef.current.value:(checkBoxIsChecked?tokenRef.current:"") 
+    console.log(currentInputValue)
+    isSubmited(currentInputValue)
     
   };
 

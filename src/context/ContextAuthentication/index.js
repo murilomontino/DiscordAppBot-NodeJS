@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useEffect, useCallback } from 'react'
+import React, { useState, useContext, createContext, useEffect, useCallback, useRef } from 'react'
 
 const { ipcRenderer } = window.require('electron')
 const ContextAuth = createContext()
@@ -11,11 +11,13 @@ const ContextAuthProvider = ({ children }) => {
   
   const [loading, setLoading] = useState(true)
   const [authentication, setAuthentication] = useState(false)
+  const tokenRef = useRef(null)
 
   const fetchToken = useCallback((async () => {
     const {token, checkBox} = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkTokenBox', body: '' })
     setCheckBoxIsChecked(checkBox)
     setInputToken(token)
+    tokenRef.current = token
   }), [])
 
   const BoxSavedConfig = useCallback((async (token) => {
@@ -26,30 +28,37 @@ const ContextAuthProvider = ({ children }) => {
     })
   }), [checkBoxIsChecked])
 
+
+
   useEffect(() => {
     (async () => {
       await fetchToken()
-      setLoading(false)
     })()
-  }, [fetchToken])
+    setTimeout(setLoading(false), 100)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (loading)
     return <div />
 
-  async function HandleLogin() {
+
+  async function HandleLogin(token) {
 
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "loginWithToken",
-      token: inputToken,
+      token: token,
     })
 
     if (response !== 'Error') {
-      BoxSavedConfig(inputToken)
+      BoxSavedConfig(token)
       setAuthentication(true)
       return true
     }
-    BoxSavedConfig(inputToken)
-    return false
+    else{
+      BoxSavedConfig(token)
+      return false
+    }
+   
   }
 
   async function HandleLogout() {
@@ -70,7 +79,8 @@ const ContextAuthProvider = ({ children }) => {
       HandleLogin,
       HandleLogout,
       authentication,
-      loading
+      loading,
+      HandleLogout
 
     }} >
       {children}
@@ -80,11 +90,11 @@ const ContextAuthProvider = ({ children }) => {
 
 
 export const useAuthentication = () => {
-  const { inputToken, checkBoxIsChecked, setInputToken, setCheckBoxIsChecked, HandleLogin, HandleLogout, authentication, loading } = useContext(ContextAuth)
+  const { inputToken, checkBoxIsChecked, tokenRef, setCheckBoxIsChecked, HandleLogin, HandleLogout, authentication, loading } = useContext(ContextAuth)
 
   return ({
     inputToken,
-    setInputToken,
+    tokenRef,
     checkBoxIsChecked,
     setCheckBoxIsChecked,
     HandleLogin,
