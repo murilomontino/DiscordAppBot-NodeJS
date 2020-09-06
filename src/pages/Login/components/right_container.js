@@ -11,7 +11,6 @@ export default () => {
   const [loading, setLoading] = useState(false)
   const [isWrongToken, setIsWrongToken] = useState(false)
   const [redirect, setRedirect] = useState(false)
-
   const {
     inputToken,
     checkBoxIsChecked,
@@ -68,19 +67,18 @@ export default () => {
   const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false)
 
   const isSubmited = useCallback(async (token) => {
-      setLoading(true)
-      const response = await HandleLogin(token)
-
-        setTimeout(() => {
-          if (response) {
-            setRedirect(true)
-            return () => {}
-          }
-          setLoading(false)
-          setIsWrongToken(true)
-        }, 1000)
-      
-    }, [HandleLogin])
+    setLoading(true)
+    const response = await HandleLogin(token)
+      setTimeout(() => {
+        if (response) {
+          setRedirect(true)
+          return () => {}
+        }
+        setLoading(false)
+        setIsWrongToken(true)
+      }, 1000)
+    
+  }, [HandleLogin])
 
   const HandleSubmit = (event) => {
     event.preventDefault()
@@ -91,6 +89,8 @@ export default () => {
     
   };
 
+
+
   const SetInputOnBlur = (event) => {
       if(checkBoxIsChecked){
         event.target.placeholder=inputToken;
@@ -99,13 +99,6 @@ export default () => {
       }
   }
 
-  const SetInputOnFocus = (event) => {
-      if(isWrongToken){
-        RemoveBorderRed();
-      }else{
-        event.target.placeholder = "";
-      }
-  }
 
   const SetInputPlaceHolder = () => {
       if(isWrongToken){
@@ -116,6 +109,16 @@ export default () => {
         return "";
       }
   }
+
+  const SetInputOnFocus = (event) => {
+    if(isWrongToken){
+     
+      RemoveBorderRed();
+     
+    }else{
+      event.target.placeholder = "";
+    }
+}
 
   return (
     <section className="right-container">
@@ -130,8 +133,8 @@ export default () => {
               type="text"
               name="token"
               placeholder={SetInputPlaceHolder()}
-              onFocus={(e) => SetInputOnFocus(e)}
               onBlur={(e) => SetInputOnBlur(e)}
+              onFocus={(e) => SetInputOnFocus(e)}              
               ref={inputTokenRef}
               className={isWrongToken ? "wrong-token" : undefined}
             />
