@@ -77,7 +77,7 @@ const ContextAuthProvider = ({ children }) => {
       setInputToken,
       setCheckBoxIsChecked,
       HandleLogin,
-      HandleLogout,
+      tokenRef,
       authentication,
       loading,
       HandleLogout
