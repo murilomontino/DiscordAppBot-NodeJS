@@ -12,11 +12,11 @@ export default () => {
   const [isWrongToken, setIsWrongToken] = useState(false)
   const [redirect, setRedirect] = useState(false)
   const {
-    inputToken,
     checkBoxIsChecked,
     setCheckBoxIsChecked,
     HandleLogin,
-    tokenRef
+    tokenRef,
+    
   } = useAuthentication()
 
   const inputTokenRef = useRef(null)
@@ -82,10 +82,10 @@ export default () => {
 
   const HandleSubmit = (event) => {
     event.preventDefault()
-    let isInputNotEmpty = inputTokenRef.current.value !== ""
-    let currentInputValue = isInputNotEmpty ? inputTokenRef.current.value:(checkBoxIsChecked?tokenRef.current:"") 
-    console.log(currentInputValue)
-    isSubmited(currentInputValue)
+    if ( inputTokenRef.current.value !== "") {
+      tokenRef.current = inputTokenRef.current.value
+    } 
+    isSubmited(tokenRef.current)
     
   };
 
@@ -93,7 +93,7 @@ export default () => {
 
   const SetInputOnBlur = (event) => {
       if(checkBoxIsChecked){
-        event.target.placeholder=inputToken;
+        event.target.placeholder=tokenRef.current;
       }else{
         event.target.placeholder=""
       }
@@ -104,7 +104,7 @@ export default () => {
       if(isWrongToken){
         return "Ops, token incorreto! :(";
       }else if(checkBoxIsChecked){
-        return inputToken;
+        return tokenRef.current;
       }else{
         return "";
       }
