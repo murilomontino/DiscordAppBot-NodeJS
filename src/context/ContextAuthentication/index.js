@@ -49,6 +49,7 @@ const ContextAuthProvider = ({ children }) => {
     })
 
     BoxSavedConfig(token)
+    setAuthentication(true)
     return response==='Error'? false:true
    
   }
