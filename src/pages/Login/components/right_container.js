@@ -26,14 +26,9 @@ export default () => {
   }, [inputTokenRef, tokenRef])
 
   const SetInputOnFocus = useCallback( (event) => {
-    
-    const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false)
-
-    if(isWrongToken){
-      RemoveBorderRed();
+      setIsWrongToken(false)
       event.target.value = tokenRef.current
-    }
-}, [isWrongToken, tokenRef])
+}, [tokenRef])
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -102,9 +97,6 @@ export default () => {
     
   };
 
-  
-
-
   return (
     <section className="right-container">
       {redirect && <Redirect to="/" />}
@@ -118,7 +110,7 @@ export default () => {
               type="text"
               name="token"
               placeholder={isWrongToken? "Ops, token incorreto! :(":''}
-              onFocus={(e) => SetInputOnFocus(e)}              
+              onFocus={ isWrongToken? ((e) => SetInputOnFocus(e)):(()=>{}) }              
               ref={inputTokenRef}
               className={isWrongToken ? "wrong-token" : undefined}
             />
