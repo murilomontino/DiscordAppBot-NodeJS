@@ -48,21 +48,14 @@ const ContextAuthProvider = ({ children }) => {
       token: token,
     })
 
-    if (response !== 'Error') {
-      BoxSavedConfig(token)
-      setAuthentication(true)
-      return true
-    }
-    else{
-      BoxSavedConfig(token)
-      return false
-    }
+    BoxSavedConfig(token)
+    return response==='Error'? false:true
    
   }
 
   async function HandleLogout() {
     await ipcRenderer.invoke("@token/REQUEST", {
-      title: "getBotUsername",
+      title: "logoutBot",
       body: '',
     })
     await fetchToken()
