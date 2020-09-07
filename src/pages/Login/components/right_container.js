@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useCallback } from "react";
+import React, { useState, useMemo, useRef, useCallback, useEffect } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -20,6 +20,15 @@ export default () => {
   } = useAuthentication()
 
   const inputTokenRef = useRef(null)
+
+  useEffect(() => {
+    inputTokenRef.current.value = tokenRef.current
+  }, [inputTokenRef, tokenRef])
+
+  const SetInputOnFocus = useCallback( (event) => {
+      setIsWrongToken(false)
+      event.target.value = tokenRef.current
+}, [tokenRef])
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -64,7 +73,6 @@ export default () => {
     );
   }, [setCheckBoxIsChecked, checkBoxIsChecked])
 
-  const RemoveBorderRed = () => (isWrongToken ? setIsWrongToken(false) : false)
 
   const isSubmited = useCallback(async (token) => {
     setLoading(true)
@@ -89,37 +97,6 @@ export default () => {
     
   };
 
-
-
-  const SetInputOnBlur = (event) => {
-      if(checkBoxIsChecked){
-        event.target.placeholder=tokenRef.current;
-      }else{
-        event.target.placeholder=""
-      }
-  }
-
-
-  const SetInputPlaceHolder = () => {
-      if(isWrongToken){
-        return "Ops, token incorreto! :(";
-      }else if(checkBoxIsChecked){
-        return tokenRef.current;
-      }else{
-        return "";
-      }
-  }
-
-  const SetInputOnFocus = (event) => {
-    if(isWrongToken){
-     
-      RemoveBorderRed();
-     
-    }else{
-      event.target.placeholder = "";
-    }
-}
-
   return (
     <section className="right-container">
       {redirect && <Redirect to="/" />}
@@ -132,9 +109,8 @@ export default () => {
             <input
               type="text"
               name="token"
-              placeholder={SetInputPlaceHolder()}
-              onBlur={(e) => SetInputOnBlur(e)}
-              onFocus={(e) => SetInputOnFocus(e)}              
+              placeholder={isWrongToken? "Ops, token incorreto! :(":''}
+              onFocus={ isWrongToken? ((e) => SetInputOnFocus(e)):(()=>{}) }              
               ref={inputTokenRef}
               className={isWrongToken ? "wrong-token" : undefined}
             />
