@@ -13,11 +13,12 @@ function createWindow() {
     minHeight: 200,
     minWidth: 750,
     frame: false,
+    backgroundColor: '#36393f',
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     }
   })
-
+  
   mainWindow.loadURL(
     isDev ? 'http://localhost:3000' : `file://${path.resolve(__dirname, '..', 'build', 'index.html')}`,
   )
@@ -50,6 +51,13 @@ app.on('activate', () => {
   }
 });
 
+app.on('browser-window-created', async (event, window) =>{
+ 
 
+})
+
+app.on('web-contents-created', async (event, webContents) => {
+  
+})
 
 

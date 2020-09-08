@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
 import {useAuthentication} from './context/ContextAuthentication/'
+import Profile from './pages/Profile';
 
 const CustomRoute = ( {isPrivate, ...rest}) => {
     const {loading, authentication} = useAuthentication()
@@ -12,7 +13,7 @@ const CustomRoute = ( {isPrivate, ...rest}) => {
         return <div/> 
 
     if(!authentication && isPrivate)
-        return <Redirect to='/Login'/>
+        return <Redirect to='/login'/>
 
     return <Route {...rest}/>
 }
@@ -21,8 +22,9 @@ export default () => {
     return (
         <BrowserRouter>
             <Switch>
+                <CustomRoute path='/profile' exact component={Profile}></CustomRoute>
                 <CustomRoute isPrivate path="/" exact component={Main} />
-                <CustomRoute path="/Login" component={Login} />
+                <CustomRoute path="/login" component={Login} />
             </Switch>
         </BrowserRouter>
     )

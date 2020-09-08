@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './styles.css';
 
@@ -8,23 +8,38 @@ import { ReactComponent as SquareIcon} from '../../assets/Icons/squareIcon.svg';
 
 const { ipcRenderer } = window.require('electron')
 
+const ButtonParent = ({isParent, children ,...rest}) =>{
+    
+    if(isParent)
+            return <div/>
+
+    return <button {...rest}> {children} </button>
+}
+
 const MenuTitleBar = () => {
     
-    const Close = () => ipcRenderer.invoke('@window/REQUEST', 'close' )
+    const [isChildren, setIsChildren] = useState(false)
     
-    const Minimize = () => ipcRenderer.invoke('@window/REQUEST', 'minimize' )
+    ipcRenderer.on('parent-window', async (event, message)=>{
+        setIsChildren(true)
+    })
     
-    const Maximize = () => ipcRenderer.invoke('@window/REQUEST', 'maximize' )
-       
-            
+
+    const Close = () => ipcRenderer.invoke('@window/REQUEST', {title: 'close'} )
     
+    const Minimize = () => ipcRenderer.invoke('@window/REQUEST', {title: 'minimize'} )
+    
+    const Maximize = () => ipcRenderer.invoke('@window/REQUEST', {title: 'maximize'} )
+    
+    
+        
     return (
         <div className="title-bar">
         <div className="title-text"> Cthulhu bot </div>
         <div className="title-bar-btns">
-            <button   onClick={Minimize}><MinusIcon className="icon-minus" /></button>
-            <button   onClick={Maximize}><SquareIcon className="icon-square"/></button>
-            <button   onClick={Close}><CloseIcon className="icon-close" /></button>
+            <ButtonParent isParent={isChildren}  onClick={Minimize}><MinusIcon className="icon-minus" /></ButtonParent>
+            <ButtonParent isParent={isChildren}  onClick={Maximize}><SquareIcon className="icon-square"/></ButtonParent>
+            <button   onClick={Close}> <CloseIcon className="icon-close" /> </button>
         </div>
         </div>
 
