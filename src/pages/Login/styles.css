@@ -84,13 +84,10 @@
   font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  
 }
 .right-container input[type=text]::placeholder{
-<<<<<<< HEAD
   color:var(--color-font-secundary);
-=======
-  color:var(--color-font-terceary);
->>>>>>> 5e6cc7dda3f5708c69f999ed900f1cc9ac484456
 }
 
 

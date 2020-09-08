@@ -113,6 +113,7 @@ export default () => {
               onFocus={ isWrongToken? ((e) => SetInputOnFocus(e)):(()=>{}) }              
               ref={inputTokenRef}
               className={isWrongToken ? "wrong-token" : undefined}
+              spellCheck="false"
             />
              <div className="after-input-container">
             {memoizodCheck}

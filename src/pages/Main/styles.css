@@ -44,7 +44,7 @@
   outline: none;
   border: 0;
 }
-.item-menu:hover{
+.item-menu:hover, .item-menu-selected{
   background-color: var(--color-font-primary);
 }
 .icon-menu{
@@ -54,6 +54,12 @@
 .item-menu:hover > .icon-menu{
   fill: var(--color-primary);
 }
+
+.item-menu-selected  .icon-menu{
+  fill: var(--color-primary);
+}
+
+
 
 @media (max-width: 950px) {
   .right-main-container {
