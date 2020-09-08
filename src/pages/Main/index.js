@@ -66,9 +66,7 @@ function Main() {
 
         <form action="/">
           <button
-            onClick={(e) => {
-              ItemMenuSelection(e);
-            }}
+         
             type="submit"
             className="item-menu"
             title={itensMenu.VOLTAR}
