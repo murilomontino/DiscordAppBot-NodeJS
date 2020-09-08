@@ -6,16 +6,19 @@ import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.sv
 import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
 import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
 
+const routerComponent = () =>{
+
+  return {
+    Perfil:( <ContextProfileProvider> <Profile/> </ContextProfileProvider>),
+    Testes: (<div></div>),
+    Voltar: (<div></div>)
+  }
+
+}
+
 function Main() {
   const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
-  const { ipcRenderer } = window.require("electron");
-  ipcRenderer.on("console/LOG", async (event, message) => {
-    try {
-      const { messageFormated } = message;
-      console.log(messageFormated);
-    } catch (error) {}
-  });
-
+  
   const itensMenu = {
     PERFIL: "Perfil",
     TESTES: "Testes",
@@ -23,18 +26,16 @@ function Main() {
   };
 
   const firstItemOnMenu = useRef(null);
-  // const HandleOnClick = () =>{
-  //   ipcRenderer.invoke('@token/REQUEST', {title: 'getBotOnwerApplication' })
-  // }
 
   const ItemMenuSelection = (event) => {
+
     const newItemSelected = event.currentTarget;
     if (newItemSelected !== selectedItemOnMenu.current) {
       selectedItemOnMenu.classList.remove("item-menu-selected");
       newItemSelected.classList.add("item-menu-selected");
       setSelectedItemOnMenu(newItemSelected);
     }
-  };
+  }
 
   useEffect(() => {
     setSelectedItemOnMenu(firstItemOnMenu.current);
@@ -43,11 +44,11 @@ function Main() {
   return (
     <div className="background">
       <div className="menu-container">
+        
+        
         <button
           ref={firstItemOnMenu}
-          onClick={(e) => {
-            ItemMenuSelection(e);
-          }}
+          onClick={(e) => ItemMenuSelection(e)}
           className="item-menu item-menu-selected"
           title={itensMenu.PERFIL}
         >
@@ -55,36 +56,31 @@ function Main() {
         </button>
 
         <button
-          onClick={(e) => {
-            ItemMenuSelection(e);
-          }}
+          onClick={(e) => ItemMenuSelection(e)}
           className="item-menu"
           title={itensMenu.TESTES}
         >
           <PlugueIcon className="icon-menu" />
         </button>
 
-        <form action="/">
+        
           <button
-            onClick={(e) => {
-              ItemMenuSelection(e);
-            }}
-            type="submit"
+            onClick={(e) => ItemMenuSelection(e)}
             className="item-menu"
             title={itensMenu.VOLTAR}
           >
             <BackIcon className="icon-menu" />
           </button>
-        </form>
+        
       </div>
+
       <div className="right-main-container">
-        {selectedItemOnMenu !== null &&
-          selectedItemOnMenu.title === itensMenu.PERFIL && (
-            <ContextProfileProvider>
-              <Profile />
-            </ContextProfileProvider>
-          )}
+
+        {routerComponent()[selectedItemOnMenu.title]}
+      
       </div>
+
+
     </div>
   );
 }
