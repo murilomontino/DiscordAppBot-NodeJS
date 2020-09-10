@@ -25,11 +25,11 @@ const MenuTitleBar = () => {
     })
     
 
-    const Close = () => ipcRenderer.invoke('@window/REQUEST', {title: 'close'} )
+    const Close = () => ipcRenderer.send('@window/REQUEST', {title: 'close'} )
     
-    const Minimize = () => ipcRenderer.invoke('@window/REQUEST', {title: 'minimize'} )
+    const Minimize = () => ipcRenderer.send('@window/REQUEST', {title: 'minimize'} )
     
-    const Maximize = () => ipcRenderer.invoke('@window/REQUEST', {title: 'maximize'} )
+    const Maximize = () => ipcRenderer.send('@window/REQUEST', {title: 'maximize'} )
     
     
         
