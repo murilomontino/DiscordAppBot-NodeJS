@@ -1,18 +1,17 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./styles.css";
 import Profile from "../Profile";
+import {useAuthentication} from "../../context/ContextAuthentication"
 import ContextProfileProvider from "../../context/ContextProfile/";
 import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.svg";
 import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
 import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
-import { Redirect } from "react-router";
 
 const routerComponent = () =>{
 
   return {
     Perfil:( <ContextProfileProvider> <Profile/> </ContextProfileProvider>),
     Testes: (<div></div>),
-    Voltar: (<Redirect to="/login" />)
   }
 
 }
@@ -23,11 +22,10 @@ function Main() {
   const itensMenu = {
     PERFIL: "Perfil",
     TESTES: "Testes",
-    VOLTAR: "Voltar",
-  };
+  }
 
   const firstItemOnMenu = useRef(null);
-
+  const {HandleLogout} = useAuthentication() 
   const ItemMenuSelection = (event) => {
 
     const newItemSelected = event.currentTarget;
@@ -66,10 +64,10 @@ function Main() {
 
         
           <button
-            onClick={(e) => ItemMenuSelection(e)}
+            onClick={HandleLogout}
             type="submit"
             className="item-menu"
-            title={itensMenu.VOLTAR}
+            title='Logout'
           >
             <BackIcon className="icon-menu" />
           </button>
@@ -77,7 +75,6 @@ function Main() {
       </div>
 
       <div className="right-main-container">
-
         {routerComponent()[selectedItemOnMenu.title]}
       
       </div>

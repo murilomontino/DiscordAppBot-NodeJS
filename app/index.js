@@ -31,7 +31,7 @@ module.exports = (mainWindow) => {
 // ================================================================================================
 // Eventos do MenuTitleBar 
 
-  ipcMain.handle('@window/REQUEST', async (event, message) => {
+  ipcMain.on('@window/REQUEST', async (event, message) => {
     try {
       const {title} = message
       const mainWindow = BrowserWindow.getFocusedWindow()
