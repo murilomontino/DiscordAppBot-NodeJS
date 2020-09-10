@@ -1,6 +1,7 @@
-import React from "react"
-import "./styles.css"
-import { useProfile } from "../../context/ContextProfile"
+import React from "react";
+import "./styles.css";
+import { useProfile } from "../../context/ContextProfile";
+import GuildCard from "./components/guild_card.js";
 
 function Profile() {
   const {
@@ -8,14 +9,11 @@ function Profile() {
     botAvatarURL,
     botStatus,
     botCreator,
-    botDescription
-
+    botDescription,
   } = useProfile();
-
 
   return (
     <>
-      
       <div className="top-container">
         <div className="top-left-container">
           <div className="profile-pic">
@@ -30,15 +28,21 @@ function Profile() {
 
         <div className="top-right-container">
           <div className="bot-description">
-            <p>
-              {botDescription}
-            </p>
+            <p>{botDescription}</p>
           </div>
         </div>
       </div>
 
       <div className="down-container">
-        <div className="internal-down-container"> </div>
+        <div className="internal-down-container">
+      
+            <h3 id="guilds-title">Guilds:</h3>
+            <div className="guilds-container">
+              <GuildCard /> <GuildCard /> <GuildCard /> <GuildCard />
+              <GuildCard /> <GuildCard />
+            </div>
+       
+        </div>
       </div>
     </>
   );

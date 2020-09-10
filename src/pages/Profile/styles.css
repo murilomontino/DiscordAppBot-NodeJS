@@ -64,6 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 }
 
 .internal-down-container {
@@ -71,8 +72,22 @@
   width: 100%;
   background-color: var(--color-background-dark);
   border-radius: 2rem;
+  
+  overflow-y:auto;
+  overflow-x:auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.guilds-container{
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 #bot-name {
   font-family: Poppins-Bold;
   font-size: 2.5rem;
@@ -90,6 +105,13 @@
   font-family: Poppins-Bold;
   text-transform: uppercase;
 }
+
+#guilds-title{
+  margin-bottom: 2rem;
+}
+
+
+
 @media (max-width: 950px) {
   .information-container {
     width: 35%;
@@ -102,6 +124,7 @@
   #bot-creator {
     font-size: 1.5rem;
   }
+
 }
 
 @media (max-height: 600px) {
