@@ -132,9 +132,9 @@
   font-family: Archivo-Bold;
   position: absolute;
   right: 0;
-
   font-size: 1.7rem;
   transition: background-color 0.2s;
+  color:var(--color-font-primary);
 }
 
 .right-container button:hover {
