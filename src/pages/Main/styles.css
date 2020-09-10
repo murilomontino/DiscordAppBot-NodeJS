@@ -1,44 +1,75 @@
-.background{
-    background: var(--color-primary);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
+.background {
+  background: var(--color-background-darkest);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  position: relative;
+  margin-top: 35px;
+}
+
+.right-main-container {
+  height: 90%;
+  width: 89%;
+  background: var(--color-background);
+  border-radius: 2rem;
+  position: absolute;
+  right: 1.5rem;
+  padding: 4rem;
+
 
 }
 
-.right-main-container{
-    height: 96vh;
-    width: 90%;
-    background: var(--color-background);
-    border-radius: 2rem;
-    position: absolute;
-    right: 1.5rem;
+.menu-container {
+  height: 100%;
+  width: 9%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
 }
 
-.menu-container{
-    width: 9%;
-    height: 100%;   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+.item-menu {
+  height: 50px;
+  width: 50px;
+  background-color: var(--color-primary);
+  margin-top: 4rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+}
+.item-menu:hover, .item-menu-selected{
+  background-color: var(--color-font-primary);
+}
+.icon-menu{
+  height: 25px;
+  fill: var(--color-font-primary);  
+}
+.item-menu:hover > .icon-menu{
+  fill: var(--color-primary);
 }
 
-.item-menu{
-    height: 50px;
-    width: 50px;
-    background-color: lavenderblush;
-    margin-top: 4rem;
+.item-menu-selected  .icon-menu{
+  fill: var(--color-primary);
 }
 
-@media(max-width: 950px){
-    
-.right-main-container{
+
+
+@media (max-width: 950px) {
+  .right-main-container {
     width: 80%;
+  }
+  .menu-container {
+    width: 19%;
+  }
+
+
+
 }
-.menu-container{
-    width:19%;;
-}
-}
+

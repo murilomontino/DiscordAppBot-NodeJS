@@ -1,0 +1,57 @@
+.title-bar {
+  -webkit-app-region: drag;
+  height: 35px;
+
+  width: 100%;
+
+  background: var(--color-background);
+  display: flex;
+  position: fixed;
+  z-index: 2;
+
+
+}
+
+.title-text {
+
+  position: absolute;
+  left: 20px;  
+  font-size: 13px;
+  display: flex;
+  align-self: center;
+
+}
+
+.title-bar-btns {
+  -webkit-app-region: no-drag;
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  display: flex;
+  align-self: center;
+}
+
+.title-bar-btns button {
+  width: 45px;
+  height: 100%;
+  background-color: transparent;
+  outline: 0;
+  border: none;
+
+}
+
+.title-bar-btns button:hover {
+  background-color: var(--color-input);
+}
+
+
+
+.icon-close, .icon-minus, .icon-square{
+  fill: var(--color-font-primary);
+}
+
+.icon-square{
+  height: 12px;
+
+}
+

@@ -1,18 +1,87 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./styles.css";
+import Profile from "../Profile";
+import {useAuthentication} from "../../context/ContextAuthentication"
+import ContextProfileProvider from "../../context/ContextProfile/";
+import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.svg";
+import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
+import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
+
+const routerComponent = () =>{
+
+  return {
+    Perfil:( <ContextProfileProvider> <Profile/> </ContextProfileProvider>),
+    Testes: (<div></div>),
+  }
+
+}
 
 function Main() {
+  const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
+  
+  const itensMenu = {
+    PERFIL: "Perfil",
+    TESTES: "Testes",
+  }
+
+  const firstItemOnMenu = useRef(null);
+  const {HandleLogout} = useAuthentication() 
+  const ItemMenuSelection = (event) => {
+
+    const newItemSelected = event.currentTarget;
+    if (newItemSelected !== selectedItemOnMenu.current) {
+      selectedItemOnMenu.classList.remove("item-menu-selected");
+      newItemSelected.classList.add("item-menu-selected");
+      setSelectedItemOnMenu(newItemSelected);
+    }
+  }
+
+  useEffect(() => {
+    setSelectedItemOnMenu(firstItemOnMenu.current);
+  }, []);
+
   return (
     <div className="background">
-        <div className="menu-container">
-          <div className="item-menu"></div>
-          <div className="item-menu"></div>
-          <div className="item-menu"></div>
-        </div>
-        <div className="right-main-container"></div>
-    </div>
+      <div className="menu-container">
+        
+        
+        <button
+          ref={firstItemOnMenu}
+          onClick={(e) => ItemMenuSelection(e)}
+          className="item-menu item-menu-selected"
+          title={itensMenu.PERFIL}
+        >
+          <ProfileIcon className="icon-menu" />
+        </button>
 
-)
+        <button
+          onClick={(e) => ItemMenuSelection(e)}
+          className="item-menu"
+          title={itensMenu.TESTES}
+        >
+          <PlugueIcon className="icon-menu" />
+        </button>
+
+        
+          <button
+            onClick={HandleLogout}
+            type="submit"
+            className="item-menu"
+            title='Logout'
+          >
+            <BackIcon className="icon-menu" />
+          </button>
+        
+      </div>
+
+      <div className="right-main-container">
+        {routerComponent()[selectedItemOnMenu.title]}
+      
+      </div>
+
+
+    </div>
+  );
 }
 
 export default Main;

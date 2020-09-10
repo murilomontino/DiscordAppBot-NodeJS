@@ -1,23 +1,18 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navegador from './components/menuBar'
-import Login from "./pages/Login";
-import Main from "./pages/Main";
-import './assets/styles/global.css';
+import React from "react";
 
+import "./assets/styles/global.css";
+import Routers from "./routers";
+import ContextAuthProvider from "./context/ContextAuthentication";
+import ContextProfileProvider from "./context/ContextProfile";
 
-function App() {
+export default () => {
   return (
-    <div className="App"> 
-    <BrowserRouter>
-      {/* <Navegador/> */}
-      <Switch>
-        <Route path="/Main" exact component={Main} />
-        <Route path="/" component={Login} />
-      </Switch>
-    </BrowserRouter>
-    </div> 
-  )
-}
-
-export default App
+    <div className="App">
+      <ContextAuthProvider>
+        <ContextProfileProvider>
+          <Routers />
+        </ContextProfileProvider>
+      </ContextAuthProvider>
+    </div>
+  );
+};
