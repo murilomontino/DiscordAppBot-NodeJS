@@ -67,11 +67,18 @@ function Main() {
         <button
           onClick={(e) => ItemMenuSelection(e)}
           className="item-menu"
-          title={itensMenu.TESTES}
+          title={itensMenu.REGRAS}
         >
           <PlugueIcon className="icon-menu" />
         </button>
 
+        <button
+          onClick={(e) => ItemMenuSelection(e)}
+          className="item-menu"
+          title={itensMenu.TESTES}
+        >
+          <PlugueIcon className="icon-menu" />
+        </button>
         
           <button
             onClick={HandleLogout}
@@ -85,7 +92,7 @@ function Main() {
       </div>
 
       <div className="right-main-container">
-        {routerComponent()[selectedItemOnMenu.title]}
+        {routerComponent(selectedItemOnMenu.title)}
       
       </div>
 

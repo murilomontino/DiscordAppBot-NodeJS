@@ -72,23 +72,25 @@ textarea {
 
 
 
-.App::-webkit-scrollbar {
+::-webkit-scrollbar {
 
   width: 13px; 
   background-color: var(--color-background-darkest);
+  border-radius: 10px;
 }
-
 .App::-webkit-scrollbar-track {
+  margin-top: 35px;
+}
+::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0); 
   border-radius: 10px;
-  margin-top: 35px;
-
 }
 
-.App::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   
   border-radius: 10px;
   background-color: var(--color-input);
+  
 
 }
 

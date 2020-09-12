@@ -10,20 +10,20 @@
 }
 
 .right-main-container {
-  height: 90%;
-  width: 89%;
+  height: 95%;
+  width: 91%;
   background: var(--color-background);
   border-radius: 2rem;
   position: absolute;
   right: 1.5rem;
-  padding: 4rem;
+  padding: 3rem;
 
 
 }
 
 .menu-container {
   height: 100%;
-  width: 9%;  
+  width: 8%;  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,10 +63,10 @@
 
 @media (max-width: 950px) {
   .right-main-container {
-    width: 80%;
+    width: 85%;
   }
   .menu-container {
-    width: 19%;
+    width: 12%;
   }
 
 
