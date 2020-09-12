@@ -39,7 +39,7 @@ function Profile() {
             <h3 id="guilds-title">Guilds:</h3>
             <div className="guilds-container">
               <GuildCard /> <GuildCard /> <GuildCard /> <GuildCard />
-              <GuildCard /> <GuildCard />
+              <GuildCard /> 
             </div>
        
         </div>

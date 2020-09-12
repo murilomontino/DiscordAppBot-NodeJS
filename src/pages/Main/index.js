@@ -7,14 +7,7 @@ import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.sv
 import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
 import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
 
-const routerComponent = () =>{
 
-  return {
-    Perfil:( <ContextProfileProvider> <Profile/> </ContextProfileProvider>),
-    Testes: (<div></div>),
-  }
-
-}
 
 function Main() {
   const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
@@ -22,6 +15,23 @@ function Main() {
   const itensMenu = {
     PERFIL: "Perfil",
     TESTES: "Testes",
+    REGRAS: "Regras",
+  }
+
+  const routerComponent = (itemSelected) =>{
+    switch (itemSelected) {
+      case itensMenu.PERFIL:
+        return <ContextProfileProvider> <Profile/> </ContextProfileProvider>
+      
+      case itensMenu.TESTES:
+        return <div></div>
+
+      case itensMenu.REGRAS:
+        return <div></div>
+
+      default:
+        return <div><h1>Página não encontrada :(</h1></div>
+    }
   }
 
   const firstItemOnMenu = useRef(null);
@@ -57,11 +67,18 @@ function Main() {
         <button
           onClick={(e) => ItemMenuSelection(e)}
           className="item-menu"
-          title={itensMenu.TESTES}
+          title={itensMenu.REGRAS}
         >
           <PlugueIcon className="icon-menu" />
         </button>
 
+        <button
+          onClick={(e) => ItemMenuSelection(e)}
+          className="item-menu"
+          title={itensMenu.TESTES}
+        >
+          <PlugueIcon className="icon-menu" />
+        </button>
         
           <button
             onClick={HandleLogout}
@@ -75,7 +92,7 @@ function Main() {
       </div>
 
       <div className="right-main-container">
-        {routerComponent()[selectedItemOnMenu.title]}
+        {routerComponent(selectedItemOnMenu.title)}
       
       </div>
 
