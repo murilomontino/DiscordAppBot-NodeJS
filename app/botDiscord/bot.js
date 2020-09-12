@@ -24,6 +24,8 @@ class Bot extends Client {
 
         })
 
+        
+
         this.on("message", async msg => {
 
            
