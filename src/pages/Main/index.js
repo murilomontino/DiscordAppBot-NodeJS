@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./styles.css";
 import Profile from "../Profile";
+import Bestiary from '../Bestiary/'
 import {useAuthentication} from "../../context/ContextAuthentication"
 import ContextProfileProvider from "../../context/ContextProfile/";
 import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.svg";
 import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
 import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
-
 
 
 function Main() {
@@ -24,7 +24,7 @@ function Main() {
         return <ContextProfileProvider> <Profile/> </ContextProfileProvider>
       
       case itensMenu.TESTES:
-        return <div></div>
+        return <Bestiary/>
 
       case itensMenu.REGRAS:
         return <div></div>
