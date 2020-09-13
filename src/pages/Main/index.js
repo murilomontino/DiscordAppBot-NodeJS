@@ -85,7 +85,8 @@ function Main() {
       </div>
 
       <div className="right-main-container">
-        {routerComponent()[selectedItemOnMenu.title]}
+        
+        {routerComponent(selectedItemOnMenu.title)}
       
       </div>
 
