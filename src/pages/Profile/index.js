@@ -5,7 +5,6 @@ import GuildCard from './components/guild_card'
 
 function Profile() {
 
-
   return (
     <>
       
