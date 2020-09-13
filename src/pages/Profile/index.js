@@ -1,7 +1,7 @@
 import React from "react"
 import "./styles.css"
 import InformationProfile from './components/information_profile'
-import GuildCards from './components/guild_card'
+import GuildCard from './components/guild_card'
 
 function Profile() {
 
@@ -12,8 +12,15 @@ function Profile() {
       <InformationProfile/>
 
       <div className="down-container">
-        <div className="internal-down-container"> </div>
-        <GuildCards/><GuildCards/><GuildCards/>
+        <div className="internal-down-container">
+      
+            <h3 id="guilds-title">Guilds:</h3>
+            <div className="guilds-container">
+              <GuildCard /> <GuildCard /> <GuildCard /> <GuildCard />
+              <GuildCard /> 
+            </div>
+       
+        </div>
       </div>
     </>
   );
