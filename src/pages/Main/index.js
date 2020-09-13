@@ -72,6 +72,14 @@ function Main() {
           <PlugueIcon className="icon-menu" />
         </button>
 
+        <button
+          onClick={(e) => ItemMenuSelection(e)}
+          className="item-menu"
+          title={itensMenu.REGRAS}
+        >
+          <PlugueIcon className="icon-menu" />
+        </button>
+
         
           <button
             onClick={HandleLogout}
