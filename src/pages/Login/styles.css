@@ -138,7 +138,7 @@
 }
 
 .right-container button:hover {
-  background-color: var(--color-button-light);
+  background-color: var(--color-primary-light);
 }
 
 .right-container .input-container {

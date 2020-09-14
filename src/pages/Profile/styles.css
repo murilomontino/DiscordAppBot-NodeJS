@@ -94,11 +94,11 @@ button {
 #bot-creator {
   font-size: 1.8rem;
   font-family: Poppins-Bold;
-  color: var(--color-primary);
+  color: var(--color-primary-light);
 }
 
 #is-online {
-  color: var(--color-primary);
+  color: var(--color-primary-light);
   font-family: Poppins-Bold;
   text-transform: uppercase;
 }
