@@ -5,11 +5,10 @@ export default () => {
 return(<> 
 <div className="card"> 
 <div className="card-icon"></div>
-<div className="card-name-container"> Guild Name Here</div>
+<div className="card-name-container"> Rule Name Here</div>
 <div className="card-informations"> 
-<p>Membros: 10.000</p>
-<p>Membros Online: 666</p>
-<p>Criador: Meliro</p>
+<p>Linguagem: pt/br</p>
+
 </div>
 </div>
 </>)

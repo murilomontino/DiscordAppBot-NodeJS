@@ -37,9 +37,9 @@ function Profile() {
         <div className="internal-down-container">
       
             <h3 id="guilds-title">Guilds:</h3>
-            <div className="guilds-container">
+            <div className="cards-container">
               <GuildCard /> <GuildCard /> <GuildCard /> <GuildCard />
-              <GuildCard /> 
+              <GuildCard />  <GuildCard /> 
             </div>
        
         </div>

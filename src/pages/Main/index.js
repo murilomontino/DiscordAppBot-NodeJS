@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./styles.css";
 import Profile from "../Profile";
+import Rules from "../Rules";
 import {useAuthentication} from "../../context/ContextAuthentication"
 import ContextProfileProvider from "../../context/ContextProfile/";
 import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.svg";
 import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
 import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
-
+import { ReactComponent as RulesIcon } from "../../assets/Icons/rulesIcon.svg";
 
 
 function Main() {
@@ -27,7 +28,7 @@ function Main() {
         return <div></div>
 
       case itensMenu.REGRAS:
-        return <div></div>
+        return <Rules/>
 
       default:
         return <div><h1>Página não encontrada :(</h1></div>
@@ -36,6 +37,7 @@ function Main() {
 
   const firstItemOnMenu = useRef(null);
   const {HandleLogout} = useAuthentication() 
+
   const ItemMenuSelection = (event) => {
 
     const newItemSelected = event.currentTarget;
@@ -57,7 +59,7 @@ function Main() {
         
         <button
           ref={firstItemOnMenu}
-          onClick={(e) => ItemMenuSelection(e)}
+          onClick={ItemMenuSelection}
           className="item-menu item-menu-selected"
           title={itensMenu.PERFIL}
         >
@@ -65,15 +67,15 @@ function Main() {
         </button>
 
         <button
-          onClick={(e) => ItemMenuSelection(e)}
+          onClick={ItemMenuSelection}
           className="item-menu"
           title={itensMenu.REGRAS}
         >
-          <PlugueIcon className="icon-menu" />
+          <RulesIcon className="icon-menu" />
         </button>
 
         <button
-          onClick={(e) => ItemMenuSelection(e)}
+          onClick={ItemMenuSelection}
           className="item-menu"
           title={itensMenu.TESTES}
         >

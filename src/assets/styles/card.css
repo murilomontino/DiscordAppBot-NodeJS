@@ -1,4 +1,4 @@
-.guild{
+.card{
     width:  350px;
     min-width:  250px;
     height: 400px;
@@ -13,7 +13,7 @@
     
 }
 
-.guild-icon{
+.card-icon{
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -23,7 +23,7 @@
 
 }
 
-.guild-name-container{
+.card-name-container{
     width: 100%;
     height: 50px;
     background-color: #fff;
@@ -38,8 +38,16 @@
     overflow: hidden;
 }
 
-.guild-informations{
+.card-informations{
     font-size: 2rem;
     margin-top: 2rem;
     text-align: center;
+}
+
+.cards-container{
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

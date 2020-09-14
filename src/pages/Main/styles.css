@@ -17,7 +17,7 @@
   position: absolute;
   right: 1.5rem;
   padding: 3rem;
-
+  overflow-y: auto;
 
 }
 
@@ -61,7 +61,7 @@
 
 
 
-@media (max-width: 950px) {
+@media (max-width: 1100px) {
   .right-main-container {
     width: 85%;
   }
