@@ -8,6 +8,7 @@ import { ReactComponent as ProfileIcon } from "../../assets/Icons/profileIcon.sv
 import { ReactComponent as PlugueIcon } from "../../assets/Icons/plugueIcon.svg";
 import { ReactComponent as BackIcon } from "../../assets/Icons/backIcon.svg";
 import { ReactComponent as RulesIcon } from "../../assets/Icons/rulesIcon.svg";
+import { ReactComponent as ThreePersonsIcon} from "../../assets/Icons/threePersonsIcon.svg";
 
 
 function Main() {
@@ -17,6 +18,7 @@ function Main() {
     PERFIL: "Perfil",
     TESTES: "Testes",
     REGRAS: "Regras",
+    PERSONAGENS: "Personagens",
   }
 
   const routerComponent = (itemSelected) =>{
@@ -25,10 +27,13 @@ function Main() {
         return <ContextProfileProvider> <Profile/> </ContextProfileProvider>
       
       case itensMenu.TESTES:
-        return <div></div>
+        return <div><h3>Test Button</h3></div>
 
       case itensMenu.REGRAS:
         return <Rules/>
+
+      case itensMenu.PERSONAGENS:
+        return <div> <h3>Personagens</h3></div>
 
       default:
         return <div><h1>Página não encontrada :(</h1></div>
@@ -72,6 +77,14 @@ function Main() {
           title={itensMenu.REGRAS}
         >
           <RulesIcon className="icon-menu" />
+        </button>
+
+        <button
+          onClick={ItemMenuSelection}
+          className="item-menu"
+          title={itensMenu.PERSONAGENS}
+        >
+          <ThreePersonsIcon className="icon-menu" />
         </button>
 
         <button
