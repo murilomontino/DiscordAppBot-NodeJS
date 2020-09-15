@@ -14,6 +14,7 @@ function Profile() {
         <div className="internal-down-container">
       
             <h3 id="guilds-title">Guilds:</h3>
+            
             <div className="guilds-container">
               <GuildCard /> <GuildCard /> <GuildCard />
             </div>

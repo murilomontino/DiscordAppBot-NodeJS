@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useRef, useCallback } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -6,29 +6,25 @@ import "./loading.css";
 import "./checkbox.css";
 
 import { useAuthentication } from "../../../context/ContextAuthentication";
+import { Form } from "@unform/web";
+import { InputToken } from "./inputToken";
+
 
 export default () => {
+  const formRefToken = useRef(null)
   const [loading, setLoading] = useState(false)
-  const [isWrongToken, setIsWrongToken] = useState(false)
   const [redirect, setRedirect] = useState(false)
+
   const {
     checkBoxIsChecked,
     setCheckBoxIsChecked,
     HandleLogin,
     tokenRef,
-    
   } = useAuthentication()
 
-  const inputTokenRef = useRef(null)
-
-  useEffect(() => {
-    inputTokenRef.current.value = tokenRef.current
-  }, [inputTokenRef, tokenRef])
-
-  const SetInputOnFocus = useCallback( (event) => {
-      setIsWrongToken(false)
-      event.target.value = tokenRef.current
-}, [tokenRef])
+  const initialDate = {
+    token: tokenRef.current
+  }
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -49,7 +45,7 @@ export default () => {
       checkBoxIsChecked ? setCheckBoxIsChecked(false) : setCheckBoxIsChecked(true);
 
     return (
-     <>
+      <>
         <input
           type="checkbox"
           id="cbx"
@@ -68,59 +64,51 @@ export default () => {
         </label>
 
         <p>Lembrar token</p>
-     </>
-  
+      </>
+
     );
   }, [setCheckBoxIsChecked, checkBoxIsChecked])
 
+  const HandleSubmit = useCallback(
+    async (data) => {
+      setLoading(true)
 
-  const isSubmited = useCallback(async (token) => {
-    setLoading(true)
-    const response = await HandleLogin(token)
+      const response = await HandleLogin(data.token)
       setTimeout(() => {
         if (response) {
           setRedirect(true)
-          return () => {}
+          return () => { }
         }
         setLoading(false)
-        setIsWrongToken(true)
-      }, 1000)
-    
-  }, [HandleLogin])
+        formRefToken.current.setFieldError('token', 'error')
 
-  const HandleSubmit = (event) => {
-    event.preventDefault()
-    if ( inputTokenRef.current.value !== "") {
-      tokenRef.current = inputTokenRef.current.value
-    } 
-    isSubmited(tokenRef.current)
-    
-  };
+      }, 1000)
+    },
+    [HandleLogin],
+  )
 
   return (
     <section className="right-container">
       {redirect && <Redirect to="/" />}
       {memoizodLoading}
-  
+
       {!loading && (
-        <div className="input-container">
-          <p id="p-before-input">Entre com seu Token:</p>
-          <form onSubmit={HandleSubmit}>
-            <input
+        <Form className="input-container" ref={formRefToken} onSubmit={HandleSubmit} initialData={initialDate}>
+         
+            <p id="p-before-input">Entre com seu Token:</p>
+            <InputToken
               type="text"
               name="token"
-              placeholder={isWrongToken? "Ops, token incorreto! :(":''}
-              onFocus={ isWrongToken? ((e) => SetInputOnFocus(e)):(()=>{}) }              
-              ref={inputTokenRef}
-              className={isWrongToken ? "wrong-token" : undefined}
-              spellCheck="false"
+              className='inputToken'
             />
-             <div className="after-input-container">
-            {memoizodCheck}
-            <button type="submit">Entrar</button>
+
+            <div className="after-input-container">
+              {memoizodCheck}
+              <button type="submit">Entrar</button>
             </div>
-          </form>
-        </div>
+         
+        </Form>
+  
       )}
     </section>
   );

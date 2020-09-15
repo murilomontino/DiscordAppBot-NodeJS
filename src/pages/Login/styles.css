@@ -73,7 +73,8 @@
 #p-before-input{
   margin-left: 0.3rem;
 }
-.right-container input[type=text] {
+
+.inputToken {
   height: 60px;
   width: 100%;
   background-color: var(--color-input);
@@ -86,6 +87,7 @@
   margin-bottom: 1rem;
   
 }
+
 .right-container input[type=text]::placeholder{
   color:var(--color-font-secundary);
 }
