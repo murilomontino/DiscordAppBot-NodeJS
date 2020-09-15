@@ -1,15 +1,11 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {useField} from '@unform/core'
-import { useAuthentication } from '../../../context/ContextAuthentication'
 
 export const InputToken = ({name, ...rest}) => {
    
     const inputRef = useRef(null)
     const {fieldName, registerField, defaultValue, error} = useField(name)
 
-    const {
-      tokenRef,
-    } = useAuthentication()
     
     useEffect(() => {
         registerField({
@@ -28,18 +24,9 @@ export const InputToken = ({name, ...rest}) => {
         
       }
 
-      const SetInputOnFocus = useCallback( () => {
-        if(inputRef.current.className === 'wrong-token inputToken'){
-          inputRef.current.value = tokenRef.current
-          inputRef.current.className = 'inputToken'
-          inputRef.current.placeholder = ''
-        }
-      }, [tokenRef])
-
-
       return (
           <div>
-              <input ref={inputRef} defaultValue={defaultValue} onFocus={SetInputOnFocus} {...rest} />
+              <input ref={inputRef} defaultValue={defaultValue} {...rest} />
               {error && ErrorTokenInvalid() }
           </div>
       

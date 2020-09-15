@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useCallback } from "react";
+import React, { useState, useMemo, useRef, useCallback, useEffect } from "react";
 import { Redirect } from "react-router";
 
 import "./loading.css";
@@ -22,9 +22,13 @@ export default () => {
     tokenRef,
   } = useAuthentication()
 
-  const initialDate = {
-    token: tokenRef.current
-  }
+  useEffect(()=>{
+    formRefToken.current.setData({
+      token: tokenRef.current
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
 
   const memoizodLoading = useMemo(() => {
     return (
@@ -69,6 +73,18 @@ export default () => {
     );
   }, [setCheckBoxIsChecked, checkBoxIsChecked])
 
+  const SetInputOnFocus = useCallback( () => {
+    const ref = formRefToken.current.getFieldRef('token')	 
+    if(ref.className === 'wrong-token inputToken'){
+      ref.className = 'inputToken'
+      ref.placeholder = ''
+      formRefToken.current.setData({
+        token: tokenRef.current
+      }) 
+      
+    }
+  }, [tokenRef])
+
   const HandleSubmit = useCallback(
     async (data) => {
       setLoading(true)
@@ -93,13 +109,14 @@ export default () => {
       {memoizodLoading}
 
       {!loading && (
-        <Form className="input-container" ref={formRefToken} onSubmit={HandleSubmit} initialData={initialDate}>
+        <Form className="input-container" ref={formRefToken} onSubmit={HandleSubmit}>
          
             <p id="p-before-input">Entre com seu Token:</p>
             <InputToken
               type="text"
               name="token"
               className='inputToken'
+              onFocus={SetInputOnFocus}
             />
 
             <div className="after-input-container">
