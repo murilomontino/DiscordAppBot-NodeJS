@@ -1,0 +1,60 @@
+.textItem {
+    text-align: center;
+  }
+
+.textItem .MuiListItemText-primary {
+    font-size: 1.5rem;
+    color: #e5e7e7f1;
+  }
+  
+.iconButton.MuiSvgIcon-root {
+    margin-left: auto;
+    font-size: 3.5rem;
+    color: white;
+  }
+
+
+.listBar.MuiList-root {
+    top: 30%;
+    height: auto;
+    margin-left: 6px;
+    background-color: var(--color-background-dark);
+    border-radius: 1rem;
+
+  }
+
+.drawer.MuiDrawer-root {
+    height: auto;
+    margin-top: 48px;
+    margin-left: 6px;
+    background-color: transparent;
+    border-color: transparent;
+    flex-shrink: 0;
+    white-space: nowrap
+}
+
+.drawer.MuiDrawer-paper{
+    height: 90%;
+    margin-top: 48px;
+    margin-left: 6px;
+    background-color: transparent;
+    border-color: transparent;
+    flex-shrink: 0;
+    white-space: nowrap
+}
+
+.toolbar.MuiListItem-root {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.toolbar.MuiListItem-root:hover{
+    background-color: var(--color-font-primary);
+}
+
+.toolbar.MuiListItem-root:hover .iconButton {
+    color:  var(--color-primary-dark);
+} 
+
