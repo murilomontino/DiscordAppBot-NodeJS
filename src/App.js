@@ -1,5 +1,5 @@
 import React from "react";
-
+import 'fontsource-roboto'
 import "./assets/styles/global.css";
 import Routers from "./routers";
 import ContextAuthProvider from "./context/ContextAuthentication";

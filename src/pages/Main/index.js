@@ -52,13 +52,20 @@ function Main() {
 
   return (
     <div className="background">
-      <div className="menu-container">
+      {/* <div className="menu-container">
         
-        
+      <button
+          onClick={(e) => ItemMenuSelection(e)}
+          className="item-menu item-menu-selected"
+          title={itensMenu.TESTES}
+        >
+          <PlugueIcon className="icon-menu" />
+        </button>
+
         <button
           ref={firstItemOnMenu}
           onClick={(e) => ItemMenuSelection(e)}
-          className="item-menu item-menu-selected"
+          className="item-menu"
           title={itensMenu.PERFIL}
         >
           <ProfileIcon className="icon-menu" />
@@ -72,13 +79,6 @@ function Main() {
           <PlugueIcon className="icon-menu" />
         </button>
 
-        <button
-          onClick={(e) => ItemMenuSelection(e)}
-          className="item-menu"
-          title={itensMenu.TESTES}
-        >
-          <PlugueIcon className="icon-menu" />
-        </button>
         
           <button
             onClick={HandleLogout}
@@ -89,11 +89,10 @@ function Main() {
             <BackIcon className="icon-menu" />
           </button>
         
-      </div>
+      </div> */}
 
       <div className="right-main-container">
-        {routerComponent(selectedItemOnMenu.title)}
-      
+        {routerComponent(itensMenu.TESTES)}
       </div>
 
 

@@ -2,7 +2,6 @@ import React, { useState, useMemo, useRef, useCallback, useEffect } from "react"
 import { Redirect } from "react-router";
 
 import "./loading.css";
-
 import "./checkbox.css";
 
 import { useAuthentication } from "../../../context/ContextAuthentication";
@@ -22,12 +21,11 @@ export default () => {
     tokenRef,
   } = useAuthentication()
 
-  useEffect(()=>{
+  useEffect(() => {
     formRefToken.current.setData({
       token: tokenRef.current
     })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [tokenRef])
 
 
   const memoizodLoading = useMemo(() => {
@@ -73,15 +71,15 @@ export default () => {
     );
   }, [setCheckBoxIsChecked, checkBoxIsChecked])
 
-  const SetInputOnFocus = useCallback( () => {
-    const ref = formRefToken.current.getFieldRef('token')	 
-    if(ref.className === 'wrong-token inputToken'){
+  const SetInputOnFocus = useCallback(() => {
+    const ref = formRefToken.current.getFieldRef('token')
+    if (ref.className === 'wrong-token inputToken') {
       ref.className = 'inputToken'
       ref.placeholder = ''
       formRefToken.current.setData({
         token: tokenRef.current
-      }) 
-      
+      })
+
     }
   }, [tokenRef])
 
@@ -110,22 +108,22 @@ export default () => {
 
       {!loading && (
         <Form className="input-container" ref={formRefToken} onSubmit={HandleSubmit}>
-         
-            <p id="p-before-input">Entre com seu Token:</p>
-            <InputToken
-              type="text"
-              name="token"
-              className='inputToken'
-              onFocus={SetInputOnFocus}
-            />
 
-            <div className="after-input-container">
-              {memoizodCheck}
-              <button type="submit">Entrar</button>
-            </div>
-         
+          <p id="p-before-input">Entre com seu Token:</p>
+          <InputToken
+            type="text"
+            name="token"
+            className='inputToken'
+            onFocus={SetInputOnFocus}
+          />
+
+          <div className="after-input-container">
+            {memoizodCheck}
+            <button type="submit">Entrar</button>
+          </div>
+
         </Form>
-  
+
       )}
     </section>
   );

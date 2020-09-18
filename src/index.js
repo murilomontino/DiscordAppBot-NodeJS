@@ -4,9 +4,9 @@ import App from './App';
 import MenuTitleBar from './components/MenuTitleBar'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  
+    <App />,
+
   document.getElementById('root')
 );
 

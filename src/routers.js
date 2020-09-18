@@ -23,7 +23,7 @@ export default () => {
         <BrowserRouter>
             <Switch>
                 <CustomRoute path='/profile' exact component={Profile}></CustomRoute>
-                <CustomRoute isPrivate path="/" exact component={Main} />
+                <CustomRoute path="/" exact component={Main} />
                 <CustomRoute path="/login" component={Login} />
             </Switch>
         </BrowserRouter>

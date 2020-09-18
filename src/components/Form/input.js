@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import {useField} from '@unform/core'
 
-export const InputToken = ({name, ...rest}) => {
+export const Input = ({name, ...rest}) => {
    
     const inputRef = useRef(null)
     const {fieldName, registerField, defaultValue, error} = useField(name)

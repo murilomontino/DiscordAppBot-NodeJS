@@ -1,8 +1,7 @@
-const Input = require('./input')
+const {Input} = require('./input')
+const {ImageInput} = require('./image_input')
 
-export default () => {
-
-    return {
-        Input
-    }
+module.exports = {
+    Input,
+    ImageInput
 }
