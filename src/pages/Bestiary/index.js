@@ -2,8 +2,6 @@ import React, { useRef, useState } from 'react'
 import { Form } from '@unform/web';
 import GuildCard from '../Profile/components/guild_card'
 import ImageInput from '../../components/Form/image_input';
-import MiniDrawer from '../../components/DrawerMenu/drawer'
-import { FaBeer } from 'react-icons/fa'
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -47,8 +45,8 @@ const Bestiary = () => {
             
             <button onClick={HandleClick}>CLIQUE AQUI PRA TESTAR!</button>
             <button onClick={handleClick}>SnackBar</button>
-            <FaBeer />
-            <MiniDrawer/>
+           
+
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
                     <label style={{ fontSize: '1.4rem' }}>This is a success message!</label>

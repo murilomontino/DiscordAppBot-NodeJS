@@ -8,7 +8,6 @@
   }
   
 .iconButton.MuiSvgIcon-root {
-    margin-left: auto;
     font-size: 3.5rem;
     color: white;
   }
@@ -18,7 +17,7 @@
     top: 30%;
     height: auto;
     margin-left: 6px;
-    background-color: var(--color-background-dark);
+    background-color:  var(--color-primary-dark);
     border-radius: 1rem;
 
   }
@@ -34,7 +33,7 @@
 }
 
 .drawer.MuiDrawer-paper{
-    height: 90%;
+    height: auto;
     margin-top: 48px;
     margin-left: 6px;
     background-color: transparent;
@@ -46,15 +45,42 @@
 .toolbar.MuiListItem-root {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    
+}
+
+.itemSelect > .toolbar.MuiListItem-root{
+  background-color:  var(--color-font-primary);
+  
+}
+.itemSelect > .toolbar.MuiListItem-root  .iconButton {
+  color:  var(--color-primary-dark);
+}
+
+.itemSelect > .toolbar.MuiListItem-root .MuiListItemText-primary {
+  color:  var(--color-primary-dark);
+}
+
+
+.arrow.toolbar.MuiListItem-root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.arrow.toolbar.MuiListItem-root .iconButton.MuiSvgIcon-root {
+  margin-left: auto;
 }
 
 .toolbar.MuiListItem-root:hover{
     background-color: var(--color-font-primary);
+    
 }
+
+
 
 .toolbar.MuiListItem-root:hover .iconButton {
     color:  var(--color-primary-dark);
 } 
 
+.toolbar.MuiListItem-root:hover .MuiListItemText-primary {
+  color:  var(--color-primary-dark);
+}

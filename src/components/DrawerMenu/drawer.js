@@ -1,48 +1,25 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
 
+import { useStyles } from './components/transitionStyle';
 import './styles.css'
+import Item from './components/Item';
+import { useRouter } from '../../context/ContextRouter';
 
-
-const {  ChevronLeftIcon, ChevronRightIcon, InboxIcon } = require('./components/icons').icons()
-const drawerWidth = 200;
-
-const useStyles = makeStyles((theme) => ({
-  drawerOpen: {
-    width: drawerWidth,
-    flexShrink: 0,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    flexShrink: 0,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    }
-  },
-  
-}));
+const { ChevronLeftIcon, ChevronRightIcon, PersonIcon, 
+  ExitToAppIcon, MusicNoteIcon, MenuBookIcon } = require('./components/icons').icons()
 
 export default function MiniDrawer() {
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  
+  const { itensMenu } = useRouter()
+ 
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -52,8 +29,8 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  return (
 
+  return (
     <Drawer
       variant="permanent"
 
@@ -78,29 +55,27 @@ export default function MiniDrawer() {
 
       <List className='listBar' >
 
-        <ListItem className='toolbar' onClick={open ? handleDrawerClose : handleDrawerOpen} button>
-
-          <ListItemIcon>
-            
-            {open ? <ChevronLeftIcon className='iconButton'/> :
-              <ChevronRightIcon className='iconButton'/>}
-          
-          </ListItemIcon>
-
-        </ListItem >
+        {open ?
+          <Item Icon={ChevronLeftIcon} arrow onClick={handleDrawerClose} /> :
+          <Item Icon={ChevronRightIcon} arrow onClick={handleDrawerOpen} />
+        }
 
         <Divider />
 
-        <ListItem className='toolbar' button>
-
-          <ListItemIcon> <InboxIcon className='iconButton' /> </ListItemIcon>
-          <ListItemText className='textItem' primary={open ? 'DEFAULT' : ''} />
         
-        </ListItem >
+        <Item Icon={PersonIcon} firstPage title={itensMenu.PERFIL}  name={'Perfil'} />
+        <Item Icon={MusicNoteIcon} title={itensMenu.SOUNDPAD}  name={'SoundPad'} />
+        <Item Icon={MenuBookIcon} title={itensMenu.TESTES}  name={'Testes de Tela'} />
+
+        
+        <Divider />
+        <Item Icon={ExitToAppIcon} name={'Logout'} />
+        
+
 
       </List>
 
     </Drawer>
 
-  );
+  )
 }
