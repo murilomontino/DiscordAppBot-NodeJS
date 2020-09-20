@@ -1,38 +1,26 @@
 import React, { useContext, createContext, useState } from 'react'
-import Profile from "../../pages/Profile";
-import Bestiary from '../../pages/Bestiary/'
 
 import ContextProfileProvider from "../../context/ContextProfile/";
 
+const { PAGE } = require('./constants/pages')
 
 const ContextRouter = createContext()
 
 
 const ContextRouterProvider = ({ children }) => {
+    
 
     const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
-    const itensMenu = {
-        PERFIL: "Perfil",
-        TESTES: "Testes",
-        REGRAS: "Regras",
-        SOUNDPAD: 'Soundpad',
-        LOGOUT: 'Logout'
-    }
-
+    
     const routerComponent = (itemSelected) => {
-        switch (itemSelected) {
-            case itensMenu.PERFIL:
-                return <ContextProfileProvider> <Profile /> </ContextProfileProvider>
-
-            case itensMenu.TESTES:
-                return <Bestiary />
-
-            case itensMenu.SOUNDPAD:
-                return <div></div>
-
-            default:
-                return <div><h1>Página não encontrada :(</h1></div>
+        
+        try {
+            const COMPONENT = PAGE[itemSelected]? PAGE[itemSelected]: <div><h1>Página não encontrada :(</h1></div>
+            return (<ContextProfileProvider> < COMPONENT/> </ContextProfileProvider> )
+        } catch (err) {
+            console.error(err) 
         }
+        
     }
     
     const ItemMenuSelection = (event) => {
@@ -51,11 +39,11 @@ const ContextRouterProvider = ({ children }) => {
 
 return (
     <ContextRouter.Provider value={{
-        itensMenu,
         ItemMenuSelection,
         selectedItemOnMenu,
         routerComponent,
-        setSelectedItemOnMenu
+        setSelectedItemOnMenu,
+        
 
     }} >
         {children}

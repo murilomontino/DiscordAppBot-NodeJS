@@ -1,4 +1,23 @@
 {
-  "HOME": "/",
-  "LOGIN": "/login"
+  "HOME":{ 
+    "name": "Home",
+    "route": "/"
+  },
+  "LOGIN": { 
+    "name": "Login",
+    "route": "/Login"
+  },
+  "PROFILE":{ 
+    "name": "Profile",
+    "route": "/Profile"
+  },
+  "BESTIARY": { 
+    "name": "Bestiary",
+    "route": "/Bestiary"
+  },
+  "SOUNDPAD": { 
+    "name": "Soundpad",
+    "route": "/Soundpad"
+  }
+
 }

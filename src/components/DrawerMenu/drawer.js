@@ -8,10 +8,9 @@ import List from '@material-ui/core/List';
 import { useStyles } from './components/transitionStyle';
 import './styles.css'
 import Item from './components/Item';
-import { useRouter } from '../../context/ContextRouter';
 import { useAuthentication } from '../../context/ContextAuthentication';
 
-
+const ADDRESS = require('../../constants/routes.json')
 
 const { ChevronLeftIcon, ChevronRightIcon, PersonIcon, 
   ExitToAppIcon, MusicNoteIcon, MenuBookIcon } = require('./components/icons').icons()
@@ -21,7 +20,6 @@ export default function MiniDrawer() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   
-  const { itensMenu } = useRouter()
   const { HandleLogout } = useAuthentication()
 
   const handleDrawerOpen = () => {
@@ -66,9 +64,9 @@ export default function MiniDrawer() {
         <Divider />
 
         
-        <Item Icon={PersonIcon} firstPage title={itensMenu.PERFIL}  name={'Perfil'} />
-        <Item Icon={MusicNoteIcon} title={itensMenu.SOUNDPAD}  name={'SoundPad'} />
-        <Item Icon={MenuBookIcon} title={itensMenu.TESTES}  name={'Testes de Tela'} />
+        <Item Icon={PersonIcon} firstPage title={ADDRESS.PROFILE.name}  name={'Perfil'} />
+        <Item Icon={MusicNoteIcon} title={ADDRESS.SOUNDPAD.name}  name={'SoundPad'} />
+        <Item Icon={MenuBookIcon} title={ADDRESS.BESTIARY.name}  name={'Testes de Tela'} />
 
         
         <Divider />

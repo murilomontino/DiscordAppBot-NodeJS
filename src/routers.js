@@ -2,8 +2,10 @@ import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import {useAuthentication} from './context/ContextAuthentication/'
 
-const { PAGE, ADDRESS } = require('./constants/pages')
+import Home from './pages/Home'
+import Login from './pages/Login'
 
+const ADDRESS = require('./constants/routes.json')
 
 
 const CustomRoute = ( {isPrivate, ...rest}) => {
@@ -22,8 +24,8 @@ export default () => {
     return (
         <BrowserRouter>
             <Switch>
-                <CustomRoute isPrivate path={ADDRESS.Home} exact component={PAGE.Home} />
-                <CustomRoute path={ADDRESS.Login} component={PAGE.Login} />
+                <CustomRoute isPrivate path={ADDRESS.HOME.route} exact component={Home} />
+                <CustomRoute path={ADDRESS.LOGIN.route} component={Login} />
             </Switch>
         </BrowserRouter>
     )
