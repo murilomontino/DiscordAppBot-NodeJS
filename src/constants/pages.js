@@ -1,21 +1,23 @@
-
 import Login from "../pages/Login";
 import Home from "../pages/Home";
 
 
 const router = require('./routes.json')
 
-export const PAGE = {
-    login: {
-        address: router.LOGIN,
-        Login
-    },
-    home: {
-        address: router.HOME,
-        Home
-    }
-        
+export const ADDRESS = {
+    Login: router.LOGIN,
+    Home: router.HOME,
+    Profile: router.PROFILE,
+    Bestiary: router.BESTIARY
 }
 
+export const PAGE = {
+        
+    Login,
+    Home,
+    
+    
+  
+}
 
 
