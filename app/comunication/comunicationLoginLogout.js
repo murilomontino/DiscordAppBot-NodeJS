@@ -1,11 +1,11 @@
-const fs = require("fs")
+const fs = require('fs')
 
 const comunicationBot = (DiscordAppBot, configuration) => {
 
 
 	const loginWithToken = async ({ token }) => {
 		const response = await DiscordAppBot.login(token)
-		await DiscordAppBot.user.setStatus("online")
+		await DiscordAppBot.user.setStatus('online')
 		return response
 
 	}
@@ -30,9 +30,9 @@ const comunicationBot = (DiscordAppBot, configuration) => {
 		}
 
 		configuration.checkBox = checkBox
-		configuration.token = checkBox ? token : ""
-		const dir_name = __dirname.replace("comunication", "")
-		fs.writeFile(dir_name+"botDiscord/config/config.json", JSON.stringify(configuration), err => { console.error(err) })
+		configuration.token = checkBox ? token : ''
+		const dir_name = __dirname.replace('comunication', '')
+		fs.writeFile(dir_name+'botDiscord/config/config.json', JSON.stringify(configuration), err => { console.error(err) })
 
 	}
     
