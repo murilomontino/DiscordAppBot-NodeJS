@@ -9,6 +9,9 @@ import { useStyles } from './components/transitionStyle';
 import './styles.css'
 import Item from './components/Item';
 import { useRouter } from '../../context/ContextRouter';
+import { useAuthentication } from '../../context/ContextAuthentication';
+
+
 
 const { ChevronLeftIcon, ChevronRightIcon, PersonIcon, 
   ExitToAppIcon, MusicNoteIcon, MenuBookIcon } = require('./components/icons').icons()
@@ -19,7 +22,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = useState(false);
   
   const { itensMenu } = useRouter()
- 
+  const { HandleLogout } = useAuthentication()
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -69,7 +72,7 @@ export default function MiniDrawer() {
 
         
         <Divider />
-        <Item Icon={ExitToAppIcon} name={'Logout'} />
+        <Item Icon={ExitToAppIcon} onClick={HandleLogout} name={'Logout'} />
         
 
 

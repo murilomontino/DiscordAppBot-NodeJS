@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useMemo, useEffect } from 'react'
 import { Form } from '@unform/web';
 import GuildCard from '../Profile/components/guild_card'
 import ImageInput from '../../components/Form/image_input';
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
+
+
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -16,15 +18,32 @@ const { Input } = require('../../components/Form/')
 const Bestiary = () => {
 
     const formRef = useRef(null)
-    const [loading, setLoading] = useState(false)
+    
     const [guilds, setGuild] = useState([])
+
     const [open, setOpen] = useState(true)
+    
+    useEffect(()=>{
+        const guildsExist = document.store.get('guilds')
+        if(guildsExist)
+            setGuild(document.store.get('guilds'))
+        
+    },
+    
+    [])
+
+    const guildCardMap = useMemo(() => guilds.map(guild => (<GuildCard key={guild.id}
+        guildId={guild.id}
+        name={guild.name}
+        icon={guild.icon}
+        member={guild.memberCount} />)), [guilds])
 
     const HandleClick = async (event) => {
         event.preventDefault()
         const response = await ipcRenderer.invoke("@token/REQUEST", { title: 'getGuilds' })
+        document.store.set('guilds', response)
         setGuild(response)
-        setTimeout(setLoading(true), 1000)
+        
 
     }
 
@@ -67,11 +86,7 @@ const Bestiary = () => {
 
                     <label className="guilds-container">
                         {
-                            loading && guilds.map(guild => (<GuildCard key={guild.id}
-                                guildId={guild.id}
-                                name={guild.name}
-                                icon={guild.icon}
-                                member={guild.memberCount} />))
+                            guildCardMap
                         }
                     </label>
 

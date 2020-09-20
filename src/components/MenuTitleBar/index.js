@@ -25,7 +25,9 @@ const MenuTitleBar = () => {
     })
     
 
-    const Close = () => ipcRenderer.send('@window/REQUEST', {title: 'close'} )
+    const Close = async () => {
+        await document.store.clear()
+        ipcRenderer.send('@window/REQUEST', {title: 'close'} )}
     
     const Minimize = () => ipcRenderer.send('@window/REQUEST', {title: 'minimize'} )
     

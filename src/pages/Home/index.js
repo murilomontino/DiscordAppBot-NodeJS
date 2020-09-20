@@ -4,12 +4,13 @@ import { useRouter } from "../../context/ContextRouter";
 import "./styles.css";
 
 
-function Main() {
+function Home() {
  
   const { routerComponent, selectedItemOnMenu  } = useRouter()
   
   const memoizoidDrawer = useMemo(()=><MiniDrawer/>, [])
-
+  
+  
   return (
     <div className="background">
       
@@ -26,4 +27,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Home;

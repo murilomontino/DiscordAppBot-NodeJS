@@ -1,22 +1,22 @@
-import React, { useContext, createContext, useState, useEffect } from 'react'
+import React, { useContext, createContext, useState } from 'react'
 import Profile from "../../pages/Profile";
 import Bestiary from '../../pages/Bestiary/'
 
 import ContextProfileProvider from "../../context/ContextProfile/";
+
 
 const ContextRouter = createContext()
 
 
 const ContextRouterProvider = ({ children }) => {
 
-    const [loading, setLoading] = useState(true)
     const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
-
     const itensMenu = {
         PERFIL: "Perfil",
         TESTES: "Testes",
         REGRAS: "Regras",
-        SOUNDPAD: 'Soundpad'
+        SOUNDPAD: 'Soundpad',
+        LOGOUT: 'Logout'
     }
 
     const routerComponent = (itemSelected) => {
@@ -46,18 +46,8 @@ const ContextRouterProvider = ({ children }) => {
     }
 }
 
-useEffect(() => {
-    (()=>{
-        setSelectedItemOnMenu({title: itensMenu.PERFIL});
-        setLoading(false)
-    })()
-    
-}, [itensMenu.PERFIL]);
 
 
-
-if (loading)
-    return <div />
 
 return (
     <ContextRouter.Provider value={{
@@ -75,18 +65,10 @@ return (
 
 
 export const useRouter = () => {
-    const { ItemMenuSelection,
-        itensMenu,
-        selectedItemOnMenu,
-        setSelectedItemOnMenu,
-        routerComponent} = useContext(ContextRouter)
+    const context = useContext(ContextRouter)
 
     return ({
-        ItemMenuSelection,
-        itensMenu,
-        selectedItemOnMenu,
-        routerComponent,
-        setSelectedItemOnMenu
+        ...context
     })
 }
 

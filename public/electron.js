@@ -12,10 +12,11 @@ function createWindow() {
     height: 600,
     minHeight: 200,
     minWidth: 750,
-    frame: false,
+    frame: true,
     backgroundColor: '#36393f',
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true
     }
   })
   

@@ -16,10 +16,11 @@ const ContextAuthProvider = ({ children }) => {
     const {token, checkBox} = await ipcRenderer.invoke('@token/REQUEST', { title: 'checkTokenBox', body: '' })
     setCheckBoxIsChecked(checkBox)
     tokenRef.current = token
+    
   }), [])
 
   const BoxSavedConfig = useCallback((async (token) => {
-    await ipcRenderer.send("@comunication/REQUEST", {
+    ipcRenderer.send("@comunication/REQUEST", {
       title: 'saveTokenCheck',
       checkBox: checkBoxIsChecked,
       token: token
@@ -34,8 +35,7 @@ const ContextAuthProvider = ({ children }) => {
       setTimeout(setLoading(false), 100)
     })()
     
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [fetchToken])
 
   if (loading)
     return <div />
@@ -43,6 +43,8 @@ const ContextAuthProvider = ({ children }) => {
 
   async function HandleLogin(token) {
 
+    tokenRef.current = token
+    
     const response = await ipcRenderer.invoke("@token/REQUEST", {
       title: "loginWithToken",
       token: token,

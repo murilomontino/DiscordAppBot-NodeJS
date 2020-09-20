@@ -1,9 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
-import Login from "./pages/Login";
-import Main from "./pages/Main";
 import {useAuthentication} from './context/ContextAuthentication/'
+
+const { PAGE } = require('./constants/pages')
+
+
 
 const CustomRoute = ( {isPrivate, ...rest}) => {
     const {loading, authentication} = useAuthentication()
@@ -21,8 +22,8 @@ export default () => {
     return (
         <BrowserRouter>
             <Switch>
-                <CustomRoute isPrivate path="/" exact component={Main} />
-                <CustomRoute path="/login" component={Login} />
+                <CustomRoute isPrivate path={PAGE.home.address} exact component={PAGE.home.Home} />
+                <CustomRoute path={PAGE.login.address} component={PAGE.login.Login} />
             </Switch>
         </BrowserRouter>
     )

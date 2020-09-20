@@ -4,14 +4,14 @@ import React from "react"
 import "./styles.css"
 
 import LeftContainer from './components/left_container'
-import RightContainer from './components/right_container'
+import ContainerInputLogin from './components/ContainerInputLogin'
 
 export default () => {
   return (
     <div className="main-container">
       
       <LeftContainer/>
-      <RightContainer/>
+      <ContainerInputLogin/>
       
       
       
