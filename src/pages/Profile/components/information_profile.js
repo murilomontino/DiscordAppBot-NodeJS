@@ -1,5 +1,5 @@
-import React from 'react'
-import { useProfile } from '../../../context/ContextProfile'
+import React from "react"
+import { useProfile } from "../../../context/ContextProfile"
 
 const InformationProfile = () => {
 	const {

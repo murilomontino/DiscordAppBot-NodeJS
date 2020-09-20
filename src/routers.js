@@ -1,11 +1,11 @@
-import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { useAuthentication } from './context/ContextAuthentication/'
+import React from "react"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
+import { useAuthentication } from "./context/ContextAuthentication/"
 
-import Home from './pages/Home'
-import Login from './pages/Login'
+import Home from "./pages/Home"
+import Login from "./pages/Login"
 
-const ADDRESS = require('./constants/routes.json')
+const ADDRESS = require("./constants/routes.json")
 
 const CustomRoute = ({ isPrivate, ...rest }) => {
   

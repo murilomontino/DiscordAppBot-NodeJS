@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'
-import {useField} from '@unform/core'
+import React, { useEffect, useRef } from "react"
+import {useField} from "@unform/core"
 
 export const Input = ({name, ...rest}) => {
    
@@ -10,7 +10,7 @@ export const Input = ({name, ...rest}) => {
 		registerField({
 			name: fieldName,
 			ref: inputRef.current,
-			path: 'value',
+			path: "value",
 		})
 	}, [fieldName, registerField])
     

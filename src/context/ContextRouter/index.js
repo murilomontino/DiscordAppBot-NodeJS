@@ -1,8 +1,8 @@
-import React, { useContext, createContext, useState } from 'react'
+import React, { useContext, createContext, useState } from "react"
 
-import ContextProfileProvider from '../../context/ContextProfile/'
+import ContextProfileProvider from "../../context/ContextProfile/"
 
-const { PAGE } = require('./constants/pages')
+const { PAGE } = require("./constants/pages")
 
 const ContextRouter = createContext()
 
@@ -19,8 +19,8 @@ const ContextRouterProvider = ({ children }) => {
 			if (COMPONENT)
 				return (
 					<ContextProfileProvider>
-						{' '}
-						<COMPONENT />{' '}
+						{" "}
+						<COMPONENT />{" "}
 					</ContextProfileProvider>
 				)
 			else return <ErroPage />
@@ -31,8 +31,8 @@ const ContextRouterProvider = ({ children }) => {
 		const newItemSelected = event.currentTarget
 
 		if (newItemSelected !== selectedItemOnMenu.current) {
-			selectedItemOnMenu.className = ''
-			newItemSelected.className = 'itemSelect'
+			selectedItemOnMenu.className = ""
+			newItemSelected.className = "itemSelect"
 			setSelectedItemOnMenu(newItemSelected)
 		}
 	}

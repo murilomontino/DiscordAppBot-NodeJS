@@ -1,12 +1,12 @@
-import React from 'react'
-import { useAuthentication } from '../../../context/ContextAuthentication'
+import React from "react"
+import { useAuthentication } from "../../../context/ContextAuthentication"
 
-import './checkbox.css'
+import "./checkbox.css"
 
 export const CheckBoxAnimation = () => {
 	const { checkBoxIsChecked, setCheckBoxIsChecked } = useAuthentication()
 
-	const HandleBoxChange = () =>
+	const HandleBoxChange = (event) =>
 		checkBoxIsChecked
 			? setCheckBoxIsChecked(false)
 			: setCheckBoxIsChecked(true)
@@ -16,7 +16,7 @@ export const CheckBoxAnimation = () => {
 			<input
 				type="checkbox"
 				id="cbx"
-				style={{ display: 'none' }}
+				style={{ display: "none" }}
 				checked={checkBoxIsChecked}
 				onChange={HandleBoxChange}
 			/>

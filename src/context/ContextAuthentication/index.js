@@ -5,9 +5,9 @@ import React, {
 	useEffect,
 	useCallback,
 	useRef,
-} from 'react'
+} from "react"
 
-const { ipcRenderer } = window.require('electron')
+const { ipcRenderer } = window.require("electron")
 const ContextAuth = createContext()
 
 const ContextAuthProvider = ({ children }) => {
@@ -18,9 +18,9 @@ const ContextAuthProvider = ({ children }) => {
 	const tokenRef = useRef(null)
 
 	const fetchToken = useCallback(async () => {
-		const { token, checkBox } = await ipcRenderer.invoke('@token/REQUEST', {
-			title: 'checkTokenBox',
-			body: '',
+		const { token, checkBox } = await ipcRenderer.invoke("@token/REQUEST", {
+			title: "checkTokenBox",
+			body: "",
 		})
 		setCheckBoxIsChecked(checkBox)
 		tokenRef.current = token
@@ -28,8 +28,8 @@ const ContextAuthProvider = ({ children }) => {
 
 	const BoxSavedConfig = useCallback(
 		async (token) => {
-			ipcRenderer.send('@comunication/REQUEST', {
-				title: 'saveTokenCheck',
+			ipcRenderer.send("@comunication/REQUEST", {
+				title: "saveTokenCheck",
 				checkBox: checkBoxIsChecked,
 				token: token,
 			})
@@ -49,20 +49,20 @@ const ContextAuthProvider = ({ children }) => {
 	async function HandleLogin(token) {
 		tokenRef.current = token
 
-		const response = await ipcRenderer.invoke('@token/REQUEST', {
-			title: 'loginWithToken',
+		const response = await ipcRenderer.invoke("@token/REQUEST", {
+			title: "loginWithToken",
 			token: token,
 		})
 
 		BoxSavedConfig(token)
 		setAuthentication(true)
-		return response === 'Error' ? false : true
+		return response === "Error" ? false : true
 	}
 
 	async function HandleLogout() {
-		await ipcRenderer.invoke('@token/REQUEST', {
-			title: 'logoutBot',
-			body: '',
+		await ipcRenderer.invoke("@token/REQUEST", {
+			title: "logoutBot",
+			body: "",
 		})
 		await fetchToken()
 		setAuthentication(false)

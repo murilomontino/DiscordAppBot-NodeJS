@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
-import './styles.css'
+import "./styles.css"
 
-import { ReactComponent as CloseIcon } from '../../assets/Icons/closeIcon.svg'
-import { ReactComponent as MinusIcon } from '../../assets/Icons/minusIcon.svg'
-import { ReactComponent as SquareIcon } from '../../assets/Icons/squareIcon.svg'
+import { ReactComponent as CloseIcon } from "../../assets/Icons/closeIcon.svg"
+import { ReactComponent as MinusIcon } from "../../assets/Icons/minusIcon.svg"
+import { ReactComponent as SquareIcon } from "../../assets/Icons/squareIcon.svg"
 
-const { ipcRenderer } = window.require('electron')
+const { ipcRenderer } = window.require("electron")
 
 const ButtonParent = ({ isParent, children, ...rest }) => {
 	if (isParent) return <div />
@@ -17,20 +17,20 @@ const ButtonParent = ({ isParent, children, ...rest }) => {
 const MenuTitleBar = () => {
 	const [isChildren, setIsChildren] = useState(false)
 
-	ipcRenderer.on('parent-window', async () => {
+	ipcRenderer.on("parent-window", async () => {
 		setIsChildren(true)
 	})
 
 	const Close = async () => {
 		await document.store.clear()
-		ipcRenderer.send('@window/REQUEST', { title: 'close' })
+		ipcRenderer.send("@window/REQUEST", { title: "close" })
 	}
 
 	const Minimize = () =>
-		ipcRenderer.send('@window/REQUEST', { title: 'minimize' })
+		ipcRenderer.send("@window/REQUEST", { title: "minimize" })
 
 	const Maximize = () =>
-		ipcRenderer.send('@window/REQUEST', { title: 'maximize' })
+		ipcRenderer.send("@window/REQUEST", { title: "maximize" })
 
 	return (
 		<div className="title-bar">
@@ -43,8 +43,8 @@ const MenuTitleBar = () => {
 					<SquareIcon className="icon-square" />
 				</ButtonParent>
 				<button onClick={Close}>
-					{' '}
-					<CloseIcon className="icon-close" />{' '}
+					{" "}
+					<CloseIcon className="icon-close" />{" "}
 				</button>
 			</div>
 		</div>

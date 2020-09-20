@@ -1,5 +1,5 @@
-import React from 'react'
-import './guild_card.css'
+import React from "react"
+import "./guild_card.css"
 
 export default ({ icon, name, guildId, member }) => {
 	return (

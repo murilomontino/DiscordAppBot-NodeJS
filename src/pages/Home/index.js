@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react'
-import MiniDrawer from '../../components/DrawerMenu/drawer'
-import { useRouter } from '../../context/ContextRouter'
-import './styles.css'
+import React, { useMemo } from "react"
+import MiniDrawer from "../../components/DrawerMenu/drawer"
+import { useRouter } from "../../context/ContextRouter"
+import "./styles.css"
 
 function Home() {
 	const { routerComponent, selectedItemOnMenu } = useRouter()
