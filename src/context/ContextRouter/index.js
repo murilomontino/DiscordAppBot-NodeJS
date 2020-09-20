@@ -1,70 +1,62 @@
-import React, { useContext, createContext, useState } from 'react'
+import React, { useContext, createContext, useState } from "react";
 
 import ContextProfileProvider from "../../context/ContextProfile/";
 
-const { PAGE } = require('./constants/pages')
+const { PAGE } = require("./constants/pages");
 
-const ContextRouter = createContext()
+const ContextRouter = createContext();
 
-const ErroPage = () =>{
-    return <div/>
-}
+const ErroPage = () => {
+  return <div />;
+};
 
 const ContextRouterProvider = ({ children }) => {
+  const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
 
+  const routerComponent = (itemSelected) => {
+    try {
+      const COMPONENT = PAGE[itemSelected];
+      if (COMPONENT)
+        return (
+          <ContextProfileProvider>
+            {" "}
+            <COMPONENT />{" "}
+          </ContextProfileProvider>
+        );
+      else return <ErroPage />;
+    } catch (err) {}
+  };
 
-    const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false);
+  const ItemMenuSelection = (event) => {
+    const newItemSelected = event.currentTarget;
 
-    const routerComponent = (itemSelected) => {
-
-        try {
-            const COMPONENT = PAGE[itemSelected]
-            if(COMPONENT)
-                return (<ContextProfileProvider> < COMPONENT /> </ContextProfileProvider>)
-            else
-                return <ErroPage/>
-        } catch (err) {
-            
-        }
-
+    if (newItemSelected !== selectedItemOnMenu.current) {
+      selectedItemOnMenu.className = "";
+      newItemSelected.className = "itemSelect";
+      setSelectedItemOnMenu(newItemSelected);
     }
+  };
 
-    const ItemMenuSelection = (event) => {
-
-        const newItemSelected = event.currentTarget;
-
-        if (newItemSelected !== selectedItemOnMenu.current) {
-            selectedItemOnMenu.className = ''
-            newItemSelected.className = 'itemSelect';
-            setSelectedItemOnMenu(newItemSelected);
-        }
-
-    }
-
-
-
-
-    return (
-        <ContextRouter.Provider value={{
-            ItemMenuSelection,
-            selectedItemOnMenu,
-            routerComponent,
-            setSelectedItemOnMenu,
-
-
-        }} >
-            {children}
-        </ContextRouter.Provider>
-    )
-}
-
+  return (
+    <ContextRouter.Provider
+      value={{
+        ItemMenuSelection,
+        selectedItemOnMenu,
+        routerComponent,
+        setSelectedItemOnMenu,
+      }}
+    >
+      {children}
+    </ContextRouter.Provider>
+  );
+};
 
 export const useRouter = () => {
-    const context = useContext(ContextRouter)
+  const context = useContext(ContextRouter);
 
-    return ({
-        ...context
-    })
-}
+  return {
+    ...context,
+  };
+};
 
-export default ContextRouterProvider
+export default ContextRouterProvider;

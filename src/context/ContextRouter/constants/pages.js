@@ -1,15 +1,9 @@
 import Profile from "../../../pages/Profile";
 import Bestiary from "../../../pages/Bestiary";
-import Soundpad from "../../../pages/Soundpad"
+import Soundpad from "../../../pages/Soundpad";
 
 export const PAGE = {
-        
-    Profile,
-    Bestiary,
-    Soundpad
-    
-  
-}
-
-
-
+  Profile,
+  Bestiary,
+  Soundpad,
+};

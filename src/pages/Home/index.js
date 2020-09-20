@@ -1,28 +1,20 @@
-import React, {useMemo} from "react";
+import React, { useMemo } from "react";
 import MiniDrawer from "../../components/DrawerMenu/drawer";
 import { useRouter } from "../../context/ContextRouter";
 import "./styles.css";
 
-
 function Home() {
- 
-  const { routerComponent, selectedItemOnMenu  } = useRouter()
-  
-  const memoizoidDrawer = useMemo(()=><MiniDrawer/>, [])
-  
-  
+  const { routerComponent, selectedItemOnMenu } = useRouter();
+
+  const memoizoidDrawer = useMemo(() => <MiniDrawer />, []);
+
   return (
     <div className="background">
-      
-     {memoizoidDrawer}
-        
+      {memoizoidDrawer}
 
       <div className="right-main-container">
-
         {routerComponent(selectedItemOnMenu.title)}
-
       </div>
-
     </div>
   );
 }
