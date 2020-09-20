@@ -66,7 +66,6 @@ export default () => {
 				>
 					<p id="p-before-input">Entre com seu Token:</p>
 					<InputToken
-						formRefToken={formRefToken}
 						type="text"
 						name="token"
 						className="inputToken"

@@ -3,7 +3,7 @@ const { ipcMain, BrowserWindow } = require("electron")
 module.exports = (mainWindow) => {
   
 	const Comunication = require("./comunication")(mainWindow)
-  
+	
 	ipcMain.on("@comunication/REQUEST", async (event, message) => {
 		try{
 			const { title, ...body } = message
