@@ -1,10 +1,10 @@
-const { ipcMain, BrowserWindow } = require("electron")
+const { ipcMain, BrowserWindow } = require('electron')
 
 module.exports = (mainWindow) => {
   
-	const Comunication = require("./comunication")(mainWindow)
+	const Comunication = require('./comunication')(mainWindow)
 	
-	ipcMain.on("@comunication/REQUEST", async (event, message) => {
+	ipcMain.on('@comunication/REQUEST', async (event, message) => {
 		try{
 			const { title, ...body } = message
 			await Comunication[title]({ ...body})
@@ -14,7 +14,7 @@ module.exports = (mainWindow) => {
 	})
 
   
-	ipcMain.handle("@token/REQUEST", async (event, message) => {
+	ipcMain.handle('@token/REQUEST', async (event, message) => {
 		try{
     
 			const { title, ...body } = message
@@ -22,7 +22,7 @@ module.exports = (mainWindow) => {
 				const value = await Comunication[title]({...body, event})
 				return value
 			} catch (error) {
-				return "Error"
+				return 'Error'
 			}
 		} catch (err){ console.error(err)
 		}})
@@ -31,12 +31,12 @@ module.exports = (mainWindow) => {
 	// ================================================================================================
 	// Eventos do MenuTitleBar 
 
-	ipcMain.on("@window/REQUEST", async (event, message) => {
+	ipcMain.on('@window/REQUEST', async (event, message) => {
 		try {
 			const {title} = message
 			const mainWindow = BrowserWindow.getFocusedWindow()
 
-			if(title === "maximize"){
+			if(title === 'maximize'){
 				if(mainWindow.isMaximized()){
 					mainWindow.unmaximize()
 				} else
@@ -52,7 +52,7 @@ module.exports = (mainWindow) => {
 
 	// ================================================================================================
 	// Eventos de criação de Janela
-	ipcMain.handle("create-window", async (event, message) => {
+	ipcMain.handle('create-window', async (event, message) => {
     
 		const {page} = message
 		const childrenWindow = new BrowserWindow({  
@@ -63,10 +63,10 @@ module.exports = (mainWindow) => {
 			},
 			show: false
 		})
-		childrenWindow.loadURL("http://localhost:3000"+page)
+		childrenWindow.loadURL('http://localhost:3000'+page)
 
-		childrenWindow.on("ready-to-show", ()=>{
-			childrenWindow.webContents.send("parent-window")
+		childrenWindow.on('ready-to-show', ()=>{
+			childrenWindow.webContents.send('parent-window')
 			childrenWindow.show()
 		})
 

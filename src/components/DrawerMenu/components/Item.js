@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemIcon from "@material-ui/core/ListItemIcon"
-import ListItemText from "@material-ui/core/ListItemText"
-import { useRouter } from "../../../context/ContextRouter"
+import React, { useEffect, useRef } from 'react'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import { useRouter } from '../../../context/ContextRouter'
 
 const Item = ({ Icon, firstPage, name, arrow, className, title, ...rest }) => {
 	const selectPageFirst = useRef(null)
@@ -12,7 +12,7 @@ const Item = ({ Icon, firstPage, name, arrow, className, title, ...rest }) => {
 		(() => {
 			if (firstPage) {
 				setSelectedItemOnMenu(selectPageFirst.current)
-				selectPageFirst.current.className = "itemSelect"
+				selectPageFirst.current.className = 'itemSelect'
 			}
 		})()
 	}, [setSelectedItemOnMenu, firstPage])
@@ -31,15 +31,15 @@ const Item = ({ Icon, firstPage, name, arrow, className, title, ...rest }) => {
 			}
 		>
 			<ListItem
-				className={arrow ? "arrow toolbar" : "toolbar"}
+				className={arrow ? 'arrow toolbar' : 'toolbar'}
 				button
 				{...rest}
 			>
 				<ListItemIcon>
-					{" "}
-					<Icon className="iconButton" />{" "}
+					{' '}
+					<Icon className="iconButton" />{' '}
 				</ListItemIcon>
-				{name ? <ListItemText className="textItem" primary={name} /> : ""}
+				{name ? <ListItemText className="textItem" primary={name} /> : ''}
 			</ListItem>
 		</div>
 	)

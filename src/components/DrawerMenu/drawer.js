@@ -1,16 +1,16 @@
-import React, { useState } from "react"
-import clsx from "clsx"
+import React, { useState } from 'react'
+import clsx from 'clsx'
 
-import Drawer from "@material-ui/core/Drawer"
-import Divider from "@material-ui/core/Divider"
-import List from "@material-ui/core/List"
+import Drawer from '@material-ui/core/Drawer'
+import Divider from '@material-ui/core/Divider'
+import List from '@material-ui/core/List'
 
-import { useStyles } from "./components/transitionStyle"
-import "./styles.css"
-import Item from "./components/Item"
-import { useAuthentication } from "../../context/ContextAuthentication"
+import { useStyles } from './components/transitionStyle'
+import './styles.css'
+import Item from './components/Item'
+import { useAuthentication } from '../../context/ContextAuthentication'
 
-const ADDRESS = require("../../constants/routes.json")
+const ADDRESS = require('../../constants/routes.json')
 
 const {
 	ChevronLeftIcon,
@@ -19,7 +19,7 @@ const {
 	ExitToAppIcon,
 	MusicNoteIcon,
 	MenuBookIcon,
-} = require("./components/icons").icons()
+} = require('./components/icons').icons()
 
 export default function MiniDrawer() {
 	const classes = useStyles()
@@ -64,21 +64,21 @@ export default function MiniDrawer() {
 					Icon={PersonIcon}
 					firstPage
 					title={ADDRESS.PROFILE.name}
-					name={"Perfil"}
+					name={'Perfil'}
 				/>
 				<Item
 					Icon={MusicNoteIcon}
 					title={ADDRESS.SOUNDPAD.name}
-					name={"SoundPad"}
+					name={'SoundPad'}
 				/>
 				<Item
 					Icon={MenuBookIcon}
 					title={ADDRESS.BESTIARY.name}
-					name={"Testes de Tela"}
+					name={'Testes de Tela'}
 				/>
 
 				<Divider />
-				<Item Icon={ExitToAppIcon} onClick={HandleLogout} name={"Logout"} />
+				<Item Icon={ExitToAppIcon} onClick={HandleLogout} name={'Logout'} />
 			</List>
 		</Drawer>
 	)

@@ -1,39 +1,39 @@
-import React, { useContext, createContext, useState, useEffect } from "react"
+import React, { useContext, createContext, useState, useEffect } from 'react'
 
-const { ipcRenderer } = window.require("electron")
+const { ipcRenderer } = window.require('electron')
 const ContextProfile = createContext()
 
 const ContextProfileProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true)
 
 	const [botInformation, setBotInformation] = useState({
-		botAvatarURL: "",
-		botName: "",
-		botTag: "",
-		botStatus: "",
-		botDescription: "",
-		botCreator: "",
+		botAvatarURL: '',
+		botName: '',
+		botTag: '',
+		botStatus: '',
+		botDescription: '',
+		botCreator: '',
 	})
 
 	useEffect(() => {
 		(async () => {
-			const Name = await ipcRenderer.invoke("@token/REQUEST", {
-				title: "getBotUsername",
+			const Name = await ipcRenderer.invoke('@token/REQUEST', {
+				title: 'getBotUsername',
 			})
-			const AvatarURL = await ipcRenderer.invoke("@token/REQUEST", {
-				title: "getBotAvatarURL",
+			const AvatarURL = await ipcRenderer.invoke('@token/REQUEST', {
+				title: 'getBotAvatarURL',
 			})
-			const Tag = await ipcRenderer.invoke("@token/REQUEST", {
-				title: "getBotTag",
+			const Tag = await ipcRenderer.invoke('@token/REQUEST', {
+				title: 'getBotTag',
 			})
-			const Status = await ipcRenderer.invoke("@token/REQUEST", {
-				title: "getBotStatus",
+			const Status = await ipcRenderer.invoke('@token/REQUEST', {
+				title: 'getBotStatus',
 			})
-			const Creator = await ipcRenderer.invoke("@token/REQUEST", {
-				title: "getCreatorBotName",
+			const Creator = await ipcRenderer.invoke('@token/REQUEST', {
+				title: 'getCreatorBotName',
 			})
-			const Description = await ipcRenderer.invoke("@token/REQUEST", {
-				title: "getBotDescriptionApplication",
+			const Description = await ipcRenderer.invoke('@token/REQUEST', {
+				title: 'getBotDescriptionApplication',
 			})
 
 			setBotInformation({

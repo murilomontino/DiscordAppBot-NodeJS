@@ -1,6 +1,6 @@
-import Profile from "../../../pages/Profile"
-import Bestiary from "../../../pages/Bestiary"
-import Soundpad from "../../../pages/Soundpad"
+import Profile from '../../../pages/Profile'
+import Bestiary from '../../../pages/Bestiary'
+import Soundpad from '../../../pages/Soundpad'
 
 export const PAGE = {
 	Profile,

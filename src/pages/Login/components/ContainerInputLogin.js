@@ -1,12 +1,12 @@
-import React, { useState, useMemo, useRef, useCallback } from "react"
-import { Redirect } from "react-router"
+import React, { useState, useMemo, useRef, useCallback } from 'react'
+import { Redirect } from 'react-router'
 
-import "./loading.css"
+import './loading.css'
 
-import { useAuthentication } from "../../../context/ContextAuthentication"
-import { Form } from "@unform/web"
-import { InputToken } from "./inputToken"
-import { CheckBoxAnimation } from "./checkbox"
+import { useAuthentication } from '../../../context/ContextAuthentication'
+import { Form } from '@unform/web'
+import { InputToken } from './inputToken'
+import { CheckBoxAnimation } from './checkbox'
 
 export default () => {
 	const formRefToken = useRef(null)
@@ -31,7 +31,7 @@ export default () => {
 	}, [loading])
 
 	const HandleChange = useCallback(
-		() => formRefToken.current.setFieldError("token", false),
+		() => formRefToken.current.setFieldError('token', false),
 		[]
 	)
 
@@ -46,7 +46,7 @@ export default () => {
 					return () => {}
 				}
 				setLoading(false)
-				formRefToken.current.setFieldError("token", true)
+				formRefToken.current.setFieldError('token', true)
 			}, 500)
 		},
 		[HandleLogin]

@@ -4,6 +4,11 @@
         "es6": true,
         "node": true
     },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended"
@@ -23,8 +28,16 @@
         "react"
     ],
     "rules": {
-        "react/display-name": [0, { "ignoreTranspilerName": true }],
-        "react/prop-types": [0,{}],
+        "react/display-name": [
+            0,
+            {
+                "ignoreTranspilerName": true
+            }
+        ],
+        "react/prop-types": [
+            0,
+            {}
+        ],
         "indent": [
             "error",
             "tab"
@@ -35,7 +48,7 @@
         ],
         "quotes": [
             "error",
-            "double"
+            "single"
         ],
         "semi": [
             "error",
