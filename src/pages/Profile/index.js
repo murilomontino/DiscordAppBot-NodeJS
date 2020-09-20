@@ -1,7 +1,7 @@
-import React from "react"
-import "./styles.css"
-import InformationProfile from "./components/information_profile"
-import GuildCard from "./components/guild_card"
+import React from 'react'
+import './styles.css'
+import InformationProfile from './components/information_profile'
+import GuildCard from './components/guild_card'
 
 function Profile() {
 	return (
