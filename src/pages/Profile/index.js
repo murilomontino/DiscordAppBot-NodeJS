@@ -1,24 +1,24 @@
-import React from "react";
-import "./styles.css";
-import InformationProfile from "./components/information_profile";
-import GuildCard from "./components/guild_card";
+import React from "react"
+import "./styles.css"
+import InformationProfile from "./components/information_profile"
+import GuildCard from "./components/guild_card"
 
 function Profile() {
-  return (
-    <>
-      <InformationProfile />
+	return (
+		<>
+			<InformationProfile />
 
-      <div className="down-container">
-        <div className="internal-down-container">
-          <h3 id="guilds-title">Guilds:</h3>
+			<div className="down-container">
+				<div className="internal-down-container">
+					<h3 id="guilds-title">Guilds:</h3>
 
-          <div className="guilds-container">
-            <GuildCard /> <GuildCard /> <GuildCard />
-          </div>
-        </div>
-      </div>
-    </>
-  );
+					<div className="guilds-container">
+						<GuildCard /> <GuildCard /> <GuildCard />
+					</div>
+				</div>
+			</div>
+		</>
+	)
 }
 
-export default Profile;
+export default Profile

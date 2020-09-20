@@ -36,6 +36,7 @@
     "electron-build": "electron-builder",
     "release": "npm run react-build && electron-builder --publish=always",
     "build": "npm run react-build && npm run electron-build",
+    "lint": "./node_modules/.bin/eslint .",
     "test": "mocha",
     "jest": "jest",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""

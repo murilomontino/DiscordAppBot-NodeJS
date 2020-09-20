@@ -16,31 +16,31 @@
 const comunicationGuild = (DiscordAppBot) => {
     
 
-    const getGuilds = async () => {
-        let ArrayGuilds = []
-        const guilds = await DiscordAppBot.guilds.cache
+	const getGuilds = async () => {
+		let ArrayGuilds = []
+		const guilds = await DiscordAppBot.guilds.cache
         
         
-        guilds.forEach( guild => {
+		guilds.forEach( guild => {
             
-            ArrayGuilds.push({
-                icon: guild.iconURL(),
-                id: guild.id,
-                name: guild.name,
-                description: guild.description,
-                memberCount: guild.memberCount
+			ArrayGuilds.push({
+				icon: guild.iconURL(),
+				id: guild.id,
+				name: guild.name,
+				description: guild.description,
+				memberCount: guild.memberCount
 
-            })
+			})
     
             
-        })
+		})
 
-        return ArrayGuilds
-    }
+		return ArrayGuilds
+	}
     
-    return {
-        getGuilds
-    }
+	return {
+		getGuilds
+	}
 }
 
 module.exports = comunicationGuild

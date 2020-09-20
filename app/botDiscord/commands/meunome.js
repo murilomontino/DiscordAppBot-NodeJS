@@ -1,3 +1,3 @@
 module.exports = (client, msg) =>{
-    msg.channel.send(`${msg.author}`)
+	msg.channel.send(`${msg.author}`)
 }

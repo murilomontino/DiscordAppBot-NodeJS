@@ -1,7 +1,7 @@
-const {Input} = require('./input')
-const {ImageInput} = require('./image_input')
+const {Input} = require("./input")
+const {ImageInput} = require("./image_input")
 
 module.exports = {
-    Input,
-    ImageInput
+	Input,
+	ImageInput
 }
