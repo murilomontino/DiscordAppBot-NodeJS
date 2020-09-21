@@ -1,0 +1,9 @@
+{
+
+  "ignore": ["*.json"],
+  "watch": ["app"],
+  "exec":"electron ./public/electron",
+  "execMap": {
+    "js": "electron ./public/electron"
+  }
+}
