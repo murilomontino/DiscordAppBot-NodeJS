@@ -40,7 +40,7 @@ const ContextAuthProvider = ({ children }) => {
 	useEffect(() => {
 		(async () => {
 			await fetchToken()
-			setTimeout(setLoading(false), 100)
+			setLoading(false)
 		})()
 	}, [fetchToken])
 

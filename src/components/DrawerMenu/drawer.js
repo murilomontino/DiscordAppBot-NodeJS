@@ -10,8 +10,6 @@ import './styles.css'
 import Item from './components/Item'
 import { useAuthentication } from '../../context/ContextAuthentication'
 
-const ADDRESS = require('../../constants/routes.json')
-
 const {
 	ChevronLeftIcon,
 	ChevronRightIcon,
@@ -23,6 +21,7 @@ const {
 
 export default function MiniDrawer() {
 	const classes = useStyles()
+	const ADDRESS = require('../../constants/routes.json')
 	const [open, setOpen] = useState(false)
 
 	const { HandleLogout } = useAuthentication()

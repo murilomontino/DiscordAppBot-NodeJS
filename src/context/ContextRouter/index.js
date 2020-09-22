@@ -2,8 +2,6 @@ import React, { useContext, createContext, useState } from 'react'
 
 import ContextProfileProvider from '../../context/ContextProfile/'
 
-const { PAGE } = require('./constants/pages')
-
 const ContextRouter = createContext()
 
 const ErroPage = () => {
@@ -12,6 +10,8 @@ const ErroPage = () => {
 
 const ContextRouterProvider = ({ children }) => {
 	const [selectedItemOnMenu, setSelectedItemOnMenu] = useState(false)
+	
+	const { PAGE } = require('./constants/pages')
 
 	const routerComponent = (itemSelected) => {
 		try {
@@ -19,8 +19,8 @@ const ContextRouterProvider = ({ children }) => {
 			if (COMPONENT)
 				return (
 					<ContextProfileProvider>
-						{' '}
-						<COMPONENT />{' '}
+						
+						<COMPONENT />
 					</ContextProfileProvider>
 				)
 			else return <ErroPage />

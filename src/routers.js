@@ -23,7 +23,7 @@ export default () => {
 		<BrowserRouter>
 			<Switch>
 				<CustomRoute
-					isPrivate
+					// isPrivate
 					path={ADDRESS.HOME.route}
 					exact
 					component={Home}

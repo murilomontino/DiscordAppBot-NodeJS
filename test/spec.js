@@ -1,32 +1,39 @@
-const assert = require('assert');
-const path = require('path');
-const {Application} = require('spectron');
+/* eslint-disable no-undef */
 
-// construct paths
-const baseDir = path.join(__dirname, '..');
-const electronBinary = path.join(baseDir, 'node_modules', '.bin', 'electron');
+const initialiseSpectron = require('./application.spectron')
+const assert = require('assert')
 
-// utility functions
+const mocha = require('mocha')
 
-describe('Application launch', function () {
+describe = mocha.describe
+it = mocha.it
+beforeEach = mocha.beforeEach
+afterEach = mocha.afterEach
 
-    
-    let app = new Application({
-      path: electronBinary,
-      args: [baseDir],
-    })
+describe.only('visible window', () => {
+	
+	
+	let app = initialiseSpectron()
 
-    
+	beforeEach((done) => {
+		return app.start().then(
+			response => app = response
+		).catch(done)
 
-    it('should ', async () => {
-      app = await app.start()
-      const count = app.client.isChrome
-      assert.strictEqual(count, true);
-    });
+	})
+	
+	afterEach( (done) => {
+		if (app && app.isRunning()) {
+			app.stop().then(() => done()).catch(done)
+		}
+		done()
+	})
 
+	it('visible window', (done)=>{
+		app.client.getWindowCount().then(
+			count => {assert.strictEqual(count, 1)}
+		).catch(done)
+		done()
+	})
 
-  
-
-
-})
-
+}).timeout(10000)

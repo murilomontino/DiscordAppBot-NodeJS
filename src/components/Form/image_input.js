@@ -7,14 +7,17 @@ const ImageInput = ({ name, ...rest }) => {
 	const inputRef = useRef(null)
 	const { fieldName, registerField, defaultValue, error } = useField(name)
 	const [preview, setPreview] = useState(defaultValue)
-
+	
 	const handlePreview = useCallback((e) => {
 		const file = e.target.files[0]
 		if (!file) {
 			setPreview(null)
 		}
+
 		const previewURL = URL.createObjectURL(file)
+		console.log(previewURL)
 		setPreview(previewURL)
+		
 	}, [])
 	useEffect(() => {
 		registerField({
