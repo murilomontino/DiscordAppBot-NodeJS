@@ -5,7 +5,6 @@ import { useAuthentication } from './context/ContextAuthentication/'
 
 import {default as PAGE} from './constants/pages'
 
-const ADDRESS = require('./constants/routes.json')
 
 const CustomRoute = ({ isPrivate, ...rest }) => {
   
@@ -13,7 +12,7 @@ const CustomRoute = ({ isPrivate, ...rest }) => {
 
 	if (loading) return <div />
 
-	if (!authentication && isPrivate) return <Redirect to="/login" />
+	if (!authentication && isPrivate) return <Redirect to={PAGE.Login.route} />
 
 	return <Route {...rest} />
 }
@@ -27,11 +26,11 @@ export default () => {
 				<Switch>
 					<CustomRoute
 						isPrivate
-						path={ADDRESS.HOME.route}
+						path={PAGE.Home.route}
 						exact
-						component={PAGE.Home}
+						component={PAGE.Home.component}
 					/>
-					<CustomRoute path={ADDRESS.LOGIN.route} component={PAGE.Login} />
+					<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
 				</Switch>
 			</Suspense>
 		</BrowserRouter>

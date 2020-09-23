@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, memo } from 'react'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -45,4 +45,4 @@ const Item = ({ Icon, firstPage, name, arrow, className, title, ...rest }) => {
 	)
 }
 
-export default Item
+export default memo(Item)

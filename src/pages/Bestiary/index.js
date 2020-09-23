@@ -6,17 +6,10 @@ import { Snackbar } from '@material-ui/core'
 import MuiAlert from '@material-ui/lab/Alert'
 
 
-
-function Alert(props) {
-	return <MuiAlert elevation={6} variant="filled" {...props} />
-}
-
-const { ipcRenderer } = window.require('electron')
-const { Input } = require('../../components/Form/')
-
-
 const Bestiary = () => {
 
+	const { ipcRenderer } = window.require('electron')
+	const { Input } = require('../../components/Form/')
 	const formRef = useRef(null)
     
 	const [guilds, setGuild] = useState([])
@@ -46,7 +39,10 @@ const Bestiary = () => {
         
 
 	}
-
+	function Alert(props) {
+		return <MuiAlert elevation={6} variant="filled" {...props} />
+	}
+	
 	const handleClick = () => {
 		setOpen(true)
 	}

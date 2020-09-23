@@ -1,4 +1,4 @@
-import React, {memo} from 'react'
+import React from 'react'
 import './styles.css'
 import InformationProfile from './components/information_profile'
 import GuildCard from './components/guild_card'
@@ -21,4 +21,4 @@ function Profile() {
 	)
 }
 
-export default memo(Profile)
+export default Profile

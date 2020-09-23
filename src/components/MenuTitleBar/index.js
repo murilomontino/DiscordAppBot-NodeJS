@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 
 import './styles.css'
 
@@ -51,4 +51,4 @@ const MenuTitleBar = () => {
 	)
 }
 
-export default MenuTitleBar
+export default memo(MenuTitleBar)

@@ -12,7 +12,7 @@ const ContextRouterProvider = ({ children }) => {
 
 	const routerComponent = (itemSelected) => {
 		try {
-			const COMPONENT = PAGE[itemSelected]
+			const COMPONENT = PAGE[itemSelected].component
 			if (COMPONENT)
 				return (
 					<ContextProfileProvider>
