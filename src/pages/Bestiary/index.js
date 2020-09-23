@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react'
+import React, { useRef, useState, useMemo } from 'react'
 import { Form } from '@unform/web'
 import GuildCard from '../Profile/components/guild_card'
 import ImageInput from '../../components/Form/image_input'
@@ -16,14 +16,6 @@ const Bestiary = () => {
 
 	const [open, setOpen] = useState(true)
     
-	useEffect(()=>{
-		const guildsExist = document.store.get('guilds')
-		if(guildsExist)
-			setGuild(document.store.get('guilds'))
-        
-	},
-    
-	[])
 
 	const guildCardMap = useMemo(() => guilds.map(guild => (<GuildCard key={guild.id}
 		guildId={guild.id}
