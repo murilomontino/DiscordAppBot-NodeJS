@@ -9,15 +9,29 @@ const Store = window.require('electron-store')
 const store = new Store()
 document.store = store
 
-export default () => {
-  
+
+const ContextAll = ({children}) => {
+
 	return (
-		<div className="App">
-			<ContextAuthProvider>
-				<ContextRouterProvider>
-					<Routers />
-				</ContextRouterProvider>
-			</ContextAuthProvider>
-		</div>
+		<ContextAuthProvider>
+			<ContextRouterProvider>
+				{children}
+			</ContextRouterProvider>
+		</ContextAuthProvider>
+	)
+}
+
+const App = ({children}) => {
+	return <div className="App">{children}</div>
+}
+
+
+export default () => {
+	return (
+		<App>
+			<ContextAll>
+				<Routers />
+			</ContextAll>
+		</App>
 	)
 }
