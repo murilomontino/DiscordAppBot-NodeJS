@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, Suspense } from 'react'
 import MiniDrawer from '../../components/DrawerMenu/drawer'
 import { useRouter } from '../../context/ContextRouter'
 import './styles.css'
@@ -11,10 +11,13 @@ function Home() {
 	return (
 		<div className="background">
 			{memoizoidDrawer}
-
+			
 			<div className="right-main-container">
-				{routerComponent(selectedItemOnMenu.title)}
+				<Suspense fallback={<div>Loading...</div>}>
+					{routerComponent(selectedItemOnMenu.title)}
+				</Suspense>
 			</div>
+			
 		</div>
 	)
 }

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { useAuthentication } from './context/ContextAuthentication/'
 
-import Home from './pages/Home'
-import Login from './pages/Login'
+
+import {default as PAGE} from './constants/pages'
 
 const ADDRESS = require('./constants/routes.json')
 
@@ -19,17 +19,21 @@ const CustomRoute = ({ isPrivate, ...rest }) => {
 }
 
 export default () => {
+
+
 	return (
 		<BrowserRouter>
-			<Switch>
-				<CustomRoute
-					// isPrivate
-					path={ADDRESS.HOME.route}
-					exact
-					component={Home}
-				/>
-				<CustomRoute path={ADDRESS.LOGIN.route} component={Login} />
-			</Switch>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Switch>
+					<CustomRoute
+						isPrivate
+						path={ADDRESS.HOME.route}
+						exact
+						component={PAGE.Home}
+					/>
+					<CustomRoute path={ADDRESS.LOGIN.route} component={PAGE.Login} />
+				</Switch>
+			</Suspense>
 		</BrowserRouter>
 	)
 }

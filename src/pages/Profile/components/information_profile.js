@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {memo} from 'react'
 import { useProfile } from '../../../context/ContextProfile'
 
 const InformationProfile = () => {
@@ -32,4 +32,4 @@ const InformationProfile = () => {
 	)
 }
 
-export default InformationProfile
+export default memo(InformationProfile)

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
+
 import './guild_card.css'
 
-export default ({ icon, name, guildId, member }) => {
+function GuildCard({ icon, name, guildId, member }) {
 	return (
 		<div className="guild">
 			<img className="guild-icon" src={icon} alt="Profile Avatar Guild"></img>
@@ -14,3 +15,5 @@ export default ({ icon, name, guildId, member }) => {
 		</div>
 	)
 }
+
+export default memo(GuildCard)

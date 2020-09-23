@@ -53,13 +53,4 @@ app.on('activate', () => {
 	}
 })
 
-app.on('browser-window-created', async () =>{
- 
-
-})
-
-app.on('web-contents-created', async () => {
-  
-})
-
 
