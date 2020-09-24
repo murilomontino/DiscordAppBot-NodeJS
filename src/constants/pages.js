@@ -1,7 +1,8 @@
+import  {lazy} from 'react'
 
 const ADDRESS = require('./routes.json')
 
-const ComponentHome = require('../pages/Home').default
+const ComponentHome = lazy(() => import('../pages/Home'))
 const ComponentLogin = require('../pages/Login').default
 const ComponentSoundpad = require('../pages/Soundpad').default
 const ComponentProfile = require('../pages/Profile').default

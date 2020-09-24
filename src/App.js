@@ -2,19 +2,22 @@ import React from 'react'
 import 'fontsource-roboto'
 import './assets/styles/global.css'
 import Routers from './routers'
-
 import Context from './context'
 
-const App = ({children}) => {
+
+const ContainerApp = ({children}) => {
 	return <div className="App">{children}</div>
 }
 
-export default () => {
+const App = () => {
 	return (
-		<App>
+		<ContainerApp>
 			<Context>
 				<Routers />
 			</Context>
-		</App>
+		</ContainerApp>
+		
 	)
 }
+
+export default App

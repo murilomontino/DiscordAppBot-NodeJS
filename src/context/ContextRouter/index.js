@@ -20,7 +20,9 @@ const ContextRouterProvider = ({ children }) => {
 					</ContextProfileProvider>
 				)
 			
-		} catch (err) {console.error(err)}
+		} catch (err) {
+			return
+		}
 	}
 
 	const ItemMenuSelection = (event) => {
@@ -48,7 +50,7 @@ const ContextRouterProvider = ({ children }) => {
 }
 
 export const useRouter = () => {
-	const context = useContext(ContextRouter)
+	const context = useContext(ContextRouter);
 
 	return {
 		...context,

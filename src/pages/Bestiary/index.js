@@ -26,7 +26,6 @@ const Bestiary = () => {
 	const HandleClick = async (event) => {
 		event.preventDefault()
 		const response = await ipcRenderer.invoke('@token/REQUEST', { title: 'getGuilds' })
-		document.store.set('guilds', response)
 		setGuild(response)
         
 
@@ -56,7 +55,7 @@ const Bestiary = () => {
 
 			<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 				<Alert onClose={handleClose} severity="error">
-					<label style={{ fontSize: '1.4rem' }}>This is a success message!</label>
+					<label style={{ fontSize: '1.4rem' }}>This is Queijo a a success message!</label>
 				</Alert>
 			</Snackbar>
 

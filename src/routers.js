@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { useAuthentication } from './context/ContextAuthentication/'
 
 
-import {default as PAGE} from './constants/pages'
+import { default as PAGE } from './constants/pages'
 
 
 const CustomRoute = ({ isPrivate, ...rest }) => {
@@ -24,13 +24,15 @@ export default () => {
 		<BrowserRouter>
 			<Suspense fallback={<div>Loading...</div>}>
 				<Switch>
+
+					<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
+
 					<CustomRoute
 						isPrivate
 						path={PAGE.Home.route}
 						exact
-						component={PAGE.Home.component}
+						component={	PAGE.Home.component }
 					/>
-					<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
 				</Switch>
 			</Suspense>
 		</BrowserRouter>
