@@ -9,7 +9,7 @@ module.exports = (mainWindow) => {
 			const { title, ...body } = message
 			await Comunication[title]({ ...body})
       
-		} catch (error) { console.error(error) }
+		} catch (error) { return }
     
 	})
 
@@ -24,8 +24,8 @@ module.exports = (mainWindow) => {
 			} catch (error) {
 				return 'Error'
 			}
-		} catch (err){ console.error(err)
-		}})
+		} catch (err){ return }
+	})
 
   
 	// ================================================================================================

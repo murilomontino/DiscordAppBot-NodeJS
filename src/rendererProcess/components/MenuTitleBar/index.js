@@ -21,8 +21,7 @@ const MenuTitleBar = () => {
 		setIsChildren(true)
 	})
 
-	const Close = async () => {
-		await document.store.clear()
+	const Close = () => {
 		ipcRenderer.send('@window/REQUEST', { title: 'close' })
 	}
 

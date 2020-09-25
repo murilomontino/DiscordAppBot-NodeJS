@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import MenuTitleBar from './components/MenuTitleBar'
+import App from './rendererProcess/App'
+import MenuTitleBar from './rendererProcess/components/MenuTitleBar'
 
 
 

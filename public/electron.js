@@ -32,7 +32,7 @@ function createWindow() {
 		mainWindow = null
 	})
 
-	require('../app')(mainWindow)
+	require('../src/mainProcess')(mainWindow)
 
 }
 

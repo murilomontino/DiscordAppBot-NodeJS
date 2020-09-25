@@ -1,7 +1,7 @@
 {
 
   "ignore": ["*.json"],
-  "watch": ["app", "public"],
+  "watch": ["src/mainProcess", "public"],
   "exec":"electron ./public/electron",
   "execMap": {
     "js": "electron ./public/electron"
