@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { useAuthentication } from './context/ContextAuthentication/'
 
@@ -22,19 +22,20 @@ export default () => {
 
 	return (
 		<BrowserRouter>
-			<Suspense fallback={<div>Loading...</div>}>
-				<Switch>
+			
+			<Switch>
 
-					<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
+				<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
 
-					<CustomRoute
-						isPrivate
-						path={PAGE.Home.route}
-						exact
-						component={	PAGE.Home.component }
-					/>
-				</Switch>
-			</Suspense>
+				<CustomRoute
+					// isPrivate
+					path={PAGE.Home.route}
+					exact
+					component={	PAGE.Home.component }
+				/>
+				
+			</Switch>
+		
 		</BrowserRouter>
 	)
 }

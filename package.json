@@ -11,14 +11,15 @@
     },
     "files": [
       "build/**/*",
-      "node_modules/**/*"
+      "node_modules/**/*",
+      "src/**/mainProcess/**/*"
     ],
     "directories": {
-      "buildResources": "src/assets/cons"
+      "buildResources": "src/assets/icons"
     }
   },
   "private": true,
-  "homepage": ".",
+  "homepage": "./",
   "main": "./public/electron.js",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -34,18 +35,25 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-router-dom": "5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "source-map-support": "^0.5.19"
   },
   "scripts": {
+
     "start": "rescripts start",
     "build": "rescripts build",
+    "build:start": "cross-env NODE_ENV=production electron ./build/electron",
     "test": "rescripts test",
     "eject": "react-scripts eject",
     "fix": "./node_modules/.bin/eslint .  --fix",
-    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && yarn nodemon  .\"",
+
+    "dev:renderer": "cross-env BROWSER=none NODE_ENV=development yarn start",
+    "dev:main":"wait-on http://localhost:3000 && yarn nodemon",
+    "dev": "concurrently \"yarn dev:renderer\" \" yarn dev:main  .\"",
+
     "postinstall": "electron-builder install-app-deps",
-    "preelectron-build": "yarn build",
-    "electron-build": "electron-builder -w"
+    "preelectron-build": "cross-env NODE_ENV=production yarn build",
+    "electron-build": "cross-env NODE_ENV=production yarn electron-builder -w"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -69,9 +77,9 @@
     "cross-env": "^7.0.2",
     "electron": "10.1.0",
     "electron-builder": "^22.8.1",
+    "electron-devtools-installer": "^3.1.1",
     "nodemon": "^2.0.4",
     "typescript": "^4.0.3",
-    "wait-on": "^5.2.0",
-    "webpack-cli": "^3.3.12"
+    "wait-on": "^5.2.0"
   }
 }

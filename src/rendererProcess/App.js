@@ -3,7 +3,9 @@ import 'fontsource-roboto'
 import './assets/styles/global.css'
 import Routers from './routers'
 import Context from './context'
+import MenuTitleBar from './components/MenuTitleBar'
 
+// import Home from './pages/Home'
 
 const ContainerApp = ({children}) => {
 	return <div className="App">{children}</div>
@@ -11,12 +13,14 @@ const ContainerApp = ({children}) => {
 
 const App = () => {
 	return (
-		<ContainerApp>
-			<Context>
-				<Routers />
-			</Context>
-		</ContainerApp>
-		
+		<>
+			<MenuTitleBar/>
+			<ContainerApp>
+				<Context>
+					<Routers />
+				</Context>
+			</ContainerApp>
+		</>
 	)
 }
 

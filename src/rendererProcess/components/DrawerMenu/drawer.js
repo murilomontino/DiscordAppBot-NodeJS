@@ -19,7 +19,8 @@ const {
 	MenuBookIcon,
 } = require('./components/icons').icons()
 
-export default function MiniDrawer() {
+
+const MiniDrawer = () => {
 	const classes = useStyles()
 	const ADDRESS = require('../../constants/routes.json')
 	const [open, setOpen] = useState(false)
@@ -82,3 +83,7 @@ export default function MiniDrawer() {
 		</Drawer>
 	)
 }
+
+MiniDrawer.whyDidYouRender = true
+
+export default MiniDrawer
