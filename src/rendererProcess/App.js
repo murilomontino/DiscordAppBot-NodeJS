@@ -5,7 +5,6 @@ import Routers from './routers'
 import Context from './context'
 import MenuTitleBar from './components/MenuTitleBar'
 
-// import Home from './pages/Home'
 
 const ContainerApp = ({children}) => {
 	return <div className="App">{children}</div>
