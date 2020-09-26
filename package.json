@@ -2,21 +2,22 @@
   "name": "botapp",
   "version": "0.2.0",
   "author": "Muca e Luke",
+  "description": "Um novo jeito de jogar RPG e gerenciar seu bot Discord",
   "build": {
     "appId": "com.discord_cthulhu_bot.app",
-    "productName": "Cthulhu App",
+    "productName": "CthulhuApp",
     "copyright": "Copyright © 2019 Banhistas Porcos Selvagens",
     "mac": {
       "category": "public.app-category.utilities"
     },
     "files": [
       "build/**/*",
-      "node_modules/**/*",
       "src/**/mainProcess/**/*"
     ],
     "directories": {
       "buildResources": "src/assets/icons"
     }
+    
   },
   "private": true,
   "homepage": "./",
@@ -29,7 +30,6 @@
     "@unform/web": "^2.1.3",
     "d20": "1.4.1",
     "discord.js": "12.3.1",
-    "electron-is-dev": "^1.2.0",
     "electron-store": "^6.0.0",
     "fontsource-roboto": "^3.0.3",
     "react": "16.13.1",
@@ -39,21 +39,18 @@
     "source-map-support": "^0.5.19"
   },
   "scripts": {
-
     "start": "rescripts start",
     "build": "rescripts build",
-    "build:start": "cross-env NODE_ENV=production electron ./build/electron",
+    "prod": "cross-env NODE_ENV=production electron ./build/electron",
     "test": "rescripts test",
     "eject": "react-scripts eject",
     "fix": "./node_modules/.bin/eslint .  --fix",
-
     "dev:renderer": "cross-env BROWSER=none NODE_ENV=development yarn start",
-    "dev:main":"wait-on http://localhost:3000 && yarn nodemon",
+    "dev:main": "wait-on http://localhost:3000 && yarn nodemon",
     "dev": "concurrently \"yarn dev:renderer\" \" yarn dev:main  .\"",
-
     "postinstall": "electron-builder install-app-deps",
     "preelectron-build": "cross-env NODE_ENV=production yarn build",
-    "electron-build": "cross-env NODE_ENV=production yarn electron-builder -w"
+    "electron-build": "cross-env NODE_ENV=production yarn electron-builder build -w"
   },
   "eslintConfig": {
     "extends": "react-app"
