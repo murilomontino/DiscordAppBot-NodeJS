@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 import { useAuthentication } from './context/ContextAuthentication/'
 
 
@@ -21,21 +21,24 @@ export default () => {
 
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
+			<BrowserRouter>
 			
-			<Switch>
+				<Switch>
 
-				<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
+					<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
 
-				<CustomRoute
-					// isPrivate
-					path={PAGE.Home.route}
-					exact
-					component={	PAGE.Home.component }
-				/>
+					<CustomRoute
+						isPrivate
+						path={PAGE.Home.route}
+						exact
+						component={	PAGE.Home.component }
+					/>
+					<Route render={() => <Redirect to="/"/>}/>
 				
-			</Switch>
+				</Switch>
 		
-		</BrowserRouter>
+			</BrowserRouter>
+		</HashRouter>
 	)
 }
