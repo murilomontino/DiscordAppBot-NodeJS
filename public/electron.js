@@ -14,12 +14,18 @@ if (isDev === 'production') {
 }
 
 const installExtensions = () => {
-	const installer = require('electron-devtools-installer')
-	const extensions = ['REACT_DEVELOPER_TOOLS']
+	try {
+		const installer = require('electron-devtools-installer')
+		const extensions = ['REACT_DEVELOPER_TOOLS']
+	
+		return Promise.all(
+			extensions.map((name) => installer.default(installer[name]))
+		).catch()
+	} catch (error) {
+		return
+	}
+		
 
-	return Promise.all(
-		extensions.map((name) => installer.default(installer[name]))
-	).catch(console.log)
 }
 
 function createWindow() {

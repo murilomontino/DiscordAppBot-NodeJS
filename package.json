@@ -47,6 +47,8 @@
     "test": "rescripts test",
     "eject": "react-scripts eject",
     "fix": "./node_modules/.bin/eslint .  --fix",
+    "predev:electron": "yarn compile",
+    "dev:electron": "cross-env NODE_ENV=development electron ./public/electron ",
     "dev:renderer": "cross-env BROWSER=none NODE_ENV=development yarn start",
     "dev:main": "wait-on http://localhost:3000 && yarn nodemon",
     "dev": "concurrently \"yarn dev:renderer\" \" yarn dev:main  .\"",
