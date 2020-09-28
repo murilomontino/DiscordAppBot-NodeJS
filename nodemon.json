@@ -1,7 +1,7 @@
 {
 
   "ignore": ["*.json"],
-  "watch": ["src/mainProcess", "public"],
+  "watch": ["app", "public"],
   "exec":"cross-env NODE_ENV=development electron ./public/electron ",
   "execMap": {
     "js": "cross-env NODE_ENV=development electron ./public/electron "

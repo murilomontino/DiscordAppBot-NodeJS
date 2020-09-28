@@ -13,10 +13,10 @@ const date = (msg) => {
 }
 
 class Bot extends Client {
-	constructor(webContents, ...args) {
+	constructor(webContents, configuration, ...args) {
 		super(...args)
 		this.webContents = webContents
-		this.config = require('./config/config.json')
+		this.config = configuration
 		this.commands = commandsReader(this.config.prefix)
 
 		this.on('ready', async () => {

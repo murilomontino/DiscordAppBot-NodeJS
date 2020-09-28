@@ -1,5 +1,5 @@
 const  { BrowserWindow, app } = require('electron')
-const MainProcess = require('../src/mainProcess')
+const MainProcess = require('../lib')
 const path = require('path')
 
 

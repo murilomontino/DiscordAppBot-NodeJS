@@ -12,17 +12,18 @@
     },
     "files": [
       "build/**/*",
-      "src/**/mainProcess/**/*"
+      "lib/**/*",
+      "database/**/*"
     ],
     "directories": {
       "buildResources": "src/assets/icons"
     }
-    
   },
   "private": true,
   "homepage": "./",
   "main": "./public/electron.js",
   "dependencies": {
+    "@babel/cli": "^7.11.6",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -41,6 +42,7 @@
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
+    "compile": "babel app --out-dir lib",
     "prod": "cross-env NODE_ENV=production electron ./build/electron",
     "test": "rescripts test",
     "eject": "react-scripts eject",
@@ -68,6 +70,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
     "@rescripts/cli": "^0.0.14",
     "@rescripts/rescript-env": "^0.0.12",
     "concurrently": "5.3.0",
