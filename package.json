@@ -53,7 +53,7 @@
     "dev:main": "wait-on http://localhost:3000 && yarn nodemon",
     "dev": "concurrently \"yarn dev:renderer\" \" yarn dev:main  .\"",
     "postinstall": "electron-builder install-app-deps",
-    "preelectron-build": "cross-env NODE_ENV=production yarn build",
+    "preelectron-build": "cross-env NODE_ENV=production yarn build && yarn compile",
     "electron-build": "cross-env NODE_ENV=production yarn electron-builder build -w"
   },
   "eslintConfig": {

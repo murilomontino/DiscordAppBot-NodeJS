@@ -1,16 +1,8 @@
-const { Client } = require('discord.js')
+import { Client } from 'discord.js'
 
 const commandsReader = require('./scripts/commandsReader')
 
-const date = (msg) => {
-	const day = msg.createdAt.getDate()<10? `0${msg.createdAt.getDate()}`: msg.createdAt.getDate()
-	const month = msg.createdAt.getMonth()<10? `0${msg.createdAt.getMonth()}`: msg.createdAt.getMonth()
-	const year = msg.createdAt.getFullYear()
-	const hour = msg.createdAt.getHours()<10? `0${msg.createdAt.getHours()}`: msg.createdAt.getHours()
-	const minutes = msg.createdAt.getMinutes()<10? `0${msg.createdAt.getMinutes()}`: msg.createdAt.getMinutes()
-
-	return  `${day}/${month}/${year} (${hour}:${minutes})`
-}
+const { date_formmater } = require('../utils').default()
 
 class Bot extends Client {
 	constructor(webContents, configuration, ...args) {
@@ -29,7 +21,7 @@ class Bot extends Client {
 		this.on('message', async msg => {
 
            
-			const messageFormated =  `${date(msg)} ${msg.author.username}: ${msg.content}`
+			const messageFormated =  `${date_formmater(msg)} ${msg.author.username}: ${msg.content}`
                         
 			if (this.user.presence.status === 'online') {
 

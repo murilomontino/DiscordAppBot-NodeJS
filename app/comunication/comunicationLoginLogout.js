@@ -31,8 +31,10 @@ const comunicationBot = (DiscordAppBot, configuration) => {
 
 		configuration.checkBox = checkBox
 		configuration.token = checkBox ? token : ''
-		// const dir_name = __dirname.replace('comunication', '')
-		// fs.writeFile(dir_name+'botDiscord/config/config.json', JSON.stringify(configuration), err => { console.error(err) })
+		
+		const dir_name = __dirname.replace('lib\\comunication', 'database\\')
+		
+		fs.writeFile(dir_name+'config.json', JSON.stringify(configuration), err => { return })
 
 	}
     

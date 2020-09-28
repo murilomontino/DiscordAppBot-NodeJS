@@ -1,4 +1,4 @@
-const { ipcMain, BrowserWindow } = require('electron')
+import { ipcMain, BrowserWindow } from 'electron'
 
 module.exports = (mainWindow) => {
   
