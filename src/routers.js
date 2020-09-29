@@ -25,15 +25,15 @@ export default () => {
 		<BrowserRouter>
 			
 			<Switch>
-
-				<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
-
 				<CustomRoute
 					isPrivate
 					path={PAGE.Home.route}
 					exact
 					component={	PAGE.Home.component }
 				/>
+				<CustomRoute path={PAGE.Login.route} component={PAGE.Login.component} />
+
+				
 				{process.env.NODE_ENV==='production' && <Route render={() => <Redirect to="/"/>}/>}
 				
 			</Switch>

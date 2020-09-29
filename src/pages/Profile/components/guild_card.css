@@ -21,18 +21,33 @@
   justify-self: center;
 }
 
+.no-profile-icon.MuiSvgIcon-root{
+  font-size: 10rem;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  
+  display: flex;
+  justify-self: center;
+}
+
+.guild-name-container h1{
+  align-self: center;
+  text-align: center;
+  font-family: Poppins-Bold;
+  color:  var(--color-primary);
+  font-size: 2rem;
+  line-height: 2rem;
+  
+}
 .guild-name-container {
   width: 100%;
   height: 50px;
+  justify-content: center;
   background-color: #fff;
   border-radius: 1rem;
   margin-top: 2rem;
-  color: var(--color-primary);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Poppins-Bold;
-  font-size: 2.1rem;
   overflow: hidden;
 }
 
