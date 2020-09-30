@@ -22,14 +22,14 @@ const comunicationGuild = (DiscordAppBot) => {
         
         
 		guilds.forEach( async guild => {
-			const owner = await guild.owner.user.fetch()
+			
 			ArrayGuilds.push({
 				icon: guild.iconURL(),
 				id: guild.id,
 				name: guild.name,
 				description: guild.description,
 				memberCount: guild.memberCount,
-				owner: owner.username
+				owner: guild.owner.user.username
 
 			})
     

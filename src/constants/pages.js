@@ -2,7 +2,7 @@ const ADDRESS = require('./routes.json')
 
 const ComponentHome = require('../pages/Home').default
 const ComponentLogin = require('../pages/Login').default
-const ComponentSoundpad = require('../pages/Soundpad').default
+const ComponentSoundpad = require('../pages/Ficha').default
 const ComponentProfile = require('../pages/Profile').default
 const ComponentBestiary = require('../pages/Bestiary').default
 

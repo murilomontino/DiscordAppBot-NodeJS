@@ -26,7 +26,7 @@ export default () => {
 			
 			<Switch>
 				<CustomRoute
-					isPrivate
+					// isPrivate
 					path={PAGE.Home.route}
 					exact
 					component={	PAGE.Home.component }

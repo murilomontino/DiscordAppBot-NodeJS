@@ -33,7 +33,12 @@ const MenuTitleBar = () => {
 
 	return (
 		<div className="title-bar">
-			<div className="title-text"> Cthulhu bot </div>
+			
+			<div className='title'>
+				<h1> RPG Aplication </h1>
+			</div>
+		
+		
 			<div className="title-bar-btns">
 				<ButtonParent isParent={isChildren} onClick={Minimize}>
 					<MinusIcon className="icon-minus" />
@@ -42,8 +47,8 @@ const MenuTitleBar = () => {
 					<SquareIcon className="icon-square" />
 				</ButtonParent>
 				<button onClick={Close}>
-					{' '}
-					<CloseIcon className="icon-close" />{' '}
+					
+					<CloseIcon className="icon-close" />
 				</button>
 			</div>
 		</div>

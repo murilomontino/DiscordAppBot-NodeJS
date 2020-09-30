@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useMemo, useCallback } from 'react'
 import { Form } from '@unform/web'
 import ImageInput from '../../components/Form/image_input'
 import { Snackbar } from '@material-ui/core'
@@ -23,16 +23,24 @@ const Bestiary = () => {
 		setOpen(true)
 	}
 
-	const handleClose = (event, reason) => {
+	const handleClose = useCallback((event, reason) => {
 		if (reason === 'clickaway') {
 			return
 		}
 
 		setOpen(false)
-	}
+	}, [])
+
+	const memoizoidTest = useMemo(() => (<div className="down-container">
+		<div className="internal-down-container">
+			<h3 id="guilds-title">Guilds:</h3>
+		</div>
+	</div>), []
+
+	)
 
 	return (
-		<div>
+		<>
             
 			<button onClick={handleClick}>SnackBar</button>
            
@@ -49,15 +57,9 @@ const Bestiary = () => {
 				<button type='submit'>Submit</button>
 			</Form>
 
-
-			<div className="down-container">
-				<div className="internal-down-container">
-
-					<h3 id="guilds-title">Guilds:</h3>
-				</div>
-			</div>
-
-		</div>
+			{memoizoidTest}
+	
+		</>
 	)
 }
 

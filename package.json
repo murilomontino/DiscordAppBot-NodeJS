@@ -10,13 +10,17 @@
     "mac": {
       "category": "public.app-category.utilities"
     },
+    "win": {
+      "icon": "./src/assets/icons/icon.png" 
+    },
     "files": [
       "build/**/*",
+      "node_modules/**/*",
       "lib/**/*",
       "database/**/*"
     ],
     "directories": {
-      "buildResources": "src/assets/icons"
+      "buildResources": "./src/assets/icons"
     }
   },
   "private": true,

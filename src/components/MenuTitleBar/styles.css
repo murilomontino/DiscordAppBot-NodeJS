@@ -1,22 +1,31 @@
 .title-bar {
   -webkit-app-region: drag;
-  height: 35px;
-
+  height: 42px;
   width: 100%;
-
-  background: var(--color-background);
+  background: var(--color-primary-dark);
   display: flex;
   position: fixed;
   z-index: 2;
-
-
 }
 
-.title-text {
+.title{
+  display: flex;
+}
 
+.title img{
+  height: 42px;
+  width: 42px;
+  display: inline-block;
+}
+
+.title h1{
+  padding: 2.5rem;
+  display: inline-block;
+  width: auto;
+  height: auto;
   position: absolute;
-  left: 20px;  
-  font-size: 13px;
+  left: 10px;  
+  font-size: 1.2rem;
   display: flex;
   align-self: center;
 
@@ -45,6 +54,10 @@
 }
 
 
+.icon{
+  
+ 
+}
 
 .icon-close, .icon-minus, .icon-square{
   fill: var(--color-font-primary);
