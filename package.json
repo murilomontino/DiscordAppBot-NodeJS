@@ -47,7 +47,7 @@
     "start": "rescripts start",
     "build": "rescripts build",
     "compile": "babel app --out-dir lib",
-    "prod": "cross-env NODE_ENV=production electron ./build/electron",
+    "prod": "cross-env NODE_ENV=production electron ./public/electron",
     "test": "rescripts test",
     "eject": "react-scripts eject",
     "fix": "./node_modules/.bin/eslint .  --fix",

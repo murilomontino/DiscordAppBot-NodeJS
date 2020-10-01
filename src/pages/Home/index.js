@@ -13,9 +13,9 @@ function Home() {
 
 	return (
 
-			
-
+	
 		<div className='main-container'>
+		
 			{memoizoidDrawer}
 			<div className="right-main-container">
 				<Suspense fallback={<div>Loading...</div>}>

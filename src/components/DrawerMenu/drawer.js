@@ -21,6 +21,8 @@ const {
 
 
 const MiniDrawer = () => {
+	
+	
 	const classes = useStyles()
 	const ADDRESS = require('../../constants/routes.json')
 	const [open, setOpen] = useState(false)
@@ -84,6 +86,5 @@ const MiniDrawer = () => {
 	)
 }
 
-MiniDrawer.whyDidYouRender = true
 
 export default MiniDrawer

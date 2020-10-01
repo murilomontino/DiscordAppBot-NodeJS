@@ -14,32 +14,28 @@
 
 
 .listBar.MuiList-root {
-    top: 30%;
+    top: 25%;
     height: auto;
-    margin-left: 6px;
     background-color:  var(--color-primary-dark);
     border-radius: 1rem;
 
   }
 
-.drawer.MuiDrawer-root {
-    height: auto;
-    margin-top: 48px;
-    margin-left: 6px;
-    background-color: transparent;
-    border-color: transparent;
-    flex-shrink: 0;
-    white-space: nowrap
+.drawer > .MuiDrawer-paper{
+  top: 25%;
+  left: 2rem;
+  height: auto;
+  background-color: transparent;
+  border-color: transparent;
+  display: flex;
 }
 
-.drawer.MuiDrawer-paper{
-    height: auto;
-    margin-top: 48px;
-    margin-left: 6px;
-    background-color: transparent;
-    border-color: transparent;
-    flex-shrink: 0;
-    white-space: nowrap
+
+.MuiDrawer-paper{
+  flex-shrink: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  white-space: nowrap
 }
 
 .toolbar.MuiListItem-root {

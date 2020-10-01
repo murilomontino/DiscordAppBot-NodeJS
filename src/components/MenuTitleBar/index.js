@@ -2,6 +2,7 @@ import React, { useState, memo } from 'react'
 
 import './styles.css'
 
+import CthulhuIcon from '../../assets/Icons/icon.png'
 import { ReactComponent as CloseIcon } from '../../assets/Icons/closeIcon.svg'
 import { ReactComponent as MinusIcon } from '../../assets/Icons/minusIcon.svg'
 import { ReactComponent as SquareIcon } from '../../assets/Icons/squareIcon.svg'
@@ -35,21 +36,24 @@ const MenuTitleBar = () => {
 		<div className="title-bar">
 			
 			<div className='title'>
-				<h1> RPG Aplication </h1>
+				<img src={CthulhuIcon} alt='Icone de Aplicação, um cthulhu'/>
 			</div>
 		
 		
 			<div className="title-bar-btns">
+				
 				<ButtonParent isParent={isChildren} onClick={Minimize}>
 					<MinusIcon className="icon-minus" />
 				</ButtonParent>
+
 				<ButtonParent isParent={isChildren} onClick={Maximize}>
 					<SquareIcon className="icon-square" />
 				</ButtonParent>
+
 				<button onClick={Close}>
-					
 					<CloseIcon className="icon-close" />
 				</button>
+				
 			</div>
 		</div>
 	)

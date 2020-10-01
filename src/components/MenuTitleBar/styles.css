@@ -1,6 +1,6 @@
 .title-bar {
   -webkit-app-region: drag;
-  height: 42px;
+  height: 28px;
   width: 100%;
   background: var(--color-primary-dark);
   display: flex;
@@ -13,9 +13,10 @@
 }
 
 .title img{
-  height: 42px;
-  width: 42px;
-  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  height: 28px;
+  width: 28px;
 }
 
 .title h1{
@@ -53,18 +54,12 @@
   background-color: var(--color-input);
 }
 
-
-.icon{
-  
- 
-}
-
 .icon-close, .icon-minus, .icon-square{
   fill: var(--color-font-primary);
+  
 }
 
 .icon-square{
   height: 12px;
-
 }
 
