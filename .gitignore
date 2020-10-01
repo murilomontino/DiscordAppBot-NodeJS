@@ -105,3 +105,4 @@ dist
 package.js
 package-lock.json
 build/
+lib/

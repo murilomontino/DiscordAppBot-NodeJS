@@ -1,9 +1,11 @@
-const  { BrowserWindow, app } = require('electron')
-const MainProcess = require('../src/mainProcess')
+const  { BrowserWindow, app, Tray } = require('electron')
+const MainProcess = require('../lib')
 const path = require('path')
 
 
 const isDev = process.env.NODE_ENV
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
+
 
 
 let mainWindow
@@ -14,12 +16,18 @@ if (isDev === 'production') {
 }
 
 const installExtensions = () => {
-	const installer = require('electron-devtools-installer')
-	const extensions = ['REACT_DEVELOPER_TOOLS']
+	try {
+		const installer = require('electron-devtools-installer')
+		const extensions = ['REACT_DEVELOPER_TOOLS']
+		
+		return Promise.all(
+			extensions.map((name) => installer.default(installer[name]))
+		).catch()
+	} catch (error) {
+		return
+	}
+		
 
-	return Promise.all(
-		extensions.map((name) => installer.default(installer[name]))
-	).catch(console.log)
 }
 
 function createWindow() {
@@ -30,7 +38,7 @@ function createWindow() {
 		minHeight: 200,
 		minWidth: 750,
 		frame: (isDev === 'development')? true: false,
-		backgroundColor: '#36393f',
+		backgroundColor: '#202225',
 		webPreferences: {
 			nodeIntegration: true,
 			enableRemoteModule: true,
@@ -45,8 +53,12 @@ function createWindow() {
 	mainWindow.loadURL( rendererFile	)
   
 	if (isDev  === 'development') {
-		installExtensions()
-		mainWindow.webContents.openDevTools()
+		try {
+			installExtensions()
+
+			mainWindow.webContents.openDevTools()
+		} catch (error) {return}
+	
 	}
 
 	mainWindow.on('closed', () => {

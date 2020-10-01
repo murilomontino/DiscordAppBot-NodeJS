@@ -1,0 +1,20 @@
+
+.right-main-container {
+  height: 95%;
+  width: 88%;
+  background: var(--color-background);
+  border-radius: 2rem;
+  position: absolute;
+  right: 1.5rem;
+  padding: 3rem;
+
+
+}
+.menu > .drawer.MuiDrawer-paper {
+  left: 60%;
+} 
+@media (min-width: 1260px) {
+  .right-main-container {
+    width: 90%;
+  }
+}

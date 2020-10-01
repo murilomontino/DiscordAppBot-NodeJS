@@ -1,0 +1,58 @@
+.guild {
+  width: 350px;
+  min-width: 250px;
+  height: 400px;
+  background-color: var(--color-primary-dark);
+  border-radius: 1rem;
+  margin-right: 1rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.guild-icon {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-self: center;
+}
+
+.no-profile-icon.MuiSvgIcon-root{
+  font-size: 10rem;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  
+  display: flex;
+  justify-self: center;
+}
+
+.guild-name-container h1{
+  align-self: center;
+  text-align: center;
+  font-family: Poppins-Bold;
+  color:  var(--color-primary);
+  font-size: 2rem;
+  line-height: 2rem;
+  
+}
+.guild-name-container {
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  overflow: hidden;
+}
+
+.guild-informations {
+  font-size: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
