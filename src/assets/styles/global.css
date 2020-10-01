@@ -57,6 +57,7 @@ body,
 }
 
 body {
+  -webkit-app-region: drag !important;
   background-color: var( --color-background-dark);
 }
 
@@ -69,10 +70,11 @@ textarea {
 }
 
 .main-container {
+  margin-top: 24px;
   background-color: transparent;
   height: 100% !important;
   width: 100%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   min-height: 500px !important;
   position: relative;

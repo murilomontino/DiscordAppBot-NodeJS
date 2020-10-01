@@ -3,7 +3,6 @@ import 'fontsource-roboto'
 import './assets/styles/global.css'
 import Routers from './routers'
 import Context from './context'
-import MenuTitleBar from './components/MenuTitleBar'
 
 
 const ContainerApp = ({children}) => {
@@ -12,15 +11,12 @@ const ContainerApp = ({children}) => {
 
 const App = () => {
 	return (
-		
-			
 		<ContainerApp>
-			<MenuTitleBar/>
+			
 			<Context>
 				<Routers />
 			</Context>
 		</ContainerApp>
-		
 	)
 }
 

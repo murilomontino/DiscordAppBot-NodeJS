@@ -1,14 +1,16 @@
 import React from 'react'
 import { ReactComponent as ArrowIcon } from '../../../assets/Icons/arrowIcon.svg'
 
+import './left_container.css'
+
 export default () => {
 	return (
 		<section className="left-container">
 			<div className="title-container">
-				<h1>
-					{' '}
+				<h1>RPG</h1>
+				<h2>
 					<strong>Cthulhu</strong> bot
-				</h1>
+				</h2>
 				<p className="sub-title">Gerencie seu bot de RPG no Discord.</p>
 			</div>
 

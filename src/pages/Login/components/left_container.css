@@ -1,0 +1,135 @@
+.left-container {
+  background: var(--color-primary);
+  float: left;
+  height: 85vh;
+  width: 400px;
+  border-radius: 2rem;
+  margin-left: 1rem;
+  padding: 4rem;
+  margin-left: 3rem;
+  align-self: center;
+  position: relative;
+  min-height: 400px;
+}
+
+.left-container h1 {
+  font-size: 8rem;
+  line-height: 12rem;
+  font-family: Poppins-Bold;
+  text-align: center;
+}
+
+.left-container h2{
+  font-size: 4rem;
+  line-height: 8rem;
+  text-align: center;
+  font-family: Poppins-Bold;
+}
+.left-container strong {
+  font-family: Poppins-Bold;
+}
+.left-container .sub-title {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.left-container a {
+  display: block;
+  text-decoration: none;
+  height: 60px;
+  background-color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-font-primary);
+  border-radius: 1rem;
+  width: 32rem;
+  margin-top: 1rem;
+  font-family: Archivo-Bold;
+  transition: background-color 0.2s;
+  outline: none;
+  font-size: 1.7rem;
+  
+}
+
+.left-container a:hover {
+  background-color: var(--color-button-light);
+}
+
+.button-container {
+  position: absolute;
+  bottom: 5rem;
+}
+
+.button-container p {
+  margin-left: 0.3rem;
+}
+
+
+
+.icon-arrow{
+  height: 15px;
+  fill: var(--color-font-primary);
+  margin-left: 2rem;
+}
+
+
+
+
+@media (max-width: 1000px) {
+
+    .menu-container {
+      width: 20%;
+    }
+  }
+  
+  @media (max-height: 600px) {
+  
+    .left-container {
+      height: 85vh;
+    }
+  
+    .left-container h1 {
+      font-size: 6rem;
+      line-height: 12rem;
+      font-family: Poppins-Bold;
+      text-align: center;
+    }
+    
+    .left-container h2{
+      font-size: 2rem;
+      text-align: center;
+      line-height: 2rem;
+      font-family: Poppins-Bold;
+    }
+    .left-container strong {
+      font-family: Poppins-Bold;
+    }
+    .left-container .sub-title {
+      margin-top: 2rem;
+      font-size: 2rem;
+    }
+    .button-container {
+      position: absolute;
+      bottom: 3rem;
+    }
+    
+    .button-container p {
+      margin-left: 0.1rem;
+    }
+  
+    .left-container a {
+      height: 100%;
+      width: 28rem;
+      margin-top: 1rem;
+      font-size: 1.7rem;
+    }
+    
+    .left-container {
+    
+      width: 400px;
+     
+      min-height: 400px;
+    }
+  
+  }

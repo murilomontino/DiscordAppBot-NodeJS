@@ -1,4 +1,7 @@
 .title-bar {
+ 
+  -webkit-user-select: none !important;
+  -webkit-app-region: drag !important; 
   height: 28px;
   width: 100%;
   background: var(--color-primary-dark);
@@ -32,6 +35,7 @@
 }
 
 .title-bar-btns {
+  -webkit-app-region: no-drag !important;
   position: absolute;
   right: 0px;
   height: 100%;
