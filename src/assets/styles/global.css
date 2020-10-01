@@ -57,7 +57,6 @@ body,
 }
 
 body {
-  -webkit-app-region: drag !important;
   background-color: var( --color-background-dark);
 }
 
