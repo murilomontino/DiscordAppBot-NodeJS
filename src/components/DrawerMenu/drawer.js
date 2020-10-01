@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import clsx from 'clsx'
 
 import Drawer from '@material-ui/core/Drawer'
@@ -87,4 +87,4 @@ const MiniDrawer = () => {
 }
 
 
-export default MiniDrawer
+export default memo(MiniDrawer)

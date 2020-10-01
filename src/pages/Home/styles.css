@@ -10,9 +10,11 @@
 
 
 }
-
+.menu > .drawer.MuiDrawer-paper {
+  left: 60%;
+} 
 @media (min-width: 1260px) {
   .right-main-container {
-    width: 91%;
+    width: 90%;
   }
 }

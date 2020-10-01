@@ -37,6 +37,7 @@ const MenuTitleBar = () => {
 			
 			<div className='title'>
 				<img src={CthulhuIcon} alt='Icone de Aplicação, um cthulhu'/>
+				<h1>RPG Cthulhu Bot</h1>
 			</div>
 		
 		

@@ -1,33 +1,12 @@
-.textItem {
-    text-align: center;
-  }
+.drawer {
+  left: 2rem !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  display: flex ;
+}
 
-.textItem .MuiListItemText-primary {
-    font-size: 1.5rem;
-    color: #e5e7e7f1;
-  }
-  
-.iconButton.MuiSvgIcon-root {
-    font-size: 3.5rem;
-    color: white;
-  }
-
-
-.listBar.MuiList-root {
-    top: 25%;
-    height: auto;
-    background-color:  var(--color-primary-dark);
-    border-radius: 1rem;
-
-  }
-
-.drawer > .MuiDrawer-paper{
-  top: 25%;
-  left: 2rem;
-  height: auto;
-  background-color: transparent;
-  border-color: transparent;
-  display: flex;
+.drawer::-webkit-scrollbar{
+  display: none;
 }
 
 
@@ -38,13 +17,38 @@
   white-space: nowrap
 }
 
+.textItem .MuiListItemText-primary {
+    font-size: 1.5rem;
+    color: #e5e7e7f1;
+    text-align: center;
+  }
+  
+.iconButton {
+    font-size: 3.5rem !important;
+    color: white ;
+  }
+
+
+.listBar.MuiList-root {
+    top: 25%;
+    height: auto;
+    vertical-align: center;
+    background-color:  var(--color-primary-dark);
+    border-radius: 1rem;
+
+  }
+
+
+
+
+
 .toolbar.MuiListItem-root {
     display: flex;
     align-items: center;
 }
 
-.itemSelect > .toolbar.MuiListItem-root{
-  background-color:  var(--color-font-primary);
+.itemSelect {
+  background-color:  var(--color-font-primary) !important;
   
 }
 .itemSelect > .toolbar.MuiListItem-root  .iconButton {
@@ -79,4 +83,10 @@
 
 .toolbar.MuiListItem-root:hover .MuiListItemText-primary {
   color:  var(--color-primary-dark);
+}
+
+@media(min-width:1260px){
+ .drawer  > .MuiDrawer-paper{
+  left: 2.5rem !important;
+}
 }

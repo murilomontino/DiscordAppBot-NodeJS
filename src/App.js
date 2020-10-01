@@ -12,14 +12,15 @@ const ContainerApp = ({children}) => {
 
 const App = () => {
 	return (
-		<>
+		
+			
+		<ContainerApp>
 			<MenuTitleBar/>
-			<ContainerApp>
-				<Context>
-					<Routers />
-				</Context>
-			</ContainerApp>
-		</>
+			<Context>
+				<Routers />
+			</Context>
+		</ContainerApp>
+		
 	)
 }
 
