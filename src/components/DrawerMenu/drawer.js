@@ -1,4 +1,4 @@
-import React, { useState, memo, useMemo, useEffect } from 'react'
+import React, { useState, memo, useMemo } from 'react'
 import clsx from 'clsx'
 
 import Drawer from '@material-ui/core/Drawer'
@@ -15,23 +15,17 @@ const {
 	ChevronRightIcon,
 } = require('./components/icons').icons()
 
-const { ComponentItemMenu: PAGEs, EXIT } = require('./components/ComponentItemMenu')
+const { ComponentItemMenu, EXIT } = require('./components/ComponentItemMenu')
 
 const MiniDrawer = () => {
 	
-	const [menuItem] = useState(PAGEs)
+	const [menuItem] = useState(ComponentItemMenu)
 
 	const classes = useStyles()
 	const [open, setOpen] = useState(false)
 
 	const { HandleLogout } = useAuthentication()
-	useEffect(()=>{
-		menuItem.forEach(
-			item => console.log(item)
-		)
-	
-	},[menuItem])
-	
+
 	const memoizoidItems = useMemo(()=> (
 		menuItem.map((component) => 
 			<Item 
