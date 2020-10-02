@@ -13,17 +13,17 @@
 }
 
 .left-container h1 {
-  font-size: 8rem;
-  line-height: 12rem;
-  font-family: Poppins-Bold;
+  font-size: 20vh;
+  line-height: 14vh;
+  font-family: 'Courier New';
   text-align: center;
 }
 
 .left-container h2{
-  font-size: 4rem;
-  line-height: 8rem;
-  text-align: center;
-  font-family: Poppins-Bold;
+  font-size: 8vh;
+  line-height: 6rem;
+  margin-top: 2rem;
+  text-align: left;
 }
 .left-container strong {
   font-family: Poppins-Bold;
@@ -36,14 +36,15 @@
 .left-container a {
   display: block;
   text-decoration: none;
-  height: 60px;
+  height: 8vh;
+  width: 32rem;
   background-color: var(--color-primary-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-font-primary);
   border-radius: 1rem;
-  width: 32rem;
+  
   margin-top: 1rem;
   font-family: Archivo-Bold;
   transition: background-color 0.2s;
@@ -75,32 +76,23 @@
 
 
 
-
-@media (max-width: 1000px) {
-
-    .menu-container {
-      width: 20%;
-    }
-  }
   
-  @media (max-height: 600px) {
+@media (max-height: 600px), (max-width: 750px)  {
   
     .left-container {
       height: 85vh;
     }
   
     .left-container h1 {
-      font-size: 6rem;
+      font-size: 12rem;
       line-height: 12rem;
-      font-family: Poppins-Bold;
       text-align: center;
     }
     
     .left-container h2{
-      font-size: 2rem;
+      font-size: 4rem;
       text-align: center;
       line-height: 2rem;
-      font-family: Poppins-Bold;
     }
     .left-container strong {
       font-family: Poppins-Bold;
@@ -114,12 +106,9 @@
       bottom: 3rem;
     }
     
-    .button-container p {
-      margin-left: 0.1rem;
-    }
+   
   
     .left-container a {
-      height: 100%;
       width: 28rem;
       margin-top: 1rem;
       font-size: 1.7rem;
@@ -133,3 +122,4 @@
     }
   
   }
+

@@ -4,30 +4,35 @@ const {
 	PersonIcon,
 	MusicNoteIcon,
 	MenuBookIcon,
-} = require('./components/icons').icons()
+	ExitToAppIcon
+} = require('./icons').icons()
 
 const ADDRESS = require('../../../constants/routes.json')
 
-export const Page = [
-	{ 
+export const ComponentItemMenu = [
+	{
+		id: 1,
 		icon: PersonIcon,
 		title: ADDRESS.PROFILE.name,
-		name: 'Perfil',
+		name: 'Perfil'
 	},
 	{
+		id: 2,
 		icon: MenuBookIcon,
 		title: ADDRESS.BESTIARY.name,
 		name: 'Bestiario',
 	},
 	{
+		id: 3,
 		icon: MusicNoteIcon,
 		title: ADDRESS.SOUNDPAD.name,
-		name: 'Perfil',
+		name: 'Soundpad',
 	}
 
 
 ]
-  
+
 export const EXIT = {
-    
+	icon: ExitToAppIcon,
+	name: 'Logout',
 }

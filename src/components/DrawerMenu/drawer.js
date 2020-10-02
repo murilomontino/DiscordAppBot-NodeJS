@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react'
+import React, { useState, memo, useMemo, useEffect } from 'react'
 import clsx from 'clsx'
 
 import Drawer from '@material-ui/core/Drawer'
@@ -13,23 +13,38 @@ import { useAuthentication } from '../../context/ContextAuthentication'
 const {
 	ChevronLeftIcon,
 	ChevronRightIcon,
-	PersonIcon,
-	ExitToAppIcon,
-	MusicNoteIcon,
-	MenuBookIcon,
 } = require('./components/icons').icons()
 
+const { ComponentItemMenu: PAGEs, EXIT } = require('./components/ComponentItemMenu')
 
 const MiniDrawer = () => {
 	
-	
+	const [menuItem] = useState(PAGEs)
+
 	const classes = useStyles()
-	const ADDRESS = require('../../constants/routes.json')
 	const [open, setOpen] = useState(false)
 
 	const { HandleLogout } = useAuthentication()
+	useEffect(()=>{
+		menuItem.forEach(
+			item => console.log(item)
+		)
+	
+	},[menuItem])
+	
+	const memoizoidItems = useMemo(()=> (
+		menuItem.map((component) => 
+			<Item 
+				key={component.id} 
+				Icon={component.icon} 
+				title={component.title}
+				firstPage={component.id===1? true:false}
+				name={component.name}
+			/>)
 
-	const handleDrawerOpen = () => {
+	), [menuItem])
+
+	function handleDrawerOpen() {
 		setOpen(true)
 	}
 
@@ -62,25 +77,11 @@ const MiniDrawer = () => {
 
 				<Divider />
 
-				<Item
-					Icon={PersonIcon}
-					firstPage
-					title={ADDRESS.PROFILE.name}
-					name={'Perfil'}
-				/>
-				<Item
-					Icon={MusicNoteIcon}
-					title={ADDRESS.SOUNDPAD.name}
-					name={'SoundPad'}
-				/>
-				<Item
-					Icon={MenuBookIcon}
-					title={ADDRESS.BESTIARY.name}
-					name={'Testes de Tela'}
-				/>
+				{	memoizoidItems	}
 
 				<Divider />
-				<Item Icon={ExitToAppIcon} onClick={HandleLogout} name={'Logout'} />
+
+				<Item Icon={EXIT.icon} onClick={HandleLogout} name={EXIT.name} />
 			</List>
 		</Drawer>
 	)

@@ -4,7 +4,7 @@
   -webkit-app-region: drag !important; 
   height: 28px;
   width: 100%;
-  background: var(--color-primary-dark);
+  background: var(--color-background-dark);
   display: flex;
   position: fixed;
   z-index: 2;

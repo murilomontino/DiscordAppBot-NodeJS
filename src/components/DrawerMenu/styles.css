@@ -1,20 +1,23 @@
 .drawer {
-  left: 2rem !important;
   background-color: transparent !important;
-  border-color: transparent !important;
-  display: flex ;
+  border: none !important;
+  left: 1rem !important;
+
 }
 
 .drawer::-webkit-scrollbar{
   display: none;
 }
 
+.makeStyles-drawerClose-4{
+  width: 8rem;
+}
 
 .MuiDrawer-paper{
   flex-shrink: 0;
   white-space: nowrap;
-  flex-shrink: 0;
-  white-space: nowrap
+  height: auto;
+
 }
 
 .textItem .MuiListItemText-primary {
@@ -26,67 +29,64 @@
 .iconButton {
     font-size: 3.5rem !important;
     color: white ;
+    
   }
 
 
 .listBar.MuiList-root {
-    top: 25%;
-    height: auto;
-    vertical-align: center;
-    background-color:  var(--color-primary-dark);
-    border-radius: 1rem;
-
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); 
+  height: auto;
+  background-color:  var(--color-primary-dark);
+  border-radius: 1rem;
+  margin-left: 1rem;
   }
-
-
-
-
-
-.toolbar.MuiListItem-root {
-    display: flex;
-    align-items: center;
-}
 
 .itemSelect {
   background-color:  var(--color-font-primary) !important;
   
 }
-.itemSelect > .toolbar.MuiListItem-root  .iconButton {
-  color:  var(--color-primary-dark);
+.itemSelect > .toolbar  .iconButton {
+  color:  var(--color-primary-dark) !important;
 }
 
-.itemSelect > .toolbar.MuiListItem-root .MuiListItemText-primary {
-  color:  var(--color-primary-dark);
+.itemSelect > .toolbar .MuiListItemText-primary {
+  color:  var(--color-primary-dark) !important;
 }
 
 
-.arrow.toolbar.MuiListItem-root {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+.arrow {
+  justify-content: flex-end !important;
 }
 
-.arrow.toolbar.MuiListItem-root .iconButton.MuiSvgIcon-root {
-  margin-left: auto;
+.arrow .iconButton {
+  margin-left: 45%;
 }
 
-.toolbar.MuiListItem-root:hover{
-    background-color: var(--color-font-primary);
+.toolbar:hover{
+    background-color: var(--color-font-primary) !important;
     
 }
 
 
 
-.toolbar.MuiListItem-root:hover .iconButton {
+.toolbar:hover .iconButton {
     color:  var(--color-primary-dark);
 } 
 
-.toolbar.MuiListItem-root:hover .MuiListItemText-primary {
+.toolbar:hover .MuiListItemText-primary {
   color:  var(--color-primary-dark);
 }
 
-@media(min-width:1260px){
- .drawer  > .MuiDrawer-paper{
-  left: 2.5rem !important;
-}
+
+@media(max-width: 760px){
+
+  .drawer{
+    left: 0rem !important;
+  }
+  .arrow.toolbar.MuiListItem-root .iconButton.MuiSvgIcon-root {
+    margin-left: auto;
+  }
+
 }
