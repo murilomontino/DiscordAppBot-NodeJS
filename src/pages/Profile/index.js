@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 import InformationProfile from './components/information_profile'
-import GuildContainer from './components/guild_container'
+import GuildContainer from './components/guildContainer'
 
 function Profile() {
 

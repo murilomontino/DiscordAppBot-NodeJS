@@ -50,7 +50,7 @@ const ContextRouterProvider = ({ children }) => {
 }
 
 export const useRouter = () => {
-	const context = useContext(ContextRouter);
+	const context = useContext(ContextRouter)
 
 	return {
 		...context,

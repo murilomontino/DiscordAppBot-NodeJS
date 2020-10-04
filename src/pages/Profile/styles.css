@@ -36,26 +36,9 @@ button {
   flex-direction: row;
   align-items: center;
 }
-.top-right-container {
-  width: 50%;
-  height: 100%;
-  background-color: var(--color-background-dark);
-  border-radius: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.bot-description{
-  height: 80%;
-  width: 85%;
-  font-size: 1.4rem;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select:text;
-}
+
+
 .bot-information{
   margin-left: 1.5rem;
 }

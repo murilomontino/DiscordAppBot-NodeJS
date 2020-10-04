@@ -1,5 +1,6 @@
 import React, {memo} from 'react'
 import { useProfile } from '../../../context/ContextProfile'
+import Description from './description'
 
 const InformationProfile = () => {
 	const {
@@ -7,7 +8,7 @@ const InformationProfile = () => {
 		botAvatarURL,
 		botStatus,
 		botCreator,
-		botDescription,
+		
 	} = useProfile()
 
 	return (
@@ -23,11 +24,9 @@ const InformationProfile = () => {
 				</div>
 			</div>
 
-			<div className="top-right-container">
-				<div className="bot-description">
-					<p>{botDescription}</p>
-				</div>
-			</div>
+			
+			<Description/>
+			
 		</div>
 	)
 }
