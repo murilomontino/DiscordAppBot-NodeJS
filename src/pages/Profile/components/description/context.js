@@ -12,13 +12,23 @@ const DescriptionContextProvider = ({children}) => {
 		textAreaEdit: 'text-area-description-not-edit'
 	})
 
+	const HandleClickConfirm = () =>{
+
+	}
+
+	const HandleClickNegative = () =>{
+		
+	}
+
 	return (
 		<DescriptionContext.Provider value={{
 			botDescription,
 			editClass,
 			setEditClass,
 			inputTextArea,
-			setInputTextArea
+			setInputTextArea,
+			HandleClickConfirm,
+			HandleClickNegative
 		}
 		}>
 			<div className="bot-description">

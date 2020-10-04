@@ -4,17 +4,17 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import { useDescriptionEdit } from './context'
 
 const ButtonEdit = () => {
-	const {editClass} = useDescriptionEdit()
+	const {editClass, HandleClickConfirm, HandleClickNegative} = useDescriptionEdit()
 
 	return (
-		<div className='container-button-icon'>
-			<button className='CheckCircleIcon'>
-				<CheckCircleIcon 
-					className={editClass.buttonEdit} />
-			</button>
-			<button onClick={() => console.log('oloko')} className='CancelIcon'>
-				<CancelIcon  className={editClass.buttonEdit} />
-			</button>
+		<div className='container-button-icon' >
+			<div className={`CheckCircleIcon ${editClass.buttonEdit}`} onClick={HandleClickConfirm}>
+				<CheckCircleIcon fontSize='large'/>
+			</div>
+
+			<div  className={`CancelIcon ${editClass.buttonEdit}`} onClick={HandleClickNegative}>
+				<CancelIcon fontSize='large'/>
+			</div>
 		</div>
 	)
 }

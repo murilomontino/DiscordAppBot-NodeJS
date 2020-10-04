@@ -25,6 +25,7 @@
 .container-description-text{
     background-color: var(--color-background-darkest);
 }
+
 .container-description-text h1 {
     writing-mode: vertical-lr;
     font-size: 1.5rem;
@@ -33,32 +34,28 @@
 .CheckCircleIcon{
     margin-right: 1vh;
     color: green !important;
-    background-color: white;
     border-radius: 50%;
-    height: 100%;
 }
 
 .CancelIcon{
     margin-right: 1vh;
     color: rgb(145, 40, 40) !important;
-    background-color: white;
     border-radius: 50%;
-    height: 100%;
 }
 
-.button-edit.MuiSvgIcon-root{
+.button-edit .MuiSvgIcon-root {
+    font-size: 2.5rem;
+}
+
+.button-edit{
     display: block;
-    width: auto;
-    font-size: 2rem;
-   
 }
 
-.button-edit-not.MuiSvgIcon-root{
-    display: flex;
-    color: rgb(20, 20, 20);
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.336) ;
+.button-edit-not{
+    display: none;
 }
+
+
 
 .container-text-area{
     width: 100%;
