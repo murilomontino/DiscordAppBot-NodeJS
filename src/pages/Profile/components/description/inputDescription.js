@@ -40,16 +40,19 @@ const InputDescription = () => {
 	return (
 		
 	
-			
-		<div className='container-text-area'>
-			<textarea className={`${editClass.textAreaEdit} text-area`}
-				type='text'
-				value={inputTextArea}
-				onChange={HandleChange}
-				ref={refDisabled}
-				maxLength='400'
-				onDoubleClick={HandleDoubleClick}
-			/>
+		
+		<div className='container-text-and-buttons'>
+
+			<div className='container-text-area'>
+				<textarea className={`${editClass.textAreaEdit} text-area`}
+					type='text'
+					value={inputTextArea}
+					onChange={HandleChange}
+					ref={refDisabled}
+					maxLength='400'
+					onDoubleClick={HandleDoubleClick}
+				/>
+			</div>
 			<ContainerButtonText lengthText={inputTextArea.length}/>
 			
 		</div>

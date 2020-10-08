@@ -66,6 +66,7 @@ const ContextAuthProvider = ({ children }) => {
 		})
 		await fetchToken()
 		setAuthentication(false)
+		
 	}
 
 	return (

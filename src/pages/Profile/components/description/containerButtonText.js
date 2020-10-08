@@ -5,7 +5,6 @@ const containerButtonText = ({lengthText}) => {
     
 	return (
 		<div className='container-button-lenghtText'>
-		
 			<ButtonEdit/>
         
 			<div  className='length-text'>
